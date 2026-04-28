@@ -1,0 +1,868 @@
+ <!DOCTYPE html>
+
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>תעשייה וניהול ÷ AI · BGU</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+
+:root {
+–cream:  #F1ECDF;
+–paper:  #F7F3E8;
+–ink:    #16140F;
+–inkSub: #3A3528;
+–muted:  #8A7E6A;
+–signal: #E94B1F;
+–signalDeep: #B5341A;
+}
+
+body {
+background: var(–cream);
+color: var(–ink);
+font-family: ‘Heebo’, system-ui, sans-serif;
+direction: rtl;
+}
+
+.f-display { font-family: ‘Frank Ruhl Libre’, serif; }
+.f-body    { font-family: ‘Heebo’, system-ui, sans-serif; }
+.f-mono    { font-family: ‘JetBrains Mono’, ui-monospace, monospace; letter-spacing: -0.01em; }
+
+/* page */
+#stage {
+position: relative;
+width: 100%;
+height: 100vh;
+overflow: hidden;
+}
+
+.slide {
+position: absolute;
+inset: 0;
+padding: 0;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.45s ease-out;
+background:
+radial-gradient(rgba(22,20,15,0.06) 1px, transparent 1px) 0 0 / 3px 3px,
+radial-gradient(rgba(22,20,15,0.04) 1px, transparent 1px) 1px 2px / 7px 7px,
+var(–cream);
+}
+.slide.active {
+opacity: 1;
+pointer-events: auto;
+}
+.slide.active .a-rise   { animation: riseIn 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+.slide.active .a-fade   { animation: fadeIn 0.9s ease-out both; }
+.slide.active .a-drawX  { animation: drawX 0.9s cubic-bezier(0.7,0,0.3,1) both; transform-origin: right; }
+
+@keyframes riseIn  { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes drawX   { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes blink   { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+.a-blink { animation: blink 2s ease-in-out infinite; }
+
+/* layout */
+.frame {
+position: absolute;
+inset: 0;
+padding: 80px 40px 60px;
+display: flex;
+flex-direction: column;
+}
+@media (max-width: 720px) {
+.frame { padding: 70px 20px 50px; }
+}
+
+.header-bar {
+position: absolute; top: 20px; left: 40px; right: 40px;
+display: flex; justify-content: space-between; align-items: center;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(–inkSub);
+}
+@media (max-width: 720px) {
+.header-bar { left: 20px; right: 20px; font-size: 9px; letter-spacing: 0.15em; }
+}
+.header-bar .dot { color: var(–signal); margin-left: 8px; }
+.header-bar .mid { display: flex; gap: 16px; }
+@media (max-width: 720px) { .header-bar .mid { display: none; } }
+
+.tickline {
+position: absolute; top: 50px; left: 40px; right: 40px;
+display: flex; align-items: center; gap: 4px;
+}
+@media (max-width: 720px) { .tickline { left: 20px; right: 20px; } }
+.tickline .ln { height: 1px; flex: 1; background: var(–ink); opacity: 0.25; }
+.tickline .pt { height: 6px; width: 6px; background: var(–signal); }
+.tickline .ln-sm { height: 1px; width: 48px; background: var(–ink); opacity: 0.6; }
+
+.footer-bar {
+position: absolute; bottom: 16px; left: 40px; right: 40px;
+display: flex; justify-content: space-between;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 0.18em;
+color: var(–inkSub);
+}
+@media (max-width: 720px) { .footer-bar { left: 20px; right: 20px; } }
+
+/* nav */
+.nav {
+position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+z-index: 100;
+background: var(–paper);
+border: 1px solid var(–ink);
+padding: 8px 10px;
+display: flex; align-items: center; gap: 6px;
+}
+.nav button {
+background: none; border: none; color: var(–ink); padding: 4px 6px;
+cursor: pointer; line-height: 0;
+}
+.nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+.nav .dots { display: flex; gap: 6px; padding: 0 8px; }
+.nav .dot {
+width: 6px; height: 6px; background: var(–ink); opacity: 0.3;
+border: none; padding: 0; cursor: pointer; transition: all 0.3s;
+}
+.nav .dot.active { width: 24px; background: var(–signal); opacity: 1; }
+
+/* utilities */
+h1, h2, h3 { margin: 0; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button { font-family: inherit; }
+em { font-style: italic; }
+
+/* SLIDE 1 */
+.s1-meta {
+display: flex; align-items: baseline; gap: 16px;
+font-family: ‘JetBrains Mono’, monospace; font-size: 11px;
+text-transform: uppercase; letter-spacing: 0.2em;
+color: var(–muted);
+}
+.s1-meta .bar { width: 40px; height: 1px; background: var(–muted); display: inline-block; }
+.s1-title {
+font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900;
+font-size: clamp(48px, 9vw, 144px);
+line-height: 0.88;
+letter-spacing: -0.02em;
+margin-top: auto;
+}
+.s1-title .accent { color: var(–signal); display: inline-block; margin-right: 12px; font-size: 0.78em; transform: translateY(-0.05em); }
+.s1-rule { height: 6px; width: 96px; background: var(–signal); margin-top: 32px; }
+.s1-sub {
+font-family: ‘Frank Ruhl Libre’, serif;
+font-size: clamp(18px, 2.5vw, 30px);
+line-height: 1.35; color: var(–inkSub);
+max-width: 620px; margin-top: 20px;
+}
+.s1-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-top: auto; flex-wrap: wrap; }
+.s1-foot .left { font-family: ‘JetBrains Mono’, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–inkSub); }
+.s1-foot .left .sub { color: var(–muted); }
+.s1-foot .badge {
+position: relative; padding: 12px 20px;
+font-family: ‘JetBrains Mono’, monospace; font-size: 11px;
+text-transform: uppercase; letter-spacing: 0.2em;
+color: var(–signal);
+}
+.s1-foot .badge::before, .s1-foot .badge::after {
+content: ‘’; position: absolute; width: 22px; height: 22px;
+border: 1.5px solid var(–signal);
+}
+.s1-foot .badge::before { top: 0; right: 0; border-left: none; border-bottom: none; }
+.s1-foot .badge::after  { bottom: 0; left: 0; border-right: none; border-top: none; }
+
+/* SLIDE 2 */
+.s2-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 40px; flex: 1; min-height: 0; }
+@media (max-width: 900px) { .s2-grid { grid-template-columns: 1fr; gap: 24px; } }
+.s2-left { display: flex; flex-direction: column; justify-content: space-between; }
+.s2-tag { font-family: ‘JetBrains Mono’, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–signal); margin-bottom: 12px; }
+.s2-h2 { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900; font-size: clamp(32px, 4.2vw, 60px); line-height: 0.95; }
+.s2-h2 .a { color: var(–signal); }
+.s2-p { font-family: ‘Heebo’, sans-serif; font-size: clamp(15px, 1.2vw, 18px); line-height: 1.65; color: var(–inkSub); margin-top: 24px; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.stat { border-top: 1px solid var(–ink); padding-top: 12px; }
+.stat .big { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900; font-size: clamp(36px, 4vw, 56px); line-height: 1; }
+.stat .lbl { font-weight: 700; font-size: 14px; margin-top: 8px; }
+.stat .sub { font-family: ‘JetBrains Mono’, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(–muted); margin-top: 4px; }
+
+.chart-wrap { position: relative; min-height: 280px; }
+.chart-tag { position: absolute; top: -8px; right: 0; font-family: ‘JetBrains Mono’, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–muted); }
+.chart-foot { position: absolute; bottom: 0; right: 0; font-family: ‘JetBrains Mono’, monospace; font-size: 10px; color: var(–muted); }
+svg .grid line { stroke: var(–ink); stroke-opacity: 0.15; stroke-dasharray: 2 4; }
+svg .axis text { font-family: ‘JetBrains Mono’, monospace; font-size: 11px; fill: var(–ink); }
+
+/* SLIDE 3 */
+.s3-head { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; margin-bottom: 24px; }
+.s3-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; min-height: 0; }
+@media (max-width: 720px) { .s3-cols { grid-template-columns: 1fr; gap: 16px; } }
+.col { position: relative; border: 1px solid; padding: 22px; display: flex; flex-direction: column; }
+.col.ink { border-color: var(–ink); background: rgba(22,20,15,0.03); }
+.col.signal { border-color: var(–signal); background: rgba(233,75,31,0.04); }
+.col-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+.col-title { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 700; font-size: clamp(18px, 1.7vw, 24px); }
+.col.signal .col-title { color: var(–signal); }
+.col-tag { font-family: ‘JetBrains Mono’, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; padding: 4px 8px; color: var(–cream); }
+.col.ink .col-tag { background: var(–ink); }
+.col.signal .col-tag { background: var(–signal); }
+.col ul { display: flex; flex-direction: column; gap: 12px; overflow-y: auto; padding-left: 4px; }
+.col li { display: flex; gap: 12px; align-items: flex-start; }
+.col .icon-box { flex-shrink: 0; width: 36px; height: 36px; border: 1px solid; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.col.ink .icon-box { border-color: var(–ink); color: var(–ink); }
+.col.signal .icon-box { border-color: var(–signal); color: var(–signal); }
+.col .li-t { font-weight: 700; font-size: 15px; }
+.col .li-d { font-family: ‘JetBrains Mono’, monospace; font-size: 11px; color: var(–muted); }
+
+/* SLIDE 4 */
+.s4-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 24px; flex: 1; min-height: 0; }
+@media (max-width: 900px) { .s4-grid { grid-template-columns: 1fr; } }
+.s4-left { display: flex; flex-direction: column; justify-content: center; }
+.s4-h2 { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900; font-size: clamp(32px, 4.5vw, 60px); line-height: 0.95; }
+.s4-h2 em { color: var(–inkSub); font-style: italic; }
+.s4-h2 .a { color: var(–signal); }
+.three-host { position: relative; border: 1px solid var(–ink); background: var(–paper); }
+.three-host canvas { display: block; }
+.three-tag { position: absolute; top: 12px; right: 12px; font-family: ‘JetBrains Mono’, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–inkSub); }
+.three-foot { position: absolute; bottom: 12px; left: 12px; font-family: ‘JetBrains Mono’, monospace; font-size: 10px; color: var(–muted); }
+
+/* SLIDE 5 */
+.s5-head { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; margin-bottom: 24px; }
+.s5-h2 { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900; font-size: clamp(32px, 4vw, 56px); line-height: 0.95; }
+.s5-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; flex: 1; min-height: 0; }
+@media (max-width: 720px) { .s5-grid { grid-template-columns: repeat(2, 1fr); } }
+.skill {
+position: relative; text-align: right; padding: 18px;
+border: 1px solid var(–ink); background: transparent; color: var(–ink);
+cursor: pointer; transition: all 0.3s;
+display: flex; flex-direction: column; gap: 8px;
+}
+.skill:hover { transform: translateY(-2px); }
+.skill.active { background: var(–signal); color: var(–cream); border-color: var(–signal); transform: translateY(-2px); }
+.skill-head { display: flex; justify-content: space-between; align-items: center; }
+.skill-num { font-family: ‘JetBrains Mono’, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.7; }
+.skill-icon { font-size: 18px; }
+.skill-t { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 700; font-size: 17px; line-height: 1.2; }
+.skill-d { font-size: 13px; line-height: 1.5; opacity: 0.7; }
+.skill.active .skill-d { opacity: 1; }
+
+/* SLIDE 6 */
+.s6-head { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; margin-bottom: 24px; }
+.s6-h2 { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900; font-size: clamp(32px, 4vw, 56px); line-height: 0.95; max-width: 800px; }
+.s6-h2 .a { color: var(–signal); }
+.s6-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; flex: 1; min-height: 0; }
+@media (max-width: 720px) { .s6-grid { grid-template-columns: 1fr; } }
+.phase { position: relative; border: 1px solid var(–ink); display: flex; flex-direction: column; padding: 22px; }
+.phase.mid { background: rgba(233,75,31,0.05); }
+.phase-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(–ink); }
+.phase-num { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900; font-size: clamp(28px, 3vw, 40px); line-height: 1; }
+.phase.last .phase-num { color: var(–signal); }
+.phase-tag { font-family: ‘JetBrains Mono’, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–muted); }
+.phase ol { display: flex; flex-direction: column; gap: 12px; }
+.phase li { display: flex; gap: 10px; font-size: 14px; line-height: 1.45; }
+.phase li .num { font-family: ‘JetBrains Mono’, monospace; font-size: 11px; color: var(–signal); flex-shrink: 0; margin-top: 2px; }
+
+/* SLIDE 7 */
+.s7-grid { display: grid; grid-template-columns: 4fr 8fr; gap: 24px; flex: 1; min-height: 0; }
+@media (max-width: 900px) { .s7-grid { grid-template-columns: 1fr; } }
+.s7-left { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+.s7-h2 { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900; font-size: clamp(32px, 4vw, 52px); line-height: 0.95; }
+.s7-h2 .a { color: var(–signal); }
+.s7-p { font-size: 15px; line-height: 1.55; color: var(–inkSub); margin-top: 20px; }
+.ex-list { display: flex; flex-direction: column; gap: 8px; }
+.ex-list .lbl { font-family: ‘JetBrains Mono’, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–muted); margin-bottom: 8px; }
+.ex-btn {
+display: block; width: 100%; text-align: right;
+font-size: 13px; padding: 10px 12px;
+border: 1px solid var(–ink); background: transparent; color: var(–inkSub);
+cursor: pointer; transition: all 0.2s;
+}
+.ex-btn:hover { background: var(–ink); color: var(–cream); }
+.s7-right { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+.ask-row { display: flex; border: 1px solid var(–ink); }
+.ask-input { flex: 1; padding: 14px 16px; background: transparent; border: none; outline: none; font-family: ‘Heebo’, sans-serif; font-size: 15px; color: var(–ink); text-align: right; direction: rtl; }
+.ask-btn { padding: 0 22px; background: var(–signal); color: var(–cream); border: none; cursor: pointer; font-family: ‘JetBrains Mono’, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; display: flex; align-items: center; gap: 8px; }
+.ask-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.answer-box { flex: 1; border: 1px solid var(–ink); background: var(–paper); padding: 24px; overflow-y: auto; min-height: 200px; }
+.answer-empty { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; font-family: ‘JetBrains Mono’, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–muted); text-align: center; }
+.answer-empty .icon { color: var(–signal); font-size: 24px; }
+.answer-text { font-family: ‘Frank Ruhl Libre’, serif; font-size: clamp(16px, 1.4vw, 20px); line-height: 1.55; white-space: pre-wrap; }
+.answer-tag { font-family: ‘JetBrains Mono’, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–signal); margin-bottom: 12px; }
+.spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* SLIDE 8 */
+.s8-frame { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; flex: 1; }
+.s8-tag { font-family: ‘JetBrains Mono’, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(–signal); }
+.s8-h2 { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 900; font-size: clamp(40px, 7vw, 110px); line-height: 0.88; letter-spacing: -0.02em; }
+.s8-h2 em { color: var(–muted); font-style: italic; }
+.s8-h2 .a { color: var(–signal); }
+.s8-rule { height: 4px; width: 80px; background: var(–signal); margin-top: 28px; }
+.s8-p { font-family: ‘Frank Ruhl Libre’, serif; font-size: clamp(18px, 2.4vw, 28px); line-height: 1.35; color: var(–inkSub); margin-top: 20px; max-width: 700px; }
+.s8-p strong { color: var(–ink); }
+.s8-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 720px) { .s8-grid { grid-template-columns: 1fr; } }
+.closing { border-top: 1px solid var(–ink); padding-top: 12px; }
+.closing .n { font-family: ‘JetBrains Mono’, monospace; font-size: 12px; color: var(–signal); }
+.closing .t { font-family: ‘Frank Ruhl Libre’, serif; font-weight: 700; font-size: clamp(18px, 1.6vw, 24px); margin-top: 4px; }
+.closing .d { font-size: 14px; color: var(–muted); margin-top: 2px; }
+
+</style>
+</head>
+<body>
+
+<div id="stage"></div>
+
+<div class="nav">
+  <button id="prev" aria-label="prev">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <div class="dots" id="dots"></div>
+  <button id="next" aria-label="next">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+</div>
+
+<script>
+/* ===========================================================
+   SLIDE BUILDERS
+   =========================================================== */
+const TOTAL = 8;
+
+function frameWrap(idx, label, kicker, inner) {
+  return `
+    <div class="header-bar">
+      <div><span class="dot">●</span>BGU · תעשייה וניהול</div>
+      <div class="mid"><span>${kicker}</span><span style="color:var(--muted)">${label}</span></div>
+      <div>${String(idx).padStart(2,'0')} / ${String(TOTAL).padStart(2,'0')}</div>
+    </div>
+    <div class="tickline"><div class="ln"></div><div class="pt"></div><div class="ln-sm"></div></div>
+    <div class="frame">${inner}</div>
+    <div class="footer-bar">
+      <div>FIG · ${String(idx).padStart(2,'0')}</div>
+      <div style="color:var(--muted)">↹ חצים ‹ › למעבר · רווח להמשך</div>
+      <div>—</div>
+    </div>
+  `;
+}
+
+/* SLIDE 1 */
+function slide1() {
+  return frameWrap(1, 'פתיחה / OPENING', 'הרצאה / 2026', `
+    <div class="s1-meta a-fade" style="animation-delay:0.05s">
+      <span>סדרה / 01</span>
+      <span class="bar"></span>
+      <span>קהל יעד · שנה ב'–ג'</span>
+    </div>
+    <h1 class="s1-title a-rise" style="animation-delay:0.15s">
+      תעשייה<br/>וניהול<span class="accent">÷ AI</span>
+    </h1>
+    <div class="a-rise" style="animation-delay:0.5s">
+      <div class="s1-rule"></div>
+      <p class="s1-sub">מה <em>באמת</em> משתנה במקצוע שלכם — ומה צריך לדעת כדי להישאר רלוונטיים בעשור הקרוב.</p>
+    </div>
+    <div class="s1-foot a-fade" style="animation-delay:0.9s">
+      <div class="left">
+        <div>אוניברסיטת בן־גוריון</div>
+        <div class="sub">הפקולטה להנדסה · החוג לתעשייה וניהול</div>
+      </div>
+      <div class="badge">לחצו → להתחיל</div>
+    </div>
+  `);
+}
+
+/* SLIDE 2 — chart */
+const SHIFT = [
+  { y: '2015', r: 78, j: 22 },
+  { y: '2017', r: 74, j: 26 },
+  { y: '2019', r: 68, j: 32 },
+  { y: '2021', r: 58, j: 42 },
+  { y: '2023', r: 44, j: 56 },
+  { y: '2025', r: 31, j: 69 },
+  { y: '2027*', r: 18, j: 82 },
+];
+function buildChart() {
+  const W = 600, H = 320, pad = { t: 20, r: 20, b: 30, l: 36 };
+  const innerW = W - pad.l - pad.r;
+  const innerH = H - pad.t - pad.b;
+  const xStep = innerW / (SHIFT.length - 1);
+  const yScale = v => pad.t + innerH - (v / 100) * innerH;
+  const xAt = i => pad.l + i * xStep;
+
+  const linePath = (key) => SHIFT.map((d, i) => `${i === 0 ? 'M' : 'L'} ${xAt(i)} ${yScale(d[key])}`).join(' ');
+  const areaPath = (key) => `${linePath(key)} L ${xAt(SHIFT.length - 1)} ${pad.t + innerH} L ${pad.l} ${pad.t + innerH} Z`;
+
+  const yTicks = [0, 25, 50, 75, 100];
+
+  return `
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:100%;">
+      <defs>
+        <linearGradient id="gJ" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#E94B1F" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#E94B1F" stop-opacity="0.05"/>
+        </linearGradient>
+        <linearGradient id="gR" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#16140F" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#16140F" stop-opacity="0.04"/>
+        </linearGradient>
+      </defs>
+      <g class="grid">
+        ${yTicks.map(t => `<line x1="${pad.l}" x2="${W - pad.r}" y1="${yScale(t)}" y2="${yScale(t)}"/>`).join('')}
+      </g>
+      <g class="axis">
+        ${yTicks.map(t => `<text x="${pad.l - 8}" y="${yScale(t) + 4}" text-anchor="end">${t}%</text>`).join('')}
+        ${SHIFT.map((d, i) => `<text x="${xAt(i)}" y="${H - pad.b + 18}" text-anchor="middle">${d.y}</text>`).join('')}
+      </g>
+      <path d="${areaPath('r')}" fill="url(#gR)"/>
+      <path d="${linePath('r')}" fill="none" stroke="#16140F" stroke-width="2"/>
+      <path d="${areaPath('j')}" fill="url(#gJ)"/>
+      <path d="${linePath('j')}" fill="none" stroke="#E94B1F" stroke-width="2.5"/>
+      ${SHIFT.map((d, i) => `<circle cx="${xAt(i)}" cy="${yScale(d.j)}" r="3" fill="#E94B1F"/>`).join('')}
+    </svg>
+  `;
+}
+
+function slide2() {
+  return frameWrap(2, 'השינוי / THE SHIFT', 'נתונים · TREND', `
+    <div class="s2-grid">
+      <div class="s2-left">
+        <div>
+          <div class="s2-tag">§02 · המסה הקריטית</div>
+          <h2 class="s2-h2 a-rise">המקצוע <br/>לא נכחד —<br/><span class="a">המאזן זז.</span></h2>
+          <p class="s2-p">משימות אנליטיות שגרתיות עוברות לאוטומציה מהירה. מה שנותר — וגדל — זה <strong>שיפוט מערכתי, החלטה תחת אי-ודאות, עיצוב תהליכים ושאלות אסטרטגיות</strong>. זה התפקיד שלכם.</p>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="big" style="color:var(--signal)">69%</div>
+            <div class="lbl">שיפוט / החלטה / מערכת</div>
+            <div class="sub">חלקן של משימות לא-שגרתיות, 2025</div>
+          </div>
+          <div class="stat">
+            <div class="big">−47</div>
+            <div class="lbl">נקודות אחוז</div>
+            <div class="sub">נפח עבודה שגרתית, 2015→2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-wrap a-fade" style="animation-delay:0.2s">
+        <div class="chart-tag">FIG.02 · הרכב יום-עבודה ממוצע (%)</div>
+        ${buildChart()}
+        <div class="chart-foot">* הערכה · המחשה לצורכי הרצאה</div>
+      </div>
+    </div>
+  `);
+}
+
+/* SLIDE 3 */
+const AI_OWNS = [
+  { i: '🗄️', t: 'ניקוי וחיבור דאטה',         d: 'pipelines, ETL, joins' },
+  { i: '📊', t: 'ניתוחים סטטיסטיים שגרתיים', d: 'דוחות, KPI, חיזוי בסיסי' },
+  { i: '⌨', t: 'קוד SQL/Python בסיסי',      d: 'שאילתות, סקריפטים, חישובי עזר' },
+  { i: '⚙', t: 'אופטימיזציה מוגדרת היטב',   d: 'שיבוצים, ניתובים, scheduling' },
+  { i: '✉', t: 'תיעוד ותמלולים',             d: 'מסמכים, סיכומים, מיילים' },
+];
+const YOU_OWN = [
+  { i: '🧭', t: 'ניסוח הבעיה הנכונה',       d: 'מה בעצם פותרים? למה עכשיו?' },
+  { i: '◈', t: 'ראייה מערכתית',             d: 'תלויות, סיכון, צוואר בקבוק נסתר' },
+  { i: '◎', t: 'החלטה תחת אי-ודאות',        d: 'trade-offs, שווי-משקל פוליטי' },
+  { i: '✦', t: 'שיפוט אתי וארגוני',          d: 'מה לאוטמט, מה לא, ומי אחראי' },
+  { i: '⤳', t: 'תיווך בין אנשים ומכונות',    d: 'תרגום בין מהנדסים, לקוחות ומודלים' },
+];
+function colHTML(items, klass) {
+  return items.map((it, i) => `
+    <li class="a-rise" style="animation-delay:${0.08 * i}s">
+      <span class="icon-box">${it.i}</span>
+      <div>
+        <div class="li-t">${it.t}</div>
+        <div class="li-d">${it.d}</div>
+      </div>
+    </li>
+  `).join('');
+}
+function slide3() {
+  return frameWrap(3, 'חלוקת עבודה / DIVISION OF LABOR', 'MAP · 2026', `
+    <div class="s3-head">
+      <h2 class="s2-h2">מה ה-AI לוקח. <span style="color:var(--signal)">מה נשאר שלכם.</span></h2>
+      <div class="s2-tag" style="color:var(--muted)">§03 · תפיסת תפקיד חדשה</div>
+    </div>
+    <div class="s3-cols">
+      <div class="col ink">
+        <div class="col-head">
+          <h3 class="col-title">AI עושה את זה כבר עכשיו</h3>
+          <span class="col-tag">AUTOMATED</span>
+        </div>
+        <ul>${colHTML(AI_OWNS, 'ink')}</ul>
+      </div>
+      <div class="col signal">
+        <div class="col-head">
+          <h3 class="col-title">זה התפקיד שלכם — ויגדל</h3>
+          <span class="col-tag">HUMAN-OWNED</span>
+        </div>
+        <ul>${colHTML(YOU_OWN, 'signal')}</ul>
+      </div>
+    </div>
+  `);
+}
+
+/* SLIDE 4 - three.js */
+function slide4() {
+  return frameWrap(4, 'המערכת / THE SYSTEM', '3D · LIVE', `
+    <div class="s4-grid">
+      <div class="s4-left">
+        <div class="s2-tag">§04 · המהנדס ההיברידי</div>
+        <h2 class="s4-h2">אתם <em>לא</em> מתחרים<br/>במודלים.<br/><span class="a">אתם מנצחים אותם.</span></h2>
+        <p class="s2-p">במרכז — המערכת. סביבה — סוכני AI שעושים עבודה צרה ועמוקה. התפקיד שלכם הוא להחליט <strong>אילו סוכנים</strong>, על <strong>איזה דאטה</strong>, עם <strong>איזה מטרה</strong>, ובתוך <strong>איזו תכלית עסקית</strong>.</p>
+        <div style="margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);display:flex;gap:8px;align-items:center">
+          <span class="a-blink" style="color:var(--signal)">●</span>הזיזו את העכבר על הסצנה
+        </div>
+      </div>
+      <div class="three-host" id="three-host">
+        <div class="three-tag">sys.core / agents.live</div>
+        <div class="three-foot">14 sub-agents · 1 system</div>
+      </div>
+    </div>
+  `);
+}
+
+/* SLIDE 5 */
+const SKILLS = [
+  { t: 'אוריינות AI',     d: 'להבין מה מודל יודע, מתי לסמוך עליו, ואיפה הוא ישקר לכם בביטחון.' },
+  { t: 'דאטה כשפת אם',     d: 'SQL, dataframes, ניקוי, סטטיסטיקה — לא לבנות מנועים, לדבר איתם.' },
+  { t: 'קוד פונקציונלי',  d: 'Python ברמה שמאפשרת לכתוב prototype בלי לחכות למפתח.' },
+  { t: 'תכנון תהליכים',   d: 'BPMN, lean, simulation — איך מערכת באמת זורמת.' },
+  { t: 'מודלים תפעוליים', d: 'אופטימיזציה, OR, החלטות תחת אי-ודאות. הליבה שלא הולכת.' },
+  { t: 'Prompting',       d: 'לתחקר מודלים בצורה שיטתית. זו מיומנות, לא טריק.' },
+  { t: 'אינטגרציה',       d: 'API, webhooks, automation — להרכיב, לא להמציא.' },
+  { t: 'תקשורת ויזואלית', d: 'Tableau / Power BI / רשימה ברורה ב-Notion. החלטות באות מתמונה טובה.' },
+  { t: 'שיפוט עסקי',      d: 'לחבר טכנולוגיה ל-P&L. בלי זה — אתם operator.' },
+];
+function slide5() {
+  const cells = SKILLS.map((s, i) => `
+    <button class="skill" data-i="${i}">
+      <div class="skill-head">
+        <span class="skill-num">${String(i+1).padStart(2,'0')}</span>
+        <span class="skill-icon">◇</span>
+      </div>
+      <div class="skill-t">${s.t}</div>
+      <div class="skill-d" data-full="${s.d}">${s.d.slice(0, 50)}…</div>
+    </button>
+  `).join('');
+  return frameWrap(5, 'ערכת הכלים / TOOLKIT', 'STACK · 09 ITEMS', `
+    <div class="s5-head">
+      <h2 class="s5-h2">תשע יכולות. <br/><span style="color:var(--signal)">שלוש שכבות.</span></h2>
+      <p style="font-size:14px;color:var(--inkSub);max-width:380px">הקליקו על כל אריח כדי לקרוא מה הוא באמת אומר — ואיך מתחילים ללמוד אותו השבוע.</p>
+    </div>
+    <div class="s5-grid">${cells}</div>
+  `);
+}
+
+/* SLIDE 6 */
+const ROADMAP = [
+  { phase: '30 יום', tag: 'FOUNDATION', items: [
+    'לסיים קורס Python אחד מ-end-to-end (לא לקפוץ קורסים)',
+    'לבנות 3 דשבורדים אמיתיים מדאטה ציבורי',
+    'לכתוב כל יום prompt אחד מתועד עם מה עבד ומה לא',
+  ]},
+  { phase: '60 יום', tag: 'INTEGRATION', items: [
+    'לבחור תהליך אחד אמיתי (סטאז\', עבודה, מחקר) ולמפות אותו',
+    'לאוטמט שלב אחד בו עם API + מודל',
+    'לקרוא 3 case studies של AI בתעשייה (לא בלוגים — מאמרים)',
+  ]},
+  { phase: '90 יום', tag: 'DELIVERY', items: [
+    'לפרסם פרויקט אחד פומבי (GitHub, Medium, LinkedIn — בחרו אחד)',
+    'להציג אותו לאדם אחד בתעשייה ולקבל ביקורת',
+    'לבחור התמחות אחת: OR, Data, Product, Process — ולחתוך',
+  ]},
+];
+function slide6() {
+  const phases = ROADMAP.map((r, i) => `
+    <div class="phase ${i === 1 ? 'mid' : ''} ${i === 2 ? 'last' : ''} a-rise" style="animation-delay:${0.15*i}s">
+      <div class="phase-head">
+        <div class="phase-num">${r.phase}</div>
+        <span class="phase-tag">${r.tag}</span>
+      </div>
+      <ol>
+        ${r.items.map((it, j) => `<li><span class="num">→ ${String(j+1).padStart(2,'0')}</span><span>${it}</span></li>`).join('')}
+      </ol>
+    </div>
+  `).join('');
+  return frameWrap(6, 'תוכנית פעולה / ROADMAP', '90-DAY PLAN', `
+    <div class="s6-head">
+      <h2 class="s6-h2"><span class="a">90 יום</span> שיזיזו אתכם יותר משנה של תיאוריה.</h2>
+      <div class="s2-tag" style="color:var(--muted)">§06 · מתודולוגיה</div>
+    </div>
+    <div class="s6-grid">${phases}</div>
+  `);
+}
+
+/* SLIDE 7 */
+function slide7() {
+  return frameWrap(7, 'חי / LIVE Q&A', 'API · CLAUDE', `
+    <div class="s7-grid">
+      <div class="s7-left">
+        <div>
+          <div class="s2-tag">§07 · הדגמה חיה</div>
+          <h2 class="s7-h2">שאלו<br/>את <span class="a">Claude</span><br/>ישירות.</h2>
+          <p class="s7-p">המצגת הזאת מדברת עם מודל בזמן אמת. זו לא הקלטה — זה ה-API. תשאלו משהו על המקצוע, על הקריירה, או על המרצה (אבל אל תהיו רעים).</p>
+        </div>
+        <div class="ex-list">
+          <div class="lbl">שאלות לדוגמה</div>
+          <button class="ex-btn" data-q="איך אדע אם הפוקוס שלי בלימודים נשאר רלוונטי?">→ איך אדע אם הפוקוס שלי בלימודים נשאר רלוונטי?</button>
+          <button class="ex-btn" data-q="OR קלאסי או דאטה סיינס — מה עדיף ב-2026?">→ OR קלאסי או דאטה סיינס — מה עדיף?</button>
+          <button class="ex-btn" data-q="מה השאלה שמראיינים ישאלו אותי בעוד שנתיים?">→ איך תיראה שאלת ראיון בעוד שנתיים?</button>
+        </div>
+      </div>
+      <div class="s7-right">
+        <div class="ask-row">
+          <input id="ask-input" class="ask-input" placeholder="הקלידו שאלה ולחצו Enter"/>
+          <button id="ask-btn" class="ask-btn"><span id="ask-icon">↗</span> שלח</button>
+        </div>
+        <div class="answer-box" id="answer-box">
+          <div class="answer-empty">
+            <div class="icon">✦</div>
+            <div>התשובה תופיע כאן</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+/* SLIDE 8 */
+function slide8() {
+  return frameWrap(8, 'סיום / CLOSE', '—', `
+    <div class="s8-frame">
+      <div class="s8-tag">§08 · סיכום</div>
+      <div>
+        <h2 class="s8-h2 a-rise">המקצוע שלכם<br/>הוא לא <em>אופטימיזציה</em>.<br/>הוא <span class="a">שיפוט</span>.</h2>
+        <div class="a-rise" style="animation-delay:0.4s">
+          <div class="s8-rule"></div>
+          <p class="s8-p">ה-AI עושה את החישוב. אתם מחליטים מה כדאי לחשב, עבור מי, ולמה.<br/><strong>זה לא תפקיד שמאוטמט.</strong></p>
+        </div>
+      </div>
+      <div class="s8-grid a-fade" style="animation-delay:0.8s">
+        <div class="closing"><div class="n">01</div><div class="t">היו fluent ב-AI</div><div class="d">לא expert. fluent.</div></div>
+        <div class="closing"><div class="n">02</div><div class="t">פתרו בעיות אמיתיות</div><div class="d">לא תרגילים. אנשים.</div></div>
+        <div class="closing"><div class="n">03</div><div class="t">בנו פומבי</div><div class="d">GitHub, LinkedIn, או שום מקום.</div></div>
+      </div>
+    </div>
+  `);
+}
+
+const SLIDES = [slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8];
+
+/* ===========================================================
+   MOUNT + NAVIGATE
+   =========================================================== */
+const stage = document.getElementById('stage');
+SLIDES.forEach((fn, i) => {
+  const div = document.createElement('div');
+  div.className = 'slide';
+  div.id = 'slide-' + i;
+  div.innerHTML = fn();
+  stage.appendChild(div);
+});
+
+const dots = document.getElementById('dots');
+SLIDES.forEach((_, i) => {
+  const b = document.createElement('button');
+  b.className = 'dot';
+  b.dataset.i = i;
+  b.addEventListener('click', () => go(i));
+  dots.appendChild(b);
+});
+
+let current = 0;
+function go(n) {
+  n = Math.max(0, Math.min(SLIDES.length - 1, n));
+  document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === n));
+  document.querySelectorAll('.dots .dot').forEach((d, i) => d.classList.toggle('active', i === n));
+  document.getElementById('prev').disabled = n === 0;
+  document.getElementById('next').disabled = n === SLIDES.length - 1;
+  current = n;
+
+  if (n === 3) initThree();
+  if (n === 4) bindSkills();
+  if (n === 6) bindAsk();
+}
+
+document.getElementById('prev').addEventListener('click', () => go(current - 1));
+document.getElementById('next').addEventListener('click', () => go(current + 1));
+window.addEventListener('keydown', (e) => {
+  // RTL: right arrow goes back, left arrow goes forward (visually correct)
+  if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(current + 1); }
+  if (e.key === 'ArrowRight' || e.key === 'PageUp')                   { e.preventDefault(); go(current - 1); }
+});
+
+go(0);
+
+/* ===========================================================
+   THREE.JS
+   =========================================================== */
+let threeInited = false;
+function initThree() {
+  if (threeInited) return;
+  threeInited = true;
+  const host = document.getElementById('three-host');
+  if (!host || !window.THREE) return;
+
+  const w = host.clientWidth, h = host.clientHeight;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
+  camera.position.z = 6;
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(w, h);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  host.appendChild(renderer.domElement);
+
+  const coreGeo = new THREE.IcosahedronGeometry(1.6, 1);
+  const coreMat = new THREE.MeshBasicMaterial({ color: 0x16140F, wireframe: true, transparent: true, opacity: 0.8 });
+  const core = new THREE.Mesh(coreGeo, coreMat);
+  scene.add(core);
+
+  const glowGeo = new THREE.SphereGeometry(1.0, 24, 24);
+  const glowMat = new THREE.MeshBasicMaterial({ color: 0xE94B1F, transparent: true, opacity: 0.18 });
+  const glow = new THREE.Mesh(glowGeo, glowMat);
+  scene.add(glow);
+
+  const agents = [];
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x16140F, transparent: true, opacity: 0.12 });
+  const lines = [];
+
+  for (let i = 0; i < 14; i++) {
+    const g = new THREE.SphereGeometry(0.06, 12, 12);
+    const m = new THREE.MeshBasicMaterial({ color: i % 3 === 0 ? 0xE94B1F : 0x16140F });
+    const mesh = new THREE.Mesh(g, m);
+    const phase = (i / 14) * Math.PI * 2;
+    const radius = 2.4 + Math.random() * 0.8;
+    const tilt = (Math.random() - 0.5) * 0.9;
+    agents.push({ mesh, phase, radius, tilt, speed: 0.4 + Math.random() * 0.6 });
+    scene.add(mesh);
+
+    const lg = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,0)]);
+    const ln = new THREE.Line(lg, lineMat);
+    lines.push({ ln, agent: agents[i] });
+    scene.add(ln);
+  }
+
+  let mx = 0, my = 0;
+  host.addEventListener('mousemove', (e) => {
+    const r = host.getBoundingClientRect();
+    mx = ((e.clientX - r.left) / r.width) * 2 - 1;
+    my = ((e.clientY - r.top) / r.height) * 2 - 1;
+  });
+
+  const start = performance.now();
+  function animate(now) {
+    const t = (now - start) / 1000;
+    core.rotation.x = t * 0.15 + my * 0.3;
+    core.rotation.y = t * 0.22 + mx * 0.4;
+    glow.scale.setScalar(1 + Math.sin(t * 1.5) * 0.05);
+
+    agents.forEach((a) => {
+      const ang = a.phase + t * a.speed;
+      a.mesh.position.x = Math.cos(ang) * a.radius;
+      a.mesh.position.z = Math.sin(ang) * a.radius;
+      a.mesh.position.y = Math.sin(ang * 0.7 + a.tilt * 4) * 0.9 + a.tilt;
+    });
+    lines.forEach(({ ln, agent }) => {
+      ln.geometry.setFromPoints([new THREE.Vector3(0,0,0), agent.mesh.position.clone()]);
+    });
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+
+  window.addEventListener('resize', () => {
+    const W = host.clientWidth, H = host.clientHeight;
+    camera.aspect = W / H;
+    camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+  });
+}
+
+/* ===========================================================
+   SKILLS
+   =========================================================== */
+let skillsBound = false;
+function bindSkills() {
+  if (skillsBound) return;
+  skillsBound = true;
+  document.querySelectorAll('.skill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wasActive = btn.classList.contains('active');
+      document.querySelectorAll('.skill').forEach(b => {
+        b.classList.remove('active');
+        const dEl = b.querySelector('.skill-d');
+        const full = dEl.dataset.full;
+        dEl.textContent = full.slice(0, 50) + '…';
+      });
+      if (!wasActive) {
+        btn.classList.add('active');
+        const dEl = btn.querySelector('.skill-d');
+        dEl.textContent = dEl.dataset.full;
+      }
+    });
+  });
+}
+
+/* ===========================================================
+   ASK CLAUDE
+   =========================================================== */
+let askBound = false;
+function bindAsk() {
+  if (askBound) return;
+  askBound = true;
+  const input = document.getElementById('ask-input');
+  const btn = document.getElementById('ask-btn');
+  const box = document.getElementById('answer-box');
+
+  document.querySelectorAll('.ex-btn').forEach(eb => {
+    eb.addEventListener('click', () => { input.value = eb.dataset.q; input.focus(); });
+  });
+
+  async function ask() {
+    const q = input.value.trim();
+    if (!q) return;
+    btn.disabled = true;
+    box.innerHTML = `<div class="answer-empty"><div class="spinner" style="color:var(--signal)"></div><div>חושב…</div></div>`;
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          messages: [{
+            role: 'user',
+            content: `אתה מרצה אורח בהרצאה בבן-גוריון לסטודנטים לתעשייה וניהול על העתיד של המקצוע בעידן ה-AI. ענה בעברית, ישיר, חד, בלי קלישאות, בלי רשימות מנופחות. עד 5 משפטים. תן זווית לא טריוויאלית.\n\nשאלה: ${q}`
+          }],
+        }),
+      });
+      const data = await res.json();
+      const text = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n');
+      box.innerHTML = `<div class="answer-tag">CLAUDE · תגובה</div><div class="answer-text">${(text || 'לא חזרה תשובה.').replace(/</g, '&lt;')}</div>`;
+    } catch (e) {
+      box.innerHTML = `<div style="color:var(--signalDeep)">בעיה בקריאה למודל. נסו שוב.</div>`;
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  btn.addEventListener('click', ask);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') ask(); });
+}
+</script>
+
+</body>
+</html>
