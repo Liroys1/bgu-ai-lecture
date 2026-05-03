@@ -1136,12 +1136,21 @@ max-width: 720px;
 .slide { overflow: hidden !important; }
 .frame {
 height: 100% !important;
-padding-top: clamp(56px, 6.5vh, 76px) !important;
-padding-bottom: clamp(82px, 10vh, 110px) !important;
-padding-left: clamp(18px, 4vw, 60px) !important;
-padding-right: clamp(18px, 4vw, 60px) !important;
-gap: clamp(8px, 1.4vh, 16px) !important;
+padding-top: clamp(50px, 5.5vh, 68px) !important;
+padding-bottom: clamp(96px, 11vh, 120px) !important;
+padding-left: clamp(18px, 3.5vw, 56px) !important;
+padding-right: clamp(18px, 3.5vw, 56px) !important;
+gap: clamp(6px, 1vh, 12px) !important;
 }
+/* Smaller H2 globally to give content more room */
+.frame h2 { font-size: clamp(1.5rem, 2.4vw, 2.2rem) !important; line-height: 1.1 !important; }
+.frame .lead { font-size: clamp(0.82rem, 1vw, 0.95rem) !important; line-height: 1.5 !important; }
+/* Card text smaller */
+.stop .role { font-size: clamp(0.85rem, 1.05vw, 1rem) !important; }
+.stop .company { font-size: clamp(0.7rem, 0.85vw, 0.82rem) !important; }
+.stop .desc { font-size: clamp(0.68rem, 0.8vw, 0.78rem) !important; line-height: 1.4 !important; }
+.stop .years { font-size: clamp(0.65rem, 0.85vw, 0.78rem) !important; }
+.stop .badge-tag { font-size: clamp(0.55rem, 0.7vw, 0.65rem) !important; }
 .frame > .timeline,
 .frame > .agenda-grid,
 .frame > .grid,
@@ -1211,45 +1220,31 @@ to { opacity: 1; transform: translateY(0) scale(1); }
 animation: staggerIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* ========== TIMELINE FIX - LTR grid + REPOSITIONED number badge ========== */
+/* ========== TIMELINE FIX - LTR grid + INLINE number in tag ========== */
 .timeline {
 direction: ltr !important;
 grid-template-columns: repeat(3, 1fr) !important;
-counter-reset: timeline-counter;
 }
 .timeline > .stop {
 direction: rtl !important;
 text-align: right !important;
-counter-increment: timeline-counter;
-position: relative !important;
 }
-/* Big number badge in TOP-LEFT (visual, in RTL card) - using physical left */
-.stop::before {
-content: counter(timeline-counter, decimal-leading-zero);
-position: absolute;
-top: 10px;
-left: 14px;
+/* Number sits INSIDE the badge-tag, no overlap possible */
+.badge-tag .tnum {
 font-family: ‘Inter’, monospace;
-font-size: 1.4rem;
 font-weight: 900;
 color: #FF6B35;
-letter-spacing: -0.04em;
-line-height: 1;
+letter-spacing: -0.02em;
 direction: ltr;
-z-index: 2;
-}
-/* Move tag to BOTTOM area to avoid number conflict */
-.stop .tag {
-margin-top: 28px !important;
 display: inline-block;
 }
-/* Heat-map gradient: chronological color flow from blue→orange */
-.timeline > .stop:nth-child(1)::before { color: #6BA9FF; }
-.timeline > .stop:nth-child(2)::before { color: #8B9DFF; }
-.timeline > .stop:nth-child(3)::before { color: #B084FF; }
-.timeline > .stop:nth-child(4)::before { color: #FFB627; }
-.timeline > .stop:nth-child(5)::before { color: #FF8845; }
-.timeline > .stop:nth-child(6)::before { color: #00D9C0; }
+/* Heat-map: chronological number color flow */
+.timeline > .stop:nth-child(1) .tnum { color: #6BA9FF; }
+.timeline > .stop:nth-child(2) .tnum { color: #8B9DFF; }
+.timeline > .stop:nth-child(3) .tnum { color: #B084FF; }
+.timeline > .stop:nth-child(4) .tnum { color: #FFB627; }
+.timeline > .stop:nth-child(5) .tnum { color: #FF8845; }
+.timeline > .stop:nth-child(6) .tnum { color: #00D9C0; }
 /* Highlight current/next */
 .stop.current { box-shadow: 0 0 0 1px rgba(255,107,53,0.4), 0 8px 24px rgba(255,107,53,0.15) !important; }
 .stop.next { box-shadow: 0 0 0 1px rgba(0,217,192,0.4), 0 8px 24px rgba(0,217,192,0.15) !important; }
@@ -1291,42 +1286,49 @@ direction: ltr;
 .roadmap-flow .phase-card { padding: 14px !important; }
 .roadmap-flow .phase-card.last { box-shadow: 0 0 30px rgba(255,107,53,0.15); }
 
-/* ========== THANKS SLIDE - REDESIGNED LAYOUT ========== */
+/* ========== THANKS SLIDE - CLEAN LAYOUT ========== */
 .thanks-slide .frame {
-align-items: center !important;
+align-items: stretch !important;
 justify-content: center !important;
 text-align: right !important;
-padding-bottom: clamp(82px, 10vh, 110px) !important;
 }
 .thanks-grid {
 display: grid;
 grid-template-columns: 1.2fr 1fr;
-gap: clamp(24px, 4vw, 56px);
+gap: clamp(28px, 5vw, 70px);
 align-items: center;
 flex: 1;
 width: 100%;
 }
-@media (max-width: 800px) { .thanks-grid { grid-template-columns: 1fr; gap: 18px; } }
-.thanks-content {
+@media (max-width: 800px) { .thanks-grid { grid-template-columns: 1fr; gap: 20px; } }
+/* RIGHT column: photo + title + description, all stacked, all right-aligned */
+.thanks-right {
 display: flex;
 flex-direction: column;
-gap: clamp(10px, 1.6vh, 18px);
-align-items: flex-end;
+gap: clamp(12px, 2vh, 22px);
+align-items: flex-start;  /* In RTL, flex-start = visual RIGHT */
 text-align: right;
-justify-content: center;
+direction: rtl;
 }
-.thanks-header {
-display: flex;
-flex-direction: row-reverse;
-align-items: center;
-gap: clamp(12px, 2vw, 22px);
-width: 100%;
-justify-content: flex-start;
+.thanks-right .photo-wrap-sm { margin: 0; }
+.thanks-right .photo-wrap-sm img {
+width: clamp(110px, 12vw, 160px) !important;
+height: clamp(110px, 12vw, 160px) !important;
+border-radius: 50%;
+object-fit: cover;
 }
-.thanks-header .photo-wrap-sm { margin: 0; flex-shrink: 0; }
-.thanks-header .photo-wrap-sm img { width: clamp(70px, 8vw, 100px) !important; height: clamp(70px, 8vw, 100px) !important; }
-.thanks-header h1 { margin: 0; font-size: clamp(2rem, 4.5vw, 3.5rem) !important; line-height: 1.05 !important; flex: 1; }
-.thanks-content .lead { margin: 0; font-size: clamp(0.9rem, 1.3vw, 1.05rem) !important; }
+.thanks-right h1 {
+margin: 0;
+font-size: clamp(2.2rem, 4vw, 3.4rem) !important;
+line-height: 1.05 !important;
+text-align: right;
+}
+.thanks-right .lead {
+margin: 0;
+font-size: clamp(0.95rem, 1.2vw, 1.05rem) !important;
+text-align: right;
+line-height: 1.5 !important;
+}
 .contact-cards-vertical {
 display: flex;
 flex-direction: column;
@@ -1393,6 +1395,46 @@ min-height: 0;
 .proj-content .pj-title { font-size: clamp(0.95rem, 1.2vw, 1.1rem); font-weight: 800; }
 .proj-content .pj-desc { font-size: clamp(0.75rem, 0.85vw, 0.85rem); color: #BFBFCF; line-height: 1.4; flex: 1; }
 .proj-content .pj-link { font-size: 0.7rem; color: #00D9C0; word-break: break-all; }
+
+/* ========== Q&A overflow fix ========== */
+.qs-grid > .q-card {
+min-width: 0 !important;
+overflow: hidden !important;
+}
+.q-card .qt {
+word-break: normal;
+overflow-wrap: anywhere;
+font-size: clamp(0.85rem, 1.1vw, 1rem) !important;
+line-height: 1.3 !important;
+}
+.q-card .qhint {
+word-break: normal;
+overflow-wrap: anywhere;
+font-size: clamp(0.7rem, 0.85vw, 0.82rem) !important;
+line-height: 1.4 !important;
+}
+.q-card .qn { font-size: 0.65rem !important; }
+
+/* ========== Schreiber slide compact ========== */
+.schreiber-slide .grid { gap: clamp(10px, 1.4vw, 18px) !important; }
+.schreiber-slide .source-box { padding: clamp(10px, 1.4vw, 16px) !important; }
+.schreiber-slide .source-box .qt { font-size: clamp(0.78rem, 0.95vw, 0.92rem) !important; line-height: 1.4 !important; }
+.schreiber-slide .source-attribution { font-size: clamp(0.7rem, 0.8vw, 0.78rem) !important; }
+.schreiber-slide .callout-teal { padding: clamp(10px, 1.4vw, 14px) !important; font-size: clamp(0.78rem, 0.92vw, 0.88rem) !important; line-height: 1.45 !important; margin-top: 6px !important; }
+.schreiber-slide h2 { font-size: clamp(1.4rem, 2.2vw, 2rem) !important; }
+
+/* ========== Calcalist slide compact ========== */
+.article-slide h2 { font-size: clamp(1.4rem, 2.2vw, 2rem) !important; }
+.article-slide .article-card { padding: clamp(12px, 1.6vw, 18px) !important; }
+.article-slide .article-headline { font-size: clamp(1rem, 1.3vw, 1.2rem) !important; line-height: 1.3 !important; }
+.article-slide .article-quote { font-size: clamp(0.78rem, 0.95vw, 0.9rem) !important; line-height: 1.45 !important; }
+.article-slide .callout-teal { padding: clamp(10px, 1.4vw, 14px) !important; font-size: clamp(0.78rem, 0.92vw, 0.88rem) !important; line-height: 1.45 !important; margin-top: 6px !important; }
+
+/* ========== VS slide compact ========== */
+.vs-grid .vs-col { padding: clamp(12px, 1.6vw, 18px) !important; }
+.vs-grid .vs-title { font-size: clamp(0.85rem, 1.1vw, 1rem) !important; }
+.vs-grid .vs-list li { font-size: clamp(0.72rem, 0.85vw, 0.82rem) !important; padding: clamp(5px, 0.7vh, 8px) 0 !important; }
+.vs-grid h3 { font-size: clamp(0.7rem, 0.85vw, 0.8rem) !important; }
 
 </style>
 </head>
@@ -1537,17 +1579,20 @@ function slide3() {
     { years: '2020–2026', tag: 'CURRENT', role: 'BA Department Ops Manager', company: 'Wix', desc: 'ניהול <span class="lat">L&D</span>, <span class="lat">People Ops</span>: 250 איש, סימולציות, אירועים, פודקאסט.', current: true },
     { years: '2026', tag: 'NEXT', role: 'L&D Lead Tech Dev', company: 'Lemonade', desc: 'לימוד והטמעת <span class="lat">AI</span> לצוותי <span class="lat">Product & R&D</span>. <span class="lat">AI-first organization</span>.', next: true }
   ];
-  const cells = stops.map(s => `
+  const cells = stops.map((s, i) => {
+    const num = (i+1).toString().padStart(2,'0');
+    return `
     <div class="stop ${s.current ? 'current' : ''} ${s.next ? 'next' : ''}">
       <div class="stop-head">
         <span class="years">${s.years}</span>
-        <span class="badge-tag">${s.tag}</span>
+        <span class="badge-tag"><span class="tnum">${num}</span> · ${s.tag}</span>
       </div>
       <div class="role">${s.role}</div>
       <div class="company">${s.company}</div>
       <div class="desc">${s.desc}</div>
     </div>
-  `).join('');
+  `;
+  }).join('');
   return `
     ${topbar(3, 'MY STORY')}
     <div class="frame journey">
@@ -2335,18 +2380,16 @@ function slide19() {
     ${topbar(20, 'THANKS')}
     <div class="frame thanks-slide">
       <div class="thanks-grid">
-        <div class="thanks-content">
-          <div class="thanks-header">
-            <div class="photo-wrap-sm anim-scale">
-              <img src="data:image/jpeg;base64,${PHOTO_B64}" alt="Liran Shaked" />
-            </div>
-            <h1 class="anim-up" style="animation-delay:0.2s">
-              תודה.<br/>
-              <span class="accent">בהצלחה בדרך.</span>
-            </h1>
+        <div class="thanks-right">
+          <div class="photo-wrap-sm anim-scale">
+            <img src="data:image/jpeg;base64,${PHOTO_B64}" alt="Liran Shaked" />
           </div>
+          <h1 class="anim-up" style="animation-delay:0.2s">
+            תודה.<br/>
+            <span class="accent">בהצלחה בדרך.</span>
+          </h1>
           <p class="lead anim-up" style="animation-delay:0.4s">
-            אני זמין להמשך שיחה — ייעוץ, חיבורים או סתם להגיד שלום.
+            אני זמין להמשך שיחה — ייעוץ, חיבורים<br/>או סתם להגיד שלום.
           </p>
         </div>
         <div class="contact-cards-vertical anim-fade" style="animation-delay:0.6s">
