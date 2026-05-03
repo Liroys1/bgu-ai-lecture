@@ -2222,6 +2222,11 @@ border-radius: 4px;
   .frame .lead { font-size: clamp(0.95rem, 2.2vw, 1.1rem) !important; line-height: 1.55 !important; }
   /* 3-col grids that haven't already been collapsed */
   .grid, .vs-grid, .cols, .three-cols { gap: 14px !important; }
+  /* Force grids that have !important on desktop to collapse to 2 cols on tablet */
+  .timeline { grid-template-columns: repeat(2, 1fr) !important; }
+  .timeline-evolution { grid-template-columns: repeat(2, 1fr) !important; }
+  .timeline-evolution::before { display: none !important; }
+  .era-card::before { display: none !important; }
   /* Nav tap targets */
   .nav button { width: 44px; height: 44px; }
   .nav .dot { width: 10px; height: 10px; }
@@ -2243,16 +2248,49 @@ border-radius: 4px;
   .frame .lead { font-size: clamp(0.88rem, 3.6vw, 1rem) !important; line-height: 1.5 !important; }
   .frame p:not(.lead) { font-size: clamp(0.85rem, 3.4vw, 0.98rem) !important; line-height: 1.5 !important; }
 
+  /* === FORCE EVERY MULTI-COLUMN GRID TO STACK === */
+  .grid,
+  .vs-grid,
+  .cols,
+  .three-cols,
+  .agenda-grid,
+  .timeline,
+  .timeline-evolution,
+  .stats .grid,
+  .why-ie .grid,
+  .article-slide .grid,
+  .schreiber-slide .grid,
+  .three-slide .three-top,
+  .systems-examples,
+  .ai-story .grid,
+  .division .cols,
+  .quotes-grid,
+  .jobs-grid,
+  .lessons-grid,
+  .qs-grid,
+  .skills-grid,
+  .phases,
+  .roadmap-flow,
+  .chart-slide .grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  /* Hide decorative connectors that only make sense in horizontal layouts */
+  .timeline-evolution::before { display: none !important; }
+  .era-card::before { display: none !important; }
+  .roadmap-flow .arrow { display: none !important; }
+
   /* Slide 1 hero: stack photo above text */
-  .s1 .grid { grid-template-columns: 1fr !important; gap: 18px !important; }
   .s1 .photo-wrap { width: clamp(140px, 36vw, 200px) !important; height: clamp(140px, 36vw, 200px) !important; margin-inline: auto; }
   .s1 .meta-row { flex-wrap: wrap; gap: 6px 10px; font-size: 0.78rem; }
 
   /* Card-level text — keep readable but compact */
   .stop, .why-card, .stat-card, .job-card, .quote-card,
   .act-card, .skill-card, .lesson-card, .phase-card, .q-card, .proj-card,
-  .sys-ex {
+  .era-card, .sys-ex {
     padding: clamp(12px, 3.2vw, 16px) !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   .stop .role { font-size: 1rem !important; }
   .stop .desc, .why-card .d, .stat-card .stat-desc,
@@ -2260,23 +2298,25 @@ border-radius: 4px;
   .lesson-card .lesson-d, .q-card .q-hint, .sys-ex-d {
     font-size: 0.88rem !important; line-height: 1.45 !important;
   }
-  .why-card .num, .stat-card .stat-num { font-size: clamp(1.8rem, 8vw, 2.4rem) !important; }
+  /* Big numbers — keep them BIG but contained, no overflow */
+  .why-card .num,
+  .stat-card .stat-num,
+  .era-year {
+    font-size: clamp(2rem, 9vw, 2.8rem) !important;
+    line-height: 1 !important;
+    margin-top: 0 !important;
+    word-break: break-word;
+  }
 
-  /* Skills: 1 col on tiny */
-  .skills-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+  /* Skills header row */
   .skills-balance-banner { flex-wrap: wrap !important; justify-content: flex-start !important; }
   .skills-header-row { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
-
-  /* Roadmap: hide arrows when stacked, give phase cards breathing room */
-  .roadmap-flow { grid-template-columns: 1fr !important; gap: 12px !important; }
-  .roadmap-flow .arrow { display: none !important; }
-  .phases { grid-template-columns: 1fr !important; }
 
   /* Why-rankings: stack pills */
   .why-rankings { flex-direction: column; align-items: stretch; }
   .rank-pill { width: 100%; }
 
-  /* Schreiber slide: stack iframe + quote */
+  /* Schreiber slide: iframe natural aspect */
   .schreiber-iframe { aspect-ratio: 16/9; height: auto !important; }
 
   /* Three.js host: smaller on phones */
@@ -2291,12 +2331,22 @@ border-radius: 4px;
   .article-clip .ah-row { font-size: 0.82rem !important; line-height: 1.45 !important; }
 
   /* Thanks slide: tighten */
-  .thanks-hero { gap: 16px; }
-  .thanks-hero .photo-wrap-sm img { width: 100px !important; height: 100px !important; }
-  .thanks-headings h1 { font-size: clamp(2rem, 8vw, 2.8rem) !important; }
-  .thanks-headings .lead { font-size: 0.95rem !important; }
-  .contact-cards-row .contact-card { flex: 1 1 100%; min-width: 0; padding: 12px 16px; }
+  .thanks-hero { gap: 16px; flex-direction: column; text-align: center; }
+  .thanks-hero .photo-wrap-sm img { width: 110px !important; height: 110px !important; }
+  .thanks-headings { text-align: center; }
+  .thanks-headings h1 { font-size: clamp(2rem, 8vw, 2.8rem) !important; text-align: center; }
+  .thanks-headings .lead { font-size: 0.95rem !important; text-align: center; }
+  .contact-cards-row { flex-direction: column; }
+  .contact-cards-row .contact-card { flex: 1 1 100%; min-width: 0; padding: 12px 16px; width: 100%; }
   .thanks-stack .thanks-cta { font-size: 0.95rem !important; padding: 16px 18px !important; }
+
+  /* Timeline cards: limit description verbosity, prevent overflow */
+  .stop .desc, .stop .company { word-break: break-word; }
+
+  /* Era cards: pack content tighter when stacked */
+  .era-card { gap: 6px !important; }
+  .era-skills li { font-size: 0.8rem !important; line-height: 1.35 !important; }
+  .era-tag, .era-card .era-industry { font-size: 0.65rem !important; }
 
   /* Hour bar visible */
   .hour-bar { height: 3px; }
