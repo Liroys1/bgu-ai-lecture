@@ -64,7 +64,7 @@ export function slide2() {
           <div class="act-num">ACT I</div>
           <div class="act-time">~15 דק'</div>
           <div class="act-title">מאיפה באנו</div>
-          <div class="act-desc">הסיפור האישי שלי, מה זה בכלל ת"ו, ולמה הוא עדיין רלוונטי <em>במיוחד עכשיו</em>.</div>
+          <div class="act-desc">הסיפור האישי שלי, מה זה בכלל תעשייה וניהול, ולמה הוא עדיין רלוונטי <em>במיוחד עכשיו</em>.</div>
           <ul>
             <li>14 שנה, 6 תחנות</li>
             <li>הצנרת מאחורי הקלעים</li>
@@ -78,7 +78,7 @@ export function slide2() {
           <div class="act-title">מה משתנה עכשיו</div>
           <div class="act-desc">המקצוע משתנה לעיניכם. משרות חדשות, ציטוטים, ו<strong>ההרצאה</strong> של מנכ"ל <span class="lat">Lemonade</span>.</div>
           <ul>
-            <li>ת"ו 2010 מול 2026</li>
+            <li>תעשייה וניהול 2010 מול 2026</li>
             <li>8 משרות אמיתיות החודש</li>
             <li>החייזרים נחתו</li>
           </ul>
@@ -117,7 +117,7 @@ export function slide3() {
     { years: '2011–2015', tag: 'CONSULTING', role: 'Senior Project Manager', company: 'Tefen Consulting', desc: 'ייעוץ <span class="lat">Lean</span>, redesign תהליכים, מודלים תפעוליים. בנקים, מוקדים, תעשייה.' },
     { years: '2015–2018', tag: 'E-COMMERCE', role: 'Project Group Manager', company: 'Sears Israel', desc: 'הקמת <span class="lat">marketplace</span>, החלפת פלטפורמת אנליטיקס, <span class="lat">Agile</span> adoption.' },
     { years: '2018–2020', tag: 'STARTUP', role: 'Business Ops Manager', company: 'HERE Mobility', desc: 'B2B <span class="lat">Salesforce</span>, פרויקטי דאטה מול לקוחות. סטארטאפ.' },
-    { years: '2020–2026', tag: 'PEOPLE OPS', role: 'BA Department Ops Manager', company: 'Wix', desc: 'ניהול <span class="lat">L&D</span>, <span class="lat">People Ops</span>: 250 איש, סימולציות, אירועים, פודקאסט.' },
+    { years: '2020–2026', tag: 'HI-TECH', role: 'BA Department Ops Manager', company: 'Wix', desc: 'ניהול <span class="lat">L&D</span>, <span class="lat">People Ops</span>: 250 איש, סימולציות, אירועים, פודקאסט.' },
     { years: '5/2026', tag: 'STARTING 10.5', role: 'L&D Lead Tech Dev', company: 'Lemonade', desc: 'לימוד והטמעת <span class="lat">AI</span> לצוותי <span class="lat">Product & R&D</span>. <span class="lat">AI-first organization</span>.', current: true }
   ];
   const cells = stops.map((s, i) => {
@@ -164,10 +164,18 @@ export function slide4() {
         </p>
       </div>
       <div class="why-rankings anim-fade" style="animation-delay:0.2s">
-        <div class="rank-pill highlight"><span class="rank-num">#1</span> <span>Best Engineering Job · 2025+2026</span></div>
-        <div class="rank-pill"><span class="rank-num">#1</span> <span>Industrial Engineering Grad Program · 36 שנה ברצף · Georgia Tech</span></div>
-        <div class="rank-pill"><span class="rank-num">12%</span> <span>צמיחה צפויה 2023–2033</span></div>
-        <div class="rank-source"><a href="https://careers.usnews.com/best-jobs/industrial-engineer" target="_blank" style="color:inherit">U.S. News & World Report · BLS 2026</a></div>
+        <div class="rank-pill highlight">
+          <span class="rank-num">#1</span>
+          <span class="rank-text"><span class="lat">Best Engineering Job</span> · <span class="rank-source-inline lat">US News 2026</span></span>
+        </div>
+        <div class="rank-pill">
+          <span class="rank-num">#1</span>
+          <span class="rank-text"><span class="lat">IE Grad Program</span> · <span class="lat">Georgia Tech</span> · <span>36 שנה ברצף</span></span>
+        </div>
+        <div class="rank-pill">
+          <span class="rank-num"><span class="lat">+12%</span></span>
+          <span class="rank-text">צמיחה צפויה · <span class="rank-source-inline lat">BLS 2024–2034</span></span>
+        </div>
       </div>
       <div class="grid anim-fade" style="animation-delay:0.35s">
         <div class="why-card">
@@ -191,7 +199,7 @@ export function slide4() {
         <div class="why-card">
           <div class="num">~60%</div>
           <div class="t">מהבוגרים — מחוץ לייצור</div>
-          <div class="d">רוב הבוגרים פונים ל-<strong>ניהול, ייעוץ, מוצר, דאטה ותחום הטק</strong>. ת"ו היא הדלת הרחבה ביותר בהנדסה לעולם הביזנס.</div>
+          <div class="d">רוב הבוגרים פונים ל-<strong>ניהול, ייעוץ, מוצר, דאטה ותחום הטק</strong>. תעשייה וניהול היא הדלת הרחבה ביותר בהנדסה לעולם הביזנס.</div>
           <div class="source">
             <span class="source-tag">RESEARCH · 2026</span>
             <a href="https://research.com/advice/ai-automation-and-the-future-of-industrial-engineering-degree-careers" target="_blank">research.com</a>
@@ -260,10 +268,10 @@ export function slide5() {
         <span class="label"><span class="ldot"></span>03 · המקצוע משתנה</span>
         <h2 style="margin-top:8px">אותו תואר אקדמי. <em>עבודה שונה לגמרי.</em></h2>
         <p class="lead">
-          המקצוע לא נעלם — <strong>הוא <em>בלע</em> את הטכנולוגיה</strong>. כל 5-7 שנים הכלים מתחלפים: 
-          סטופר → <span class="lat">ERP</span> → דאטה → <span class="lat">AI</span>. 
+          המקצוע לא נעלם — <strong>הוא <em>בלע</em> את הטכנולוגיה</strong>. כל 5-7 שנים הכלים מתחלפים:
+          מדידת זמנים ידנית → <span class="lat">ERP</span> → ניתוח דאטה → <span class="lat">AI</span> ואוטומציה.
           <strong>אבל הליבה — אופטימיזציה של מערכות אנוש-מכונה — לא משתנה.</strong> 
-          זו הסיבה שמי שלמד ת"ו ב-2010 עדיין רלוונטי ב-2026 — אם רכש את הכלים החדשים.
+          זו הסיבה שמי שלמד תעשייה וניהול ב-2010 עדיין רלוונטי ב-2026 — אם רכש את הכלים החדשים.
         </p>
       </div>
       <div class="timeline-evolution anim-fade" style="animation-delay:0.3s">
@@ -429,7 +437,7 @@ export function slide8() {
       logo: 'B', logoColor: '#FF6B35',
       salary: '~₪25-35K/חודש',
       role: 'מה תעשו: ניהול תפעול AI, אינטגרציות, אוטומציה תהליכים.',
-      req: 'דורש: בוגר/ת ת"ו או הנדסה, חשיבה אנליטית.'
+      req: 'דורש: בוגר/ת תעשייה וניהול או הנדסה, חשיבה אנליטית.'
     },
     {
       tag: 'PRODUCT',
@@ -449,14 +457,14 @@ export function slide8() {
       logo: 'P', logoColor: '#1A4D8C',
       salary: '~₪28-38K/חודש',
       role: 'מה תעשו: BI, Python, ניתוח, דשבורדים פיננסיים.',
-      req: 'דורש: בוגר/ת ת"ו רלוונטי/ת. רקע ב-SQL.'
+      req: 'דורש: בוגר/ת תעשייה וניהול רלוונטי/ת. רקע ב-SQL.'
     },
     {
       tag: 'AI OPS',
       title: 'AI Integration Specialist (Junior)',
       co: 'Microsoft Israel', loc: 'הרצליה',
       coDesc: 'ענקית טכנולוגיה · ~3,000 עובדים בישראל',
-      logo: 'M', logoColor: '#0078D4',
+      logo: 'M', logoColor: '#0078D4', logoSlug: 'microsoft',
       salary: '~₪30-40K/חודש',
       role: 'מה תעשו: שילוב Copilot/AI בתהליכי עבודה ארגוניים.',
       req: 'דורש: 100 משרות פתוחות ב-Copilot/AI ב-2026.'
@@ -465,7 +473,7 @@ export function slide8() {
   const cells = jobs.map(j => `
     <div class="job-card senior">
       <div class="job-head">
-        <div class="job-logo" style="background:${j.logoColor}">${j.logo}</div>
+        <div class="job-logo" style="background:${j.logoColor}">${j.logoSlug ? `<img src="https://cdn.simpleicons.org/${j.logoSlug}/ffffff" alt="${j.co}" />` : j.logo}</div>
         <div class="job-co-block">
           <div class="job-co">${j.co}</div>
           <div class="job-co-desc">${j.coDesc}</div>
@@ -508,7 +516,7 @@ export function slide9() {
       title: 'AI Product Manager / Tech Lead',
       co: 'monday.com', loc: 'תל אביב',
       coDesc: 'פלטפורמת work-management · 175K לקוחות',
-      logo: 'm', logoColor: '#FF3D57',
+      logo: 'm', logoColor: '#FF3D57', logoSlug: 'mondaydotcom',
       salary: '~₪45-65K/חודש',
       role: 'מה תעשו: מובילים פיתוח AI agents, אוטונומיים וגנרטיביים.',
       req: 'דורש: 5+ שנות ניסיון במוצר/AI.'
@@ -518,7 +526,7 @@ export function slide9() {
       title: 'Enterprise AI CoE Manager',
       co: 'Payoneer', loc: 'פתח תקווה',
       coDesc: 'תשלומים גלובליים · ~2,500 עובדים',
-      logo: 'P', logoColor: '#FF4800',
+      logo: 'P', logoColor: '#FF4800', logoSlug: 'payoneer',
       salary: '~₪50-70K/חודש',
       role: 'מה תעשו: מובילים את ה-Center of Excellence ל-AI ברמת הארגון.',
       req: 'דורש: ניהול תוכניות חוצות-ארגון.'
@@ -538,7 +546,7 @@ export function slide9() {
       title: 'Staff AI Researcher / ML Engineer',
       co: 'NVIDIA Israel', loc: 'יקנעם',
       coDesc: 'יצרנית שבבי AI · ~3,000 עובדים בישראל',
-      logo: 'N', logoColor: '#76B900',
+      logo: 'N', logoColor: '#76B900', logoSlug: 'nvidia',
       salary: '~₪65-85K+/חודש',
       role: 'מה תעשו: מחקר ופיתוח ML ברמה הגבוהה ביותר.',
       req: '400 משרות פתוחות. דורש: PhD/ניסיון מחקרי.'
@@ -547,7 +555,7 @@ export function slide9() {
   const cells = jobs.map(j => `
     <div class="job-card senior">
       <div class="job-head">
-        <div class="job-logo" style="background:${j.logoColor}">${j.logo}</div>
+        <div class="job-logo" style="background:${j.logoColor}">${j.logoSlug ? `<img src="https://cdn.simpleicons.org/${j.logoSlug}/ffffff" alt="${j.co}" />` : j.logo}</div>
         <div class="job-co-block">
           <div class="job-co">${j.co}</div>
           <div class="job-co-desc">${j.coDesc}</div>
@@ -605,7 +613,7 @@ export function slide10() {
           <div class="qauthor">Sam Altman</div>
           <div class="qrole"><span class="lat">CEO</span>, OpenAI · נאום ב-Harvard, 2024</div>
           <div class="qcompany">
-            <span class="qco-logo" style="background:#10A37F">⬢</span>
+            <span class="qco-logo" style="background:#10A37F"><img src="https://cdn.simpleicons.org/openai/ffffff" alt="OpenAI" /></span>
             <span class="qco-name">OpenAI</span>
             <span class="qco-desc">יוצרי ChatGPT · 800M משתמשים שבועיים</span>
           </div>
@@ -623,7 +631,7 @@ export function slide10() {
           <div class="qauthor">Demis Hassabis</div>
           <div class="qrole">Nobel Chemistry 2024 · <span class="lat">CEO</span>, Google DeepMind · ראיון ב-TIME 2025</div>
           <div class="qcompany">
-            <span class="qco-logo" style="background:#4285F4">G</span>
+            <span class="qco-logo" style="background:#4285F4"><img src="https://cdn.simpleicons.org/googledeepmind/ffffff" alt="Google DeepMind" /></span>
             <span class="qco-name">Google DeepMind</span>
             <span class="qco-desc">המעבדה שיצרה את AlphaFold ו-Gemini</span>
           </div>
@@ -641,7 +649,7 @@ export function slide10() {
           <div class="qauthor">Yossi Matias · יוסי מטיאס</div>
           <div class="qrole"><span class="lat">VP</span> Engineering & Research, Google · בוגר ת״א</div>
           <div class="qcompany">
-            <span class="qco-logo" style="background:#EA4335">G</span>
+            <span class="qco-logo" style="background:#EA4335"><img src="https://cdn.simpleicons.org/google/ffffff" alt="Google" /></span>
             <span class="qco-name">Google Israel</span>
             <span class="qco-desc">מרכז המחקר הגדול של גוגל מחוץ לארה״ב · ת״א</span>
           </div>
@@ -729,9 +737,23 @@ export function slideArticle() {
           </div>
           <div class="head1">הג'וניורים חוזרים? לצד פיטורי הענק, בהייטק <em>בונים על צעירי דור ה-AI</em></div>
           <div class="head2">
-            מ-<span class="lat">IBM</span>, דרך סיילספורס ועד לסטארט-אפים ישראלים, בחלק מחברות ההייטק עוברים לגייס 
-            <strong>לפי כישורים, לא לפי ותק וניסיון</strong>, וכך, סטודנטים ואקדמאים טריים עם גישה ל-<span class="lat">AI</span> 
-            מצליחים לעקוף את המסלול המסורתי — היישר לתפקידי המפתח
+            מ-<span class="lat">IBM</span>, דרך סיילספורס ועד לסטארט-אפים ישראלים, בחלק מחברות ההייטק עוברים לגייס
+            <strong>לפי כישורים, לא לפי ותק וניסיון</strong>, וכך, סטודנטים ואקדמאים טריים עם גישה ל-<span class="lat">AI</span>
+            מצליחים לעקוף את המסלול המסורתי — היישר לתפקידי המפתח.
+          </div>
+          <div class="article-highlights">
+            <div class="ah-row">
+              <span class="ah-icon">▸</span>
+              <span><strong>גיוס לפי כישורים</strong> — לא לפי ותק. מי ששולט ב-<span class="lat">AI</span> מקבל את התפקיד.</span>
+            </div>
+            <div class="ah-row">
+              <span class="ah-icon">▸</span>
+              <span>בוגרים טריים <strong>עוקפים את המסלול הקלאסי</strong> — היישר לתפקידי המפתח.</span>
+            </div>
+            <div class="ah-row">
+              <span class="ah-icon">▸</span>
+              <span>החברות מחפשות <strong>גישה לכלים החדשים</strong>, לא 5 שנות ניסיון.</span>
+            </div>
           </div>
           <div class="author">
             <strong>מעין מנלה</strong> · כתבת קריירה · כלכליסט
@@ -839,16 +861,16 @@ export function slide13() {
   return `
     ${topbar(14, 'SYSTEMS VIEW')}
     <div class="frame three-slide">
-      <div class="grid">
-        <div>
+      <div class="three-top">
+        <div class="three-intro">
           <span class="label anim-fade"><span class="ldot"></span>11 · המבט מלמעלה</span>
           <h2 class="anim-up">
             התפקיד שלכם:<br/>
             לראות את <em>המערכת השלמה.</em>
           </h2>
           <p class="anim-up" style="animation-delay:0.2s">
-            <span class="lat">AI</span> רואה צמתים. אתם רואים את <strong>הקשרים ביניהם</strong>. רואים איפה הזרימה נתקעת, 
-            איפה יש כפילות, איפה לא נצרך. <em>זה מה שלימדו אתכם בפקולטה</em> — ואין לזה תחליף.
+            <span class="lat">AI</span> רואה צמתים. אתם רואים את <strong>הקשרים ביניהם</strong>.
+            איפה הזרימה נתקעת, איפה יש כפילות, איפה לא נצרך. <em>זה מה שלימדו אתכם בפקולטה</em> — ואין לזה תחליף.
           </p>
         </div>
         <div class="three-host" id="threeHost">
@@ -860,6 +882,26 @@ export function slide13() {
             <div class="item"><span class="swatch" style="background:#00D9C0"></span><span>AI AGENTS</span></div>
           </div>
         </div>
+      </div>
+      <div class="systems-examples anim-fade" style="animation-delay:0.35s">
+        <div class="sys-ex">
+          <div class="sys-ex-num">01</div>
+          <div class="sys-ex-t">שינוי בקופה → גלים בכל הארגון</div>
+          <div class="sys-ex-d">משנים מסך תשלום → עומס בשירות לקוחות, שינוי במחסן, עיכוב במשלוח. <strong>אתם רואים את כל ההשפעות.</strong></div>
+        </div>
+        <div class="sys-ex">
+          <div class="sys-ex-num">02</div>
+          <div class="sys-ex-t"><span class="lat">Bottleneck</span> בייצור = פקק בכל ה-<span class="lat">supply chain</span></div>
+          <div class="sys-ex-d">תחנה אחת איטית עוצרת את כל הקו. <strong>אתם מזהים את החוליה החלשה</strong> לפני שהיא הופכת למשבר.</div>
+        </div>
+        <div class="sys-ex">
+          <div class="sys-ex-num">03</div>
+          <div class="sys-ex-t">דאטה רעה בקלט = החלטות רעות בכל הארגון</div>
+          <div class="sys-ex-d"><span class="lat">Garbage in, garbage out</span>. <strong>אתם בודקים את המקור</strong> — לא רק את הפלט של ה-<span class="lat">AI</span>.</div>
+        </div>
+      </div>
+      <div class="systems-closing anim-up" style="animation-delay:0.55s">
+        <span class="lat">AI</span> יכול לעבד דאטה. <em>רק אתם</em> רואים את <strong>הקשרים בין הצמתים.</strong>
       </div>
     </div>
   `;
@@ -1050,7 +1092,7 @@ export function slide18() {
   const questions = [
     { n: '01', t: 'איך אדע שלימוד <span class="lat">Python</span> עכשיו לא יהיה מיותר?', h: 'תתחילו מ-<span class="lat">pandas</span> לניתוח דאטה, לא מ-<span class="lat">syntax</span> בסיסי. 5 שעות עם <span class="lat">Claude</span> לידכם = אתם רצים. <strong>רלוונטי עוד 10 שנים בטוח.</strong>' },
     { n: '02', t: 'תארים שניים — <span class="lat">MBA</span> / <span class="lat">M.Sc.</span> / כלום?', h: '<span class="lat">MBA</span> רק אם רוצים ניהול בכיר/<span class="lat">VC</span> (₪200K+שנתיים). <span class="lat">M.Sc.</span> רק ל-<span class="lat">ML Research</span>. <strong>ברוב המקרים — ללמוד תוך כדי עבודה.</strong>' },
-    { n: '03', t: 'איך מתחילים לבנות פרויקט בלי רעיון?', h: 'תיקחו דבר שמעצבן אתכם כל יום — טופס, חישוב, מעקב — ותבנו לזה אפליקציה ב-<span class="lat">Base44</span>. <strong>דוגמה: אפליקציית סדר יום לסטודנט בת"ו.</strong>' },
+    { n: '03', t: 'איך מתחילים לבנות פרויקט בלי רעיון?', h: 'תיקחו דבר שמעצבן אתכם כל יום — טופס, חישוב, מעקב — ותבנו לזה אפליקציה ב-<span class="lat">Base44</span>. <strong>דוגמה: אפליקציית סדר יום לסטודנט בתעשייה וניהול.</strong>' },
     { n: '04', t: 'סטאז\' או משרה ראשונה — מה עדיף?', h: 'סטאז\' (~₪10K) = למידה בלי לחץ. משרה (~₪25K) = הוכחה. <strong>השאלה האמיתית: מי המנטור שלכם?</strong> זה שווה יותר משכר.' },
     { n: '05', t: 'איך מתבלטים ב-<span class="lat">CV</span> בלי ניסיון?', h: 'שלושה דברים: (1) <span class="lat">LinkedIn</span> חי עם פרויקטים אמיתיים. (2) קישור ישיר לאפליקציה שבניתם. (3) <strong>שורה אחת על ה-<span class="lat">AI workflow</span> היומיומי שלכם</strong> — ספציפית.' },
     { n: '06', t: 'משהו שלא הייתי עושה אם הייתי חוזר אחורה?', h: '3 שנים בייעוץ זה הרבה — שנה אחת מספיקה. <span class="lat">MBA</span> אונליין — בזבוז כסף. ולא הייתי מחכה 14 שנה לבנות בפומבי. <strong>תתחילו מחר.</strong>' }
@@ -1083,36 +1125,38 @@ export function slide19() {
   return `
     ${topbar(20, 'THANKS')}
     <div class="frame thanks-slide">
-      <div class="thanks-grid">
-        <div class="thanks-right">
+      <div class="thanks-stack">
+        <div class="thanks-hero">
           <div class="photo-wrap-sm anim-scale">
             <img src="data:image/jpeg;base64,${PHOTO_B64}" alt="Liran Shaked" />
           </div>
-          <h1 class="anim-up" style="animation-delay:0.2s">
-            תודה.<br/>
-            <span class="accent">בהצלחה בדרך.</span>
-          </h1>
-          <p class="lead anim-up" style="animation-delay:0.4s">
-            אני זמין להמשך שיחה — ייעוץ, חיבורים<br/>או סתם להגיד שלום.
-          </p>
-          <div class="thanks-cta anim-up" style="animation-delay:0.55s">
-            <strong>ועוד דבר אחד</strong> — תזכרו: <em>הכלים השתנו, המקצוע לא.</em><br/>
-            המקצוע שלכם הוא לראות את <span class="accent">המערכת השלמה</span>. זה לא ייעלם.
+          <div class="thanks-headings">
+            <h1 class="anim-up" style="animation-delay:0.2s">
+              תודה.<br/>
+              <span class="accent">בהצלחה בדרך.</span>
+            </h1>
+            <p class="lead anim-up" style="animation-delay:0.4s">
+              אני זמין להמשך שיחה — ייעוץ, חיבורים או סתם להגיד שלום.
+            </p>
           </div>
         </div>
-        <div class="contact-cards-vertical anim-fade" style="animation-delay:0.6s">
-        <a href="https://www.linkedin.com/in/liranshaked-people-operations" target="_blank" rel="noopener" class="contact-card">
-          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          <div class="info"><div class="lbl">LINKEDIN</div><div class="val">liranshaked</div></div>
-        </a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=liroys1@gmail.com" target="_blank" rel="noopener" class="contact-card">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <div class="info"><div class="lbl">EMAIL</div><div class="val">liroys1@gmail.com</div></div>
-        </a>
-        <a href="tel:+972523701120" class="contact-card">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <div class="info"><div class="lbl">PHONE</div><div class="val">+972-52-3701120</div></div>
-        </a>
+        <div class="contact-cards-row anim-fade" style="animation-delay:0.55s">
+          <a href="https://www.linkedin.com/in/liranshaked-people-operations" target="_blank" rel="noopener" class="contact-card">
+            <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <div class="info"><div class="lbl">LINKEDIN</div><div class="val">liranshaked</div></div>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=liroys1@gmail.com" target="_blank" rel="noopener" class="contact-card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div class="info"><div class="lbl">EMAIL</div><div class="val">liroys1@gmail.com</div></div>
+          </a>
+          <a href="tel:+972523701120" class="contact-card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div class="info"><div class="lbl">PHONE</div><div class="val">+972-52-3701120</div></div>
+          </a>
+        </div>
+        <div class="thanks-cta anim-up" style="animation-delay:0.7s">
+          <strong>ועוד דבר אחד</strong> — תזכרו: <em>הכלים השתנו, המקצוע לא.</em>
+          המקצוע שלכם הוא לראות את <span class="accent">המערכת השלמה</span>. זה לא ייעלם.
         </div>
       </div>
     </div>

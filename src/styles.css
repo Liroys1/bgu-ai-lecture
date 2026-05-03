@@ -788,24 +788,72 @@ transition: all 0.3s;
 .proj-card .tool { font-family: ‘Inter’, monospace; font-size: 0.66rem; padding: 2px 7px; background: #1A1A24; border-radius: 100px; color: #A0A0AE; border: 1px solid rgba(255,255,255,0.08); direction: ltr; }
 
 /* 3D SLIDE */
-.three-slide .grid {
+.three-slide { gap: clamp(14px, 2vh, 22px); }
+.three-slide .three-top {
 display: grid;
-grid-template-columns: 1fr 1.2fr;
+grid-template-columns: 1fr 1.1fr;
 gap: clamp(18px, 2.8vw, 36px);
-flex: 1; align-items: stretch;
+align-items: stretch;
 }
-@media (max-width: 900px) { .three-slide .grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .three-slide .three-top { grid-template-columns: 1fr; } }
 .three-slide h2 { font-size: clamp(1.8rem, 4.5vw, 3.5rem); color: #FFFFFF; margin-top: 14px; }
 .three-slide h2 em { color: #00D9C0; font-style: italic; }
 .three-slide h2 .accent { color: #FF6B35; }
 .three-slide p { font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: #A0A0AE; line-height: 1.7; margin-top: 18px; }
+.systems-examples {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: clamp(10px, 1.4vw, 18px);
+}
+@media (max-width: 900px) { .systems-examples { grid-template-columns: 1fr; } }
+.sys-ex {
+background: linear-gradient(135deg, rgba(0,217,192,0.06), rgba(0,217,192,0.02));
+border: 1px solid rgba(0,217,192,0.2);
+border-radius: 12px;
+padding: clamp(12px, 1.6vw, 18px);
+display: flex;
+flex-direction: column;
+gap: 6px;
+}
+.sys-ex-num {
+font-family: ‘Inter’, monospace;
+color: #00D9C0;
+font-size: clamp(0.78rem, 0.95vw, 0.88rem);
+font-weight: 800;
+letter-spacing: 0.08em;
+}
+.sys-ex-t {
+color: #FFFFFF;
+font-weight: 700;
+font-size: clamp(0.98rem, 1.25vw, 1.18rem);
+line-height: 1.3;
+}
+.sys-ex-d {
+color: #A0A0AE;
+font-size: clamp(0.85rem, 1.05vw, 0.98rem);
+line-height: 1.55;
+}
+.sys-ex-d strong { color: #E8E8EE; }
+.systems-closing {
+text-align: center;
+padding: clamp(14px, 2vh, 22px) clamp(16px, 2.4vw, 28px);
+background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,182,39,0.04));
+border: 1px solid rgba(255,107,53,0.25);
+border-radius: 14px;
+font-size: clamp(1.05rem, 1.5vw, 1.4rem);
+color: #E8E8EE;
+font-weight: 500;
+line-height: 1.5;
+}
+.systems-closing em { color: #FFB627; font-style: italic; }
+.systems-closing strong { color: #FF6B35; font-weight: 800; }
 .three-host {
 position: relative;
 background: linear-gradient(135deg, #12121A, #1A1A24);
 border: 1px solid rgba(255,255,255,0.08);
 border-radius: 14px;
 overflow: hidden;
-min-height: clamp(260px, 42vh, 440px);
+min-height: clamp(220px, 32vh, 360px);
 }
 .three-host canvas { display: block; width: 100%; height: 100%; }
 .three-tag { position: absolute; top: 14px; right: 14px; font-size: clamp(0.68rem, 0.95vw, 0.76rem); color: #6B6B7B; font-family: ‘Inter’, monospace; direction: ltr; pointer-events: none; background: rgba(10,10,15,0.6); backdrop-filter: blur(8px); padding: 5px 9px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08); }
@@ -1031,6 +1079,32 @@ padding-top: 10px;
 margin-top: auto;
 }
 .article-clip .author strong { color: #333; }
+.article-clip .article-highlights {
+display: flex;
+flex-direction: column;
+gap: 8px;
+padding: 14px 16px;
+background: linear-gradient(135deg, rgba(213,43,30,0.06), rgba(213,43,30,0.02));
+border-right: 3px solid #D52B1E;
+border-radius: 6px;
+margin-top: 4px;
+}
+.article-clip .ah-row {
+display: flex;
+gap: 10px;
+align-items: flex-start;
+font-size: clamp(0.82rem, 1.05vw, 0.95rem);
+line-height: 1.5;
+color: #222;
+}
+.article-clip .ah-icon {
+color: #D52B1E;
+font-weight: 900;
+font-size: 1.1em;
+line-height: 1.4;
+flex-shrink: 0;
+}
+.article-clip .ah-row strong { color: #111; }
 .article-side {
 display: flex; flex-direction: column;
 gap: 14px;
@@ -1327,6 +1401,83 @@ padding: 14px 18px;
 .contact-cards-vertical .contact-card .lbl { margin: 0; font-size: 0.65rem; }
 .contact-cards-vertical .contact-card .val { font-size: 0.95rem; word-break: break-all; font-weight: 700; }
 
+/* ========== THANKS SLIDE - VERTICAL STACK LAYOUT ========== */
+.thanks-stack {
+display: flex;
+flex-direction: column;
+gap: clamp(20px, 3.5vh, 40px);
+align-items: center;
+justify-content: center;
+flex: 1;
+width: 100%;
+}
+.thanks-hero {
+display: flex;
+flex-direction: row;
+gap: clamp(20px, 3vw, 36px);
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+}
+.thanks-hero .photo-wrap-sm { margin: 0 !important; }
+.thanks-hero .photo-wrap-sm img {
+width: clamp(120px, 13vw, 170px) !important;
+height: clamp(120px, 13vw, 170px) !important;
+border-radius: 50%;
+object-fit: cover;
+}
+.thanks-headings {
+display: flex;
+flex-direction: column;
+gap: clamp(8px, 1.4vh, 16px);
+text-align: right;
+direction: rtl;
+}
+.thanks-headings h1 {
+margin: 0 !important;
+font-size: clamp(2.6rem, 5vw, 4.4rem) !important;
+line-height: 1.05 !important;
+text-align: right;
+}
+.thanks-headings .lead {
+margin: 0 !important;
+font-size: clamp(1.1rem, 1.4vw, 1.3rem) !important;
+text-align: right;
+line-height: 1.55 !important;
+max-width: 540px;
+}
+.contact-cards-row {
+display: flex;
+flex-direction: row;
+gap: clamp(12px, 1.6vw, 20px);
+flex-wrap: wrap;
+justify-content: center;
+width: 100%;
+max-width: 980px;
+}
+.contact-cards-row .contact-card {
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 12px;
+text-align: right;
+padding: 14px 20px;
+flex: 1 1 220px;
+min-width: 220px;
+}
+.contact-cards-row .contact-card .ic { margin: 0; flex-shrink: 0; width: 22px; height: 22px; }
+.contact-cards-row .contact-card .info { display: flex; flex-direction: column; gap: 2px; flex: 1; text-align: left; }
+.contact-cards-row .contact-card .lbl { margin: 0; font-size: 0.7rem; letter-spacing: 0.06em; }
+.contact-cards-row .contact-card .val { font-size: 0.98rem; word-break: break-all; font-weight: 700; }
+.thanks-stack .thanks-cta {
+width: 100%;
+max-width: 980px;
+text-align: center;
+font-size: clamp(1.1rem, 1.5vw, 1.45rem) !important;
+line-height: 1.55 !important;
+padding: clamp(18px, 2.6vh, 28px) clamp(22px, 3vw, 40px) !important;
+}
+
 /* ========== PROJECT IMAGES (slide 14) - BIG + READABLE ========== */
 .proj-card {
 display: flex !important;
@@ -1602,20 +1753,33 @@ border: 1px solid rgba(255,182,39,0.2);
 .rank-pill {
 display: flex;
 align-items: center;
-gap: 8px;
-padding: 6px 12px;
+gap: 10px;
+padding: 8px 14px;
 background: rgba(0,0,0,0.25);
 border-radius: 999px;
-font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+font-size: clamp(0.88rem, 1.05vw, 1rem);
 color: #E8E8EE;
 font-weight: 600;
 }
 .rank-pill .rank-num {
 font-family: ‘Inter’, monospace;
 font-weight: 900;
-font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+font-size: clamp(1rem, 1.2vw, 1.15rem);
 color: #FFB627;
 letter-spacing: -0.02em;
+}
+.rank-pill .rank-text {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+flex-wrap: wrap;
+}
+.rank-pill .rank-source-inline {
+font-family: ‘Inter’, monospace;
+font-size: 0.78em;
+color: #A0A0AE;
+font-weight: 500;
+letter-spacing: 0.04em;
 }
 .rank-source {
 margin-right: auto;
@@ -1787,6 +1951,12 @@ color: white;
 flex-shrink: 0;
 box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+overflow: hidden;
+}
+.job-card .job-logo img {
+width: 60%;
+height: 60%;
+object-fit: contain;
 }
 .job-card .job-co-block {
 flex: 1;
@@ -1855,6 +2025,12 @@ font-weight: 900;
 color: white;
 flex-shrink: 0;
 text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+overflow: hidden;
+}
+.qco-logo img {
+width: 65%;
+height: 65%;
+object-fit: contain;
 }
 .qco-name {
 font-family: ‘Inter’, sans-serif;
@@ -1872,9 +2048,33 @@ direction: rtl;
 }
 
 /* ========== FINAL TEXT SIZE OVERRIDES (MUST WIN) ========== */
-.frame h2 { font-size: clamp(1.9rem, 3vw, 2.8rem) !important; line-height: 1.1 !important; }
-.frame h1 { font-size: clamp(2.2rem, 4vw, 3.4rem) !important; line-height: 1 !important; }
-.frame .lead { font-size: clamp(0.98rem, 1.18vw, 1.1rem) !important; line-height: 1.55 !important; }
+.frame h2 { font-size: clamp(2.2rem, 3.5vw, 3.4rem) !important; line-height: 1.12 !important; }
+.frame h1 { font-size: clamp(2.5rem, 4.5vw, 4rem) !important; line-height: 1 !important; }
+.frame .lead { font-size: clamp(1.1rem, 1.35vw, 1.3rem) !important; line-height: 1.6 !important; }
+.frame p:not(.lead) { font-size: clamp(1rem, 1.2vw, 1.15rem) !important; line-height: 1.6 !important; }
+
+/* Card-level text bumps */
+.stop .role { font-size: clamp(1.05rem, 1.35vw, 1.3rem) !important; }
+.stop .desc { font-size: clamp(0.92rem, 1.1vw, 1.05rem) !important; line-height: 1.55 !important; }
+.why-card .num { font-size: clamp(2.4rem, 3.8vw, 3.6rem) !important; }
+.why-card .t { font-size: clamp(1rem, 1.25vw, 1.2rem) !important; }
+.why-card .d { font-size: clamp(0.9rem, 1.08vw, 1.02rem) !important; line-height: 1.55 !important; }
+.stat-card .stat-num { font-size: clamp(2.2rem, 3.5vw, 3.2rem) !important; }
+.stat-card .stat-label { font-size: clamp(0.95rem, 1.18vw, 1.12rem) !important; }
+.stat-card .stat-desc { font-size: clamp(0.85rem, 1.05vw, 1rem) !important; line-height: 1.5 !important; }
+.act-card .act-title { font-size: clamp(1.15rem, 1.5vw, 1.5rem) !important; }
+.act-card .act-desc { font-size: clamp(0.92rem, 1.12vw, 1.05rem) !important; line-height: 1.5 !important; }
+.act-card ul li { font-size: clamp(0.85rem, 1.02vw, 0.98rem) !important; }
+.job-card .job-title { font-size: clamp(1rem, 1.3vw, 1.2rem) !important; }
+.job-card .job-desc, .job-card .job-req { font-size: clamp(0.85rem, 1.02vw, 0.98rem) !important; line-height: 1.5 !important; }
+.skill-card .skill-name { font-size: clamp(1rem, 1.25vw, 1.18rem) !important; }
+.skill-card .skill-desc { font-size: clamp(0.85rem, 1.02vw, 0.98rem) !important; line-height: 1.5 !important; }
+.lesson-card .lesson-t { font-size: clamp(1.05rem, 1.35vw, 1.28rem) !important; }
+.lesson-card .lesson-d { font-size: clamp(0.9rem, 1.08vw, 1.02rem) !important; line-height: 1.55 !important; }
+.q-card .q-title { font-size: clamp(0.98rem, 1.2vw, 1.15rem) !important; }
+.q-card .q-hint { font-size: clamp(0.85rem, 1.02vw, 0.98rem) !important; line-height: 1.5 !important; }
+.phase-card ol li { font-size: clamp(0.9rem, 1.08vw, 1.02rem) !important; line-height: 1.5 !important; }
+.quote-card .qq-text { font-size: clamp(1rem, 1.25vw, 1.18rem) !important; line-height: 1.55 !important; }
 /* Timeline cards readable */
 .stop .role { font-size: clamp(1rem, 1.25vw, 1.2rem) !important; font-weight: 800 !important; line-height: 1.2 !important; }
 .stop .company { font-size: clamp(0.85rem, 1vw, 0.98rem) !important; }
