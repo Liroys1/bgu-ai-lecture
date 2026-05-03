@@ -1126,8 +1126,194 @@ max-width: 720px;
 .contact-card .ic { width: 28px; height: 28px; margin: 0 auto 6px; color: #FF6B35; }
 .contact-card .lbl { font-family: ‘Inter’, monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: #6B6B7B; margin-bottom: 4px; direction: ltr; }
 .contact-card .val { font-size: 0.84rem; color: #E8E8EE; direction: ltr; font-weight: 500; word-break: break-all; }
-</style>
 
+/* ========== Z-INDEX FIX (progress bar should never overlap content) ========== */
+.hour-bar { z-index: 5 !important; }
+.topbar { z-index: 6 !important; }
+
+/* ========== NO-OVERFLOW MODE - everything fits one screen ========== */
+.slide { overflow: hidden !important; }
+.frame {
+height: 100% !important;
+padding-top: clamp(56px, 6.5vh, 76px) !important;
+padding-bottom: clamp(56px, 6vh, 72px) !important;
+padding-left: clamp(18px, 4vw, 60px) !important;
+padding-right: clamp(18px, 4vw, 60px) !important;
+gap: clamp(10px, 1.6vh, 18px) !important;
+}
+/* Grid containers fill remaining space and shrink */
+.frame > .timeline,
+.frame > .agenda-grid,
+.frame > .grid,
+.frame > .vs-grid,
+.frame > .jobs-grid,
+.frame > .quotes-grid,
+.frame > .cols,
+.frame > .skills-grid,
+.frame > .phases,
+.frame > .lessons-grid,
+.frame > .qs-grid,
+.frame > .roadmap-flow {
+flex: 1 !important;
+min-height: 0 !important;
+}
+/* Cards shrink to fit */
+.stop, .why-card, .stat-card, .job-card, .quote-card,
+.act-card, .skill-card, .lesson-card, .phase-card, .q-card {
+min-height: 0 !important;
+}
+.stop { min-height: 0 !important; }
+
+/* Compact card padding */
+.why-card, .stat-card, .quote-card { padding: clamp(14px, 2vw, 22px) !important; }
+.skill-card, .q-card, .lesson-card { padding: clamp(10px, 1.4vw, 16px) !important; }
+.phase-card, .act-card { padding: clamp(14px, 1.8vw, 20px) !important; }
+.job-card { padding: clamp(10px, 1.5vw, 16px) !important; }
+
+/* ========== Mobile fixes ========== */
+@media (max-width: 700px) {
+.topbar { flex-direction: column; align-items: flex-start; gap: 3px; padding-right: 10px; }
+.topbar .brand { font-size: 0.6rem; }
+.topbar > div:last-child { font-size: 0.58rem; opacity: 0.7; }
+.label { font-size: 0.62rem; padding: 4px 10px; }
+h2 { font-size: 1.55rem !important; line-height: 1.15 !important; }
+h1 { font-size: 2rem !important; line-height: 1 !important; }
+.lead { font-size: 0.85rem !important; line-height: 1.5 !important; }
+.frame { padding-left: 14px !important; padding-right: 14px !important; padding-top: 70px !important; padding-bottom: 80px !important; }
+}
+
+/* ========== Schreiber pulse ========== */
+@keyframes pulseRing {
+0% { box-shadow: 0 0 0 0 rgba(255,107,53,0.7); }
+70% { box-shadow: 0 0 0 18px rgba(255,107,53,0); }
+100% { box-shadow: 0 0 0 0 rgba(255,107,53,0); }
+}
+.play-btn-pulse { animation: pulseRing 2s ease-out infinite; }
+
+/* ========== Slide group bg variety ========== */
+.slide.s2 { background: radial-gradient(ellipse at top right, rgba(0,217,192,0.05), transparent 55%); }
+.slide.s3 { background: radial-gradient(ellipse at bottom right, rgba(255,107,53,0.05), transparent 55%); }
+.slide.s5 { background: radial-gradient(ellipse at top left, rgba(255,182,39,0.05), transparent 55%); }
+.slide.s7 { background: radial-gradient(ellipse at bottom left, rgba(255,107,53,0.06), transparent 55%); }
+.slide.s10 { background: radial-gradient(ellipse at top, rgba(255,182,39,0.05), transparent 55%); }
+.slide.s11 { background: radial-gradient(ellipse at center, rgba(255,107,53,0.08), transparent 60%); }
+.slide.s12 { background: radial-gradient(ellipse at top right, rgba(255,182,39,0.05), transparent 55%); }
+.slide.s13 { background: radial-gradient(ellipse at center right, rgba(176,132,255,0.05), transparent 55%); }
+.slide.s14 { background: radial-gradient(ellipse at top left, rgba(0,217,192,0.06), transparent 55%); }
+.slide.s15 { background: radial-gradient(ellipse at bottom right, rgba(255,107,53,0.05), transparent 55%); }
+.slide.s16 { background: radial-gradient(ellipse at top right, rgba(255,182,39,0.05), transparent 55%); }
+.slide.s17 { background: radial-gradient(ellipse at center, rgba(176,132,255,0.05), transparent 55%); }
+.slide.s18 { background: radial-gradient(ellipse at top left, rgba(0,217,192,0.05), transparent 55%); }
+.slide.s20 { background: radial-gradient(ellipse at center, rgba(255,107,53,0.06), transparent 60%); }
+
+.hour-bar { height: 2px !important; opacity: 0.6; }
+
+/* ========== STAGGER ANIMATION (safe - default visible if JS fails) ========== */
+@keyframes staggerIn {
+from { opacity: 0; transform: translateY(14px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.stagger-anim {
+animation: staggerIn 0.5s ease-out both;
+}
+
+/* ========== TIMELINE NUMBERED INDICATORS (slide 3) ========== */
+.stop {
+position: relative !important;
+counter-increment: timeline-counter;
+}
+.timeline { counter-reset: timeline-counter; }
+.stop::before {
+content: counter(timeline-counter, decimal-leading-zero);
+position: absolute;
+top: 8px;
+left: 10px;
+font-family: ‘Inter’, monospace;
+font-size: 0.95rem;
+font-weight: 800;
+color: rgba(255,107,53,0.5);
+letter-spacing: -0.02em;
+line-height: 1;
+direction: ltr;
+}
+.stop.current::before { color: #FFB627; }
+.stop.next::before { color: #00D9C0; }
+
+/* ========== QUOTE AVATAR (slide 10) ========== */
+.quote-avatar {
+width: clamp(46px, 5.5vw, 64px);
+height: clamp(46px, 5.5vw, 64px);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: ‘Inter’, sans-serif;
+font-size: clamp(1rem, 1.6vw, 1.3rem);
+font-weight: 800;
+color: white;
+text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+flex-shrink: 0;
+border: 2px solid rgba(255,255,255,0.1);
+box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+margin-bottom: 4px;
+}
+.quote-avatar.altman { background: linear-gradient(135deg, #00A67E, #00D9A0); }
+.quote-avatar.hassabis { background: linear-gradient(135deg, #4285F4, #B084FF); }
+.quote-avatar.matias { background: linear-gradient(135deg, #FF6B35, #FFB627); }
+.quote-card { padding-top: clamp(14px, 1.8vw, 20px) !important; }
+.quote-card .qmark { display: none; }
+
+/* ========== ROADMAP HORIZONTAL FLOW (slide 17) ========== */
+.roadmap-flow {
+display: grid;
+grid-template-columns: 1fr auto 1fr auto 1fr;
+align-items: stretch;
+gap: clamp(8px, 1.4vw, 16px);
+}
+@media (max-width: 800px) {
+.roadmap-flow {
+grid-template-columns: 1fr;
+}
+.roadmap-flow .arrow { display: none; }
+}
+.roadmap-flow .arrow {
+align-self: center;
+color: #FF6B35;
+font-size: 1.5rem;
+font-weight: 900;
+opacity: 0.5;
+direction: ltr;
+}
+.roadmap-flow .phase-card { padding: 14px !important; }
+.roadmap-flow .phase-card.last { box-shadow: 0 0 30px rgba(255,107,53,0.15); }
+
+/* ========== THANKS SLIDE NEW LAYOUT ========== */
+.thanks-slide .frame {
+align-items: stretch !important;
+justify-content: center !important;
+text-align: right !important;
+}
+.thanks-grid {
+display: grid;
+grid-template-columns: 1.3fr 1fr;
+gap: clamp(20px, 4vw, 50px);
+align-items: center;
+flex: 1;
+}
+@media (max-width: 800px) { .thanks-grid { grid-template-columns: 1fr; gap: 24px; } }
+.thanks-content { display: flex; flex-direction: column; gap: 16px; align-items: flex-end; text-align: right; }
+.thanks-content .photo-wrap-sm { margin-bottom: 8px; align-self: flex-end; }
+.contact-cards-vertical { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.contact-cards-vertical .contact-card {
+display: flex; flex-direction: row; align-items: center; gap: 14px;
+text-align: right; padding: 16px 18px;
+}
+.contact-cards-vertical .contact-card .ic { margin: 0; flex-shrink: 0; width: 24px; height: 24px; }
+.contact-cards-vertical .contact-card .info { display: flex; flex-direction: column; gap: 2px; flex: 1; text-align: left; }
+.contact-cards-vertical .contact-card .lbl { margin: 0; }
+.contact-cards-vertical .contact-card .val { font-size: 0.9rem; word-break: break-all; }
+
+</style>
 </head>
 <body>
 
@@ -1209,7 +1395,7 @@ function slide2() {
     ${topbar(2, 'AGENDA')}
     <div class="frame agenda">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§00 · המסע של השעה הזאת</span>
+        <span class="label"><span class="ldot"></span>00 · המסע של השעה הזאת</span>
         <h2 style="margin-top:14px">שעה אחת. <span class="accent">שלוש מערכות.</span> סיפור אחד.</h2>
         <p class="lead">
           בשעה הקרובה אקח אתכם דרך הסיפור של המקצוע — מאיפה הוא בא, מה קורה לו עכשיו, ומה אתם 
@@ -1280,7 +1466,7 @@ function slide3() {
     ${topbar(3, 'MY STORY')}
     <div class="frame journey">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§01 · המסלול האישי</span>
+        <span class="label"><span class="ldot"></span>01 · המסלול האישי</span>
         <h2 style="margin-top:14px">14 שנה. שש תחנות. <span class="accent">קו אחד.</span></h2>
         <p class="lead">
           כל תחנה הייתה תפקיד שונה — אבל המקצוע הוא אותו מקצוע: לקחת מערכת אנושית מורכבת, להבין 
@@ -1298,7 +1484,7 @@ function slide4() {
     ${topbar(4, 'WHY IE')}
     <div class="frame why-ie">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§02 · למה התחום הזה</span>
+        <span class="label"><span class="ldot"></span>02 · למה התחום הזה</span>
         <h2 style="margin-top:14px">המקצוע שתמיד <span class="accent">מתאים את עצמו.</span></h2>
         <p class="lead" style="font-size:clamp(0.9rem, 1.4vw, 1.05rem); color:#A0A0AE; line-height:1.7; margin-top:14px; max-width:720px">
           בכל פעם שהעולם משתנה — תעשייה וניהול נשאר רלוונטי. כי לא לימדו אותך טכנולוגיה אחת. 
@@ -1364,7 +1550,7 @@ function slide5() {
     ${topbar(5, 'TRANSFORMATION')}
     <div class="frame vs-slide">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§03 · המקצוע משתנה</span>
+        <span class="label"><span class="ldot"></span>03 · המקצוע משתנה</span>
         <h2 style="margin-top:14px">אותה תוארת. <em>תפקיד אחר לגמרי.</em></h2>
         <p class="lead">
           זה הדף של מהנדס/ת תעשייה וניהול ב-2010. וזה הדף שלו ב-2026. שתיהן משרות אמיתיות שפורסמו. 
@@ -1408,7 +1594,7 @@ function slide6() {
     <div class="frame chart-slide">
       <div class="grid">
         <div class="left">
-          <span class="label anim-fade"><span class="ldot"></span>§04 · הנתון</span>
+          <span class="label anim-fade"><span class="ldot"></span>04 · הנתון</span>
           <h2 class="anim-up">
             <span class="accent">39%</span> מהמיומנויות שלכם<br/>
             ישתנו עד <span class="lat">2030</span>.
@@ -1475,7 +1661,7 @@ function slide7() {
     ${topbar(7, 'DATA · 2/3')}
     <div class="frame stats">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§05 · עוד 4 מספרים</span>
+        <span class="label"><span class="ldot"></span>05 · עוד 4 מספרים</span>
         <h2 style="margin-top:14px">השוק בתנועה. <span class="accent">המספרים מספרים סיפור.</span></h2>
       </div>
       <div class="grid anim-fade" style="animation-delay:0.3s">
@@ -1541,7 +1727,7 @@ function slide8() {
     ${topbar(8, 'JOBS · JUNIOR')}
     <div class="frame jobs-slide">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§06 · משרות פתוחות עכשיו · ג'וניור</span>
+        <span class="label"><span class="ldot"></span>06 · משרות פתוחות עכשיו · ג'וניור</span>
         <h2 style="margin-top:14px">איפה מתחילים. <em>היום.</em></h2>
         <p class="lead">
           ארבע משרות אמיתיות, שפורסמו <strong>בחודש האחרון</strong>, בחברות אמיתיות, לבוגרים שכמוכם. 
@@ -1580,7 +1766,7 @@ function slide9() {
     ${topbar(9, 'JOBS · SENIOR')}
     <div class="frame jobs-slide">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§07 · ולאן זה הולך · בכיר</span>
+        <span class="label"><span class="ldot"></span>07 · ולאן זה הולך · בכיר</span>
         <h2 style="margin-top:14px">לאן זה מוביל. <em>בעוד 5–8 שנים.</em></h2>
         <p class="lead">
           אלה לא חלומות — אלה משרות פתוחות עכשיו. רק שלא לכם. עוד. <strong>אבל זה הכיוון</strong>. 
@@ -1606,7 +1792,7 @@ function slide10() {
     ${topbar(10, 'VOICES')}
     <div class="frame quotes-slide">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§08 · מה אומרים מי שבונים את זה</span>
+        <span class="label"><span class="ldot"></span>08 · מה אומרים מי שבונים את זה</span>
         <h2 style="margin-top:14px">שלושה אנשים. <span class="accent">אותו מסר.</span></h2>
         <p class="lead">
           המנהיגים שמובילים את ה-<span class="lat">AI</span> בעולם לא חושבים שהמקצועות נעלמים. הם חושבים 
@@ -1615,6 +1801,7 @@ function slide10() {
       </div>
       <div class="quotes-grid anim-fade" style="animation-delay:0.3s">
         <div class="quote-card">
+          <div class="quote-avatar altman">SA</div>
           <div class="qmark">"</div>
           <div class="qtext">
             <em>"The shape of jobs will change."</em><br/>
@@ -1627,6 +1814,7 @@ function slide10() {
           </div>
         </div>
         <div class="quote-card">
+          <div class="quote-avatar hassabis">DH</div>
           <div class="qmark">"</div>
           <div class="qtext">
             <em>"AI as an amplifier of human ingenuity."</em><br/>
@@ -1639,6 +1827,7 @@ function slide10() {
           </div>
         </div>
         <div class="quote-card">
+          <div class="quote-avatar matias">YM</div>
           <div class="qmark">"</div>
           <div class="qtext">
             <em>"We're going to need many more researchers in all disciplines."</em><br/>
@@ -1661,7 +1850,7 @@ function slide11() {
     ${topbar(11, 'CLOSE TO HOME')}
     <div class="frame schreiber-slide">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§09 · הציטוט שגרם לי לקבל את ההחלטה</span>
+        <span class="label"><span class="ldot"></span>09 · הציטוט שגרם לי לקבל את ההחלטה</span>
         <h2 style="margin-top:14px"><em>"החייזרים נחתו —</em><br/>והם מוכנים לעבוד <em>בחינם."</em></h2>
       </div>
       <div class="grid anim-fade" style="animation-delay:0.3s">
@@ -1690,7 +1879,7 @@ function slide11() {
           <a href="https://www.youtube.com/watch?v=5gqtckj0Ohc" target="_blank" rel="noopener" class="video-wrap" style="display:block; text-decoration:none; cursor:pointer; position:relative;">
             <img src="https://img.youtube.com/vi/5gqtckj0Ohc/maxresdefault.jpg" alt="Daniel Schreiber - The Aliens Have Landed" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.src='https://img.youtube.com/vi/5gqtckj0Ohc/hqdefault.jpg'" />
             <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.5)); display:flex; align-items:center; justify-content:center;">
-              <div style="width:72px; height:72px; border-radius:50%; background:rgba(255,107,53,0.95); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(255,107,53,0.5);">
+              <div class="play-btn-pulse" style="width:72px; height:72px; border-radius:50%; background:rgba(255,107,53,0.95); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(255,107,53,0.5);">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-right:-3px"><path d="M8 5v14l11-7z"/></svg>
               </div>
             </div>
@@ -1714,7 +1903,7 @@ function slideArticle() {
     ${topbar(12, 'CALCALIST · 01.05.26')}
     <div class="frame article-slide">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§10 · הכתבה שפורסמה לפני 4 ימים</span>
+        <span class="label"><span class="ldot"></span>10 · הכתבה שפורסמה לפני 4 ימים</span>
         <h2 style="margin-top:14px">"<em>הג'וניורים חוזרים?</em>"<br/>זה לא ספוילר — זה <span class="accent">החדשות.</span></h2>
       </div>
       <div class="grid anim-fade" style="animation-delay:0.3s">
@@ -1797,7 +1986,7 @@ function slide12() {
     ${topbar(13, 'DIVISION')}
     <div class="frame division">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§10 · חלוקת העבודה החדשה</span>
+        <span class="label"><span class="ldot"></span>10 · חלוקת העבודה החדשה</span>
         <h2 style="margin-top:14px">מה <span class="accent">הם</span> עושים. מה <span class="accent">אתם</span> עושים.</h2>
       </div>
       <div class="cols anim-fade" style="animation-delay:0.3s">
@@ -1827,7 +2016,7 @@ function slide13() {
     <div class="frame three-slide">
       <div class="grid">
         <div>
-          <span class="label anim-fade"><span class="ldot"></span>§11 · המבט מלמעלה</span>
+          <span class="label anim-fade"><span class="ldot"></span>11 · המבט מלמעלה</span>
           <h2 class="anim-up">
             התפקיד שלכם:<br/>
             לראות את <em>המערכת השלמה.</em>
@@ -1873,7 +2062,7 @@ function slide14() {
     <div class="frame ai-story">
       <div class="grid">
         <div>
-          <span class="label anim-fade"><span class="ldot"></span>§12 · מה אני עושה <em>בסופי שבוע</em></span>
+          <span class="label anim-fade"><span class="ldot"></span>12 · מה אני עושה <em>בסופי שבוע</em></span>
           <h2 class="anim-up">
             אני <span class="accent">בונה</span>.<br/>
             ואתם יכולים <em>גם.</em>
@@ -1920,7 +2109,7 @@ function slide15() {
     <div class="frame skills-slide">
       <div class="head-row anim-up">
         <div>
-          <span class="label"><span class="ldot"></span>§13 · 9 מיומנויות</span>
+          <span class="label"><span class="ldot"></span>13 · 9 מיומנויות</span>
           <h2 style="margin-top:14px">המיומנויות <span class="accent">לעידן הזה.</span></h2>
         </div>
         <p class="lead">
@@ -1939,13 +2128,13 @@ function slide16() {
     ${topbar(17, 'ROADMAP')}
     <div class="frame roadmap">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§14 · מה לעשות מחר בבוקר</span>
+        <span class="label"><span class="ldot"></span>14 · מה לעשות מחר בבוקר</span>
         <h2 style="margin-top:14px">תוכנית <span class="accent">90 יום.</span></h2>
         <p class="lead">
           לא צריך לחכות לסיום התואר. תתחילו <strong>השבוע</strong>. אלה שלושים-שלושים-שלושים יום של בנייה הדרגתית.
         </p>
       </div>
-      <div class="phases anim-fade" style="animation-delay:0.3s">
+      <div class="roadmap-flow anim-fade" style="animation-delay:0.3s">
         <div class="phase-card">
           <div class="phase-head">
             <div class="phase-num">30</div>
@@ -1957,6 +2146,7 @@ function slide16() {
             <li><span class="num">03</span><div>תעקבו אחרי 5 חשבונות <span class="lat">AI</span> ב-<span class="lat">LinkedIn / X</span>. התמונה תתבהר.</div></li>
           </ol>
         </div>
+        <div class="arrow">→</div>
         <div class="phase-card">
           <div class="phase-head">
             <div class="phase-num">60</div>
@@ -1968,6 +2158,7 @@ function slide16() {
             <li><span class="num">06</span><div>תרשמו פוסט אחד ב-<span class="lat">LinkedIn</span> על מה שבניתם. <em>פומבי או שלא היה</em>.</div></li>
           </ol>
         </div>
+        <div class="arrow">→</div>
         <div class="phase-card last">
           <div class="phase-head">
             <div class="phase-num">90</div>
@@ -2003,7 +2194,7 @@ function slide17() {
     ${topbar(18, 'IF I COULD DO OVER')}
     <div class="frame different-slide">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§15 · אישי</span>
+        <span class="label"><span class="ldot"></span>15 · אישי</span>
         <h2 style="margin-top:14px">מה הייתי עושה <em>אחרת</em></h2>
         <p class="lead">
           ארבעה דברים שלא הבנתי בשנה א'. אם הייתם נכנסים לכיתה הזו לפני 14 שנה ומספרים לי אותם, 
@@ -2018,12 +2209,12 @@ function slide17() {
 /* SLIDE 18: Q&A - questions to spark discussion */
 function slide18() {
   const questions = [
-    { n: '01', t: 'איך אדע שלימוד <span class="lat">Python</span> עכשיו לא יהיה מיותר?', h: 'ספוילר: לא יהיה. אבל יש דרכים נכונות ולא נכונות לגשת לזה.' },
-    { n: '02', t: 'מה דעתך על תארים שניים — <span class="lat">MBA</span> / <span class="lat">M.Sc.</span> / לא?', h: 'תלוי בשאלה הנכונה: מה אתה רוצה להיות בעוד 5 שנים?' },
-    { n: '03', t: 'איך מתחילים לבנות פרויקט אם אין לי רעיון?', h: 'הרעיונות לא חסרים. הם מסביבך — אתה פשוט לא רואה אותם.' },
-    { n: '04', t: 'סטאז\' או חיפוש משרה ראשונה — מה עדיף?', h: 'שניהם טובים. השאלה היא איך אתה ממנף כל אחד.' },
-    { n: '05', t: 'איך מתבלטים בקורות חיים בלי ניסיון?', h: 'יש דרך אחת ויחידה — וזה לא <span class="lat">side projects</span> כמו שכולם חושבים.' },
-    { n: '06', t: 'משהו שאתה לא היית עושה אם היית חוזר אחורה?', h: 'יש כמה. אבל אחד מהם הכי משמעותי.' }
+    { n: '01', t: 'איך אדע שלימוד <span class="lat">Python</span> עכשיו לא יהיה מיותר?', h: 'תתחילו מ-<span class="lat">pandas</span> לניתוח דאטה, לא מ-<span class="lat">syntax</span> בסיסי. 5 שעות עם <span class="lat">Claude</span> לידכם = אתם רצים. <strong>רלוונטי עוד 10 שנים בטוח.</strong>' },
+    { n: '02', t: 'תארים שניים — <span class="lat">MBA</span> / <span class="lat">M.Sc.</span> / כלום?', h: '<span class="lat">MBA</span> רק אם רוצים ניהול בכיר/<span class="lat">VC</span> (₪200K+שנתיים). <span class="lat">M.Sc.</span> רק ל-<span class="lat">ML Research</span>. <strong>ברוב המקרים — ללמוד תוך כדי עבודה.</strong>' },
+    { n: '03', t: 'איך מתחילים לבנות פרויקט בלי רעיון?', h: 'תיקחו דבר שמעצבן אתכם כל יום — טופס, חישוב, מעקב — ותבנו לזה אפליקציה ב-<span class="lat">Base44</span>. <strong>דוגמה: אפליקציית סדר יום לסטודנט בת"ו.</strong>' },
+    { n: '04', t: 'סטאז\' או משרה ראשונה — מה עדיף?', h: 'סטאז\' (~₪10K) = למידה בלי לחץ. משרה (~₪25K) = הוכחה. <strong>השאלה האמיתית: מי המנטור שלכם?</strong> זה שווה יותר משכר.' },
+    { n: '05', t: 'איך מתבלטים ב-<span class="lat">CV</span> בלי ניסיון?', h: 'שלושה דברים: (1) <span class="lat">LinkedIn</span> חי עם פרויקטים אמיתיים. (2) קישור ישיר לאפליקציה שבניתם. (3) <strong>שורה אחת על ה-<span class="lat">AI workflow</span> היומיומי שלכם</strong> — ספציפית.' },
+    { n: '06', t: 'משהו שלא הייתי עושה אם הייתי חוזר אחורה?', h: '3 שנים בייעוץ זה הרבה — שנה אחת מספיקה. <span class="lat">MBA</span> אונליין — בזבוז כסף. ולא הייתי מחכה 14 שנה לבנות בפומבי. <strong>תתחילו מחר.</strong>' }
   ];
   const cells = questions.map(q => `
     <div class="q-card">
@@ -2036,7 +2227,7 @@ function slide18() {
     ${topbar(19, 'Q&A')}
     <div class="frame qs-slide">
       <div class="anim-up">
-        <span class="label"><span class="ldot"></span>§16 · שאלות פתוחות</span>
+        <span class="label"><span class="ldot"></span>16 · שאלות פתוחות</span>
         <h1 style="margin-top:18px">עכשיו <span class="accent">תורכם.</span></h1>
         <p class="lead">
           הנה כמה שאלות שכדאי שתחשבו עליהן — או פשוט תשאלו מה שמטריד אתכם. 
@@ -2053,33 +2244,34 @@ function slide19() {
   return `
     ${topbar(20, 'THANKS')}
     <div class="frame thanks-slide">
-      <div class="photo-wrap-sm anim-scale">
-        <img src="data:image/jpeg;base64,${PHOTO_B64}" alt="Liran Shaked" />
-      </div>
-      <h1 class="anim-up" style="animation-delay:0.2s">
-        תודה.<br/>
-        <span class="accent">בהצלחה בדרך.</span>
-      </h1>
-      <p class="lead anim-up" style="animation-delay:0.4s">
-        אני זמין להמשך שיחה — ייעוץ קריירה, סטאז'ים, פרויקטים, או סתם להגיד שלום.
-        <br/>אל תהססו ליצור קשר.
-      </p>
-      <div class="contact-cards anim-fade" style="animation-delay:0.6s">
-        <a href="https://www.linkedin.com/in/liranshaked-people-operations/" target="_blank" class="contact-card">
+      <div class="thanks-grid">
+        <div class="thanks-content">
+          <div class="photo-wrap-sm anim-scale">
+            <img src="data:image/jpeg;base64,${PHOTO_B64}" alt="Liran Shaked" />
+          </div>
+          <h1 class="anim-up" style="animation-delay:0.2s">
+            תודה.<br/>
+            <span class="accent">בהצלחה בדרך.</span>
+          </h1>
+          <p class="lead anim-up" style="animation-delay:0.4s">
+            אני זמין להמשך שיחה — ייעוץ, חיבורים או סתם להגיד שלום.
+            <br/>אל תהססו ליצור קשר.
+          </p>
+        </div>
+        <div class="contact-cards-vertical anim-fade" style="animation-delay:0.6s">
+        <a href="https://www.linkedin.com/in/liranshaked-people-operations" target="_blank" rel="noopener" class="contact-card">
           <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          <div class="lbl">LINKEDIN</div>
-          <div class="val">liranshaked</div>
+          <div class="info"><div class="lbl">LINKEDIN</div><div class="val">liranshaked</div></div>
         </a>
-        <a href="mailto:liroys1@gmail.com" class="contact-card">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=liroys1@gmail.com" target="_blank" rel="noopener" class="contact-card">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <div class="lbl">EMAIL</div>
-          <div class="val">liroys1@gmail.com</div>
+          <div class="info"><div class="lbl">EMAIL</div><div class="val">liroys1@gmail.com</div></div>
         </a>
         <a href="tel:+972523701120" class="contact-card">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <div class="lbl">PHONE</div>
-          <div class="val">+972-52-3701120</div>
+          <div class="info"><div class="lbl">PHONE</div><div class="val">+972-52-3701120</div></div>
         </a>
+        </div>
       </div>
     </div>
   `;
@@ -2255,6 +2447,21 @@ function render() {
       });
     }, 100);
   }
+  
+  // STAGGER animations - apply to all card-like elements on the active slide
+  setTimeout(() => {
+    const activeSlide = document.querySelector('.slide.active');
+    if (!activeSlide) return;
+    const selectors = ['.stop', '.why-card', '.stat-card', '.job-card', '.quote-card',
+                       '.act-card', '.skill-card', '.lesson-card', '.phase-card', '.q-card', '.proj-card'];
+    selectors.forEach(sel => {
+      const items = activeSlide.querySelectorAll(sel);
+      items.forEach((item, i) => {
+        item.style.animationDelay = (0.15 + i * 0.07) + 's';
+        item.classList.add('stagger-anim');
+      });
+    });
+  }, 50);
 }
 
 function go(i) {
