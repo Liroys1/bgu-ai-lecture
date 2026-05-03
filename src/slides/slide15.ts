@@ -14,7 +14,7 @@ export function slide15() {
     { num: '09', cat: 'META', name: 'למידה עצמית', desc: 'הכל ישתנה שוב בעוד 3 שנים. הכישור הכי חשוב הוא ללמוד מחדש.' }
   ];
   const cells = skills.map((s, i) => `
-    <button class="skill-card" data-i="${i}">
+    <button class="skill-card" data-i="${i}" data-cat="${s.cat.toLowerCase()}">
       <div class="skill-card-head">
         <span class="skill-num">${s.num}</span>
         <span class="skill-cat">${s.cat}</span>

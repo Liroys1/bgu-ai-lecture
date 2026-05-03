@@ -3086,3 +3086,411 @@ em {
   .thumb-num { font-size: 1.4rem; }
   .thumb-label { font-size: 0.7rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   AUDIT IMPROVEMENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── SLIDE 7: Stats Big Number Hero ── */
+.stats-hero-slide {
+  display: flex;
+  flex-direction: column;
+}
+.stats-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.4vw, 18px);
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+.stat-hero-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: clamp(14px, 1.8vw, 24px) clamp(12px, 1.4vw, 18px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.stat-hero-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,107,53,0.04), transparent);
+  pointer-events: none;
+}
+.stat-hero-item.accent-item {
+  border-color: rgba(255,107,53,0.35);
+  background: rgba(255,107,53,0.06);
+}
+.stat-hero-item.accent-item::before {
+  background: linear-gradient(135deg, rgba(255,107,53,0.10), transparent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .stat-hero-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,107,53,0.35);
+  }
+}
+.stat-hero-num {
+  font-size: clamp(2.6rem, 4.2vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.stat-hero-num .stat-num {
+  color: #fff;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.stat-hero-unit {
+  font-size: 0.42em;
+  font-weight: 700;
+  color: #FF6B35;
+}
+.stat-hero-label {
+  font-size: clamp(0.76rem, 0.92vw, 0.88rem);
+  font-weight: 600;
+  color: #FFB627;
+  line-height: 1.3;
+}
+.stat-hero-desc {
+  font-size: clamp(0.7rem, 0.82vw, 0.8rem);
+  color: #A0A0AE;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ── SLIDE 9: Career Ladder ── */
+.senior-ladder-slide {
+  display: flex;
+  flex-direction: column;
+}
+.career-ladder {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.ladder-card {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.ladder-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 52px;
+  flex-shrink: 0;
+  padding-top: 6px;
+}
+.ladder-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFB627, #FF6B35);
+  color: #0A0A0F;
+  font-size: 0.7rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+  letter-spacing: 0.05em;
+}
+.ladder-connector {
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(255,182,39,0.45), rgba(255,182,39,0.08));
+  margin: 3px 0;
+}
+.ladder-content {
+  flex: 1;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: clamp(8px, 1.1vw, 13px) clamp(12px, 1.4vw, 18px);
+  margin: 2px 0 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: border-color 0.2s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .ladder-content:hover {
+    border-color: rgba(255,182,39,0.3);
+    background: rgba(255,182,39,0.04);
+  }
+}
+.ladder-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ladder-salary {
+  margin-right: auto;
+  font-size: clamp(0.82rem, 0.95vw, 0.92rem);
+  font-weight: 700;
+  color: #FFB627;
+  white-space: nowrap;
+}
+.ls-month {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: #6B6B7B;
+}
+.ladder-meta {
+  font-size: clamp(0.68rem, 0.8vw, 0.78rem);
+  color: #A0A0AE;
+  line-height: 1.4;
+}
+.job-role-inline {
+  font-size: inherit;
+}
+.ladder-card .job-title {
+  font-size: clamp(0.82rem, 0.98vw, 0.92rem);
+  font-weight: 600;
+  color: #E8E8F0;
+}
+.ladder-card .job-req {
+  font-size: clamp(0.66rem, 0.76vw, 0.74rem);
+  color: #7B7B8B;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 4px;
+  margin-top: 2px;
+}
+
+/* ── SLIDE 17: Journal Layout ── */
+.journal-entries {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.1vw, 14px);
+  flex: 1;
+  min-height: 0;
+}
+.journal-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 1.6vw, 22px);
+  padding: clamp(10px, 1.2vw, 16px) clamp(14px, 1.8vw, 22px);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-right: 3px solid rgba(255,107,53,0.28);
+  background: rgba(255,255,255,0.02);
+  transition: border-color 0.2s, background 0.2s;
+}
+.journal-entry.highlight {
+  border-right-color: #FFB627;
+  background: rgba(255,182,39,0.05);
+  border-color: rgba(255,182,39,0.2);
+}
+@media (hover: hover) and (pointer: fine) {
+  .journal-entry:hover {
+    border-right-color: #FF6B35;
+    background: rgba(255,107,53,0.04);
+  }
+  .journal-entry.highlight:hover {
+    border-right-color: #FFD94D;
+  }
+}
+.je-num {
+  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  font-weight: 900;
+  color: rgba(255,107,53,0.2);
+  line-height: 1;
+  flex-shrink: 0;
+  width: clamp(38px, 5vw, 56px);
+  text-align: center;
+  padding-top: 2px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.journal-entry.highlight .je-num {
+  color: rgba(255,182,39,0.38);
+}
+.je-body {
+  flex: 1;
+  min-width: 0;
+}
+.je-title {
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  font-weight: 600;
+  color: #E8E8F0;
+  line-height: 1.45;
+  margin-bottom: 5px;
+}
+.journal-entry.highlight .je-title {
+  color: #FFD94D;
+}
+.je-desc {
+  font-size: clamp(0.72rem, 0.88vw, 0.84rem);
+  color: #A0A0AE;
+  line-height: 1.5;
+}
+
+/* ── SLIDE 4: Rank pills bigger ── */
+.why-rankings {
+  display: flex;
+  gap: clamp(8px, 1.2vw, 16px);
+  margin-bottom: clamp(12px, 1.6vw, 20px);
+}
+.rank-pill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(14px, 1.8vw, 22px) clamp(10px, 1.2vw, 14px);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  gap: 5px;
+  transition: border-color 0.2s;
+}
+.rank-pill.highlight {
+  border-color: rgba(255,107,53,0.4);
+  background: rgba(255,107,53,0.07);
+}
+.rank-pill .rank-num {
+  font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
+  font-weight: 900 !important;
+  color: #FF6B35 !important;
+  line-height: 1 !important;
+  display: block !important;
+  letter-spacing: -0.02em;
+}
+.rank-pill.highlight .rank-num {
+  color: #FFB627 !important;
+}
+.rank-pill .rank-text {
+  font-size: clamp(0.7rem, 0.84vw, 0.8rem);
+  color: #A0A0AE;
+  line-height: 1.4;
+}
+
+/* ── SLIDE 5: Pulse on current era ── */
+@keyframes era-pulse {
+  0%, 100% { border-color: rgba(255,107,53,0.55); box-shadow: 0 0 0 0 rgba(255,107,53,0.2); }
+  50% { border-color: rgba(255,107,53,1); box-shadow: 0 0 0 6px rgba(255,107,53,0); }
+}
+.era-card.current {
+  animation: era-pulse 2.5s ease-in-out infinite !important;
+}
+
+/* ── SLIDE 10: Pull quote larger ── */
+.quote-card .qtext em {
+  font-size: clamp(0.9rem, 1.1vw, 1.02rem);
+  display: block;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ── SLIDE 12: Colored columns ── */
+.col-card.left-col {
+  background: rgba(0,217,192,0.04) !important;
+  border-color: rgba(0,217,192,0.22) !important;
+}
+.col-card.left-col .col-card-head h3 { color: #00D9C0; }
+.col-card.right-col {
+  background: rgba(255,107,53,0.04) !important;
+  border-color: rgba(255,107,53,0.22) !important;
+}
+.col-card.right-col .col-card-head h3 { color: #FF6B35; }
+
+/* ── SLIDE 14: Bigger project images ── */
+.proj-image-wrap {
+  height: clamp(130px, 20vh, 190px) !important;
+  flex-shrink: 0;
+}
+
+/* ── SLIDE 15: Skill category colors ── */
+.skill-card[data-cat="core"] { border-top: 2px solid rgba(255,107,53,0.7); }
+.skill-card[data-cat="ai"]   { border-top: 2px solid rgba(0,217,192,0.7); }
+.skill-card[data-cat="tech"] { border-top: 2px solid rgba(77,159,255,0.7); }
+.skill-card[data-cat="soft"] { border-top: 2px solid rgba(176,107,255,0.7); }
+.skill-card[data-cat="meta"] { border-top: 2px solid rgba(255,182,39,0.7); }
+.skill-card[data-cat="core"] .skill-cat { color: #FF6B35; }
+.skill-card[data-cat="ai"]   .skill-cat { color: #00D9C0; }
+.skill-card[data-cat="tech"] .skill-cat { color: #4D9FFF; }
+.skill-card[data-cat="soft"] .skill-cat { color: #B06BFF; }
+.skill-card[data-cat="meta"] .skill-cat { color: #FFB627; }
+
+/* ── SLIDE 18: Bigger Q numbers ── */
+.q-card .q-num {
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem) !important;
+  font-weight: 900 !important;
+  color: rgba(255,107,53,0.28) !important;
+  line-height: 1 !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  letter-spacing: -0.02em;
+}
+.q-card .q-title {
+  font-size: clamp(0.8rem, 0.96vw, 0.9rem) !important;
+  font-weight: 600 !important;
+  color: #E8E8F0 !important;
+}
+
+/* ── SLIDE 3: Timeline connecting dots ── */
+.timeline {
+  position: relative;
+}
+.timeline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,107,53,0.25), transparent);
+  pointer-events: none;
+}
+.stop {
+  position: relative;
+}
+.stop.current::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FF6B35;
+  box-shadow: 0 0 10px rgba(255,107,53,0.8);
+  z-index: 2;
+}
+
+/* ── Mobile overrides for new layouts ── */
+@media (max-width: 700px) {
+  .stats-hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .stat-hero-num {
+    font-size: 2.2rem !important;
+  }
+  .career-ladder { gap: 0 !important; }
+  .ladder-circle { width: 28px !important; height: 28px !important; font-size: 0.62rem !important; }
+  .ladder-node { width: 38px !important; }
+  .ladder-content { padding: 8px 10px !important; margin-right: 8px !important; }
+  .journal-entries { gap: 6px !important; }
+  .je-num { font-size: 1.8rem !important; width: 32px !important; }
+  .rank-pill { flex: none; }
+  .why-rankings { flex-wrap: wrap !important; }
+  .rank-pill .rank-num { font-size: 1.6rem !important; }
+}
