@@ -10,67 +10,95 @@ export function slide10() {
         <span class="label"><span class="ldot"></span>08 · מה אומרים מי שבונים את זה</span>
         <h2 style="margin-top:14px">שלושה אנשים. <span class="accent">אותו מסר.</span></h2>
         <p class="lead">
-          המנהיגים שמובילים את ה-<span class="lat">AI</span> בעולם לא חושבים שהמקצועות נעלמים. הם חושבים 
-          ש<strong>הצורה משתנה</strong>. שזה מגביר אנושיות. שצריך עוד אנשים, לא פחות.
+          המנהיגים שמובילים את ה-<span class="lat">AI</span> בעולם לא חושבים שמקצועות נעלמים —
+          הם חושבים שה-<span class="accent">ceiling</span> של מה שאנשים יכולים להשיג <strong>עולה דרמטית.</strong>
         </p>
       </div>
       <div class="quotes-grid anim-fade" style="animation-delay:0.3s">
+
         <div class="quote-card">
-          <img class="quote-photo" src="data:image/jpeg;base64,${ALTMAN_B64}" alt="Sam Altman" />
-          <div class="qmark">"</div>
-          <div class="qtext">
-            <em>"The shape of jobs will change."</em><br/>
-            צורת העבודה תשתנה — אנשים יוכלו להגיע ל<em>גבהים גדולים יותר</em> בעזרת הכלים האלה.
+          <div class="quote-header">
+            <img class="quote-photo" src="data:image/jpeg;base64,${ALTMAN_B64}" alt="Sam Altman" />
+            <div class="quote-person">
+              <div class="qauthor">Sam Altman</div>
+              <div class="qrole"><span class="lat">CEO</span>, OpenAI · Reflections Blog, ינואר 2025</div>
+            </div>
           </div>
-          <div class="qauthor">Sam Altman</div>
-          <div class="qrole"><span class="lat">CEO</span>, OpenAI · נאום ב-Harvard, 2024</div>
+          <div class="qtext">
+            <span class="lat qen">"The ability for one person to get much more done in 2030 than they could in 2020 will be a striking change — and one many people will figure out how to benefit from."</span>
+            <br/><br/>
+            היכולת של <span class="accent">אדם אחד לעשות הרבה יותר ב-2030</span> מאשר ב-2020 תהיה שינוי מרשים —
+            <em>ואנשים רבים ידעו להפיק ממנו תועלת.</em>
+          </div>
+          <div class="q-takeaway">
+            <strong>לכם זה אומר:</strong> מי שרותם <span class="lat">AI</span> נכון — עובד <span class="accent">ב-10x יחסית למי שלא.</span>
+          </div>
           <div class="qcompany">
             <span class="qco-logo" style="background:#10A37F"><img src="https://cdn.simpleicons.org/openai/ffffff" alt="OpenAI" /></span>
             <span class="qco-name">OpenAI</span>
             <span class="qco-desc">יוצרי ChatGPT · 800M משתמשים שבועיים</span>
           </div>
           <div class="qsource">
-            <a href="https://www.hbs.edu/bigs/sam-altman-harvard-business-school" target="_blank">hbs.edu/bigs/sam-altman</a>
+            <a href="https://blog.samaltman.com/reflections" target="_blank">blog.samaltman.com/reflections</a> · ינואר 2025
           </div>
         </div>
+
         <div class="quote-card">
-          <img class="quote-photo" src="data:image/jpeg;base64,${HASSABIS_B64}" alt="Demis Hassabis" />
-          <div class="qmark">"</div>
-          <div class="qtext">
-            <em>"AI as an amplifier of human ingenuity."</em><br/>
-            ה-<span class="lat">AI</span> הוא <em>מגבר של גאוניות אנושית</em>. נצטרך הרבה יותר חוקרים בכל התחומים, לא פחות.
+          <div class="quote-header">
+            <img class="quote-photo" src="data:image/jpeg;base64,${HASSABIS_B64}" alt="Demis Hassabis" />
+            <div class="quote-person">
+              <div class="qauthor">Demis Hassabis</div>
+              <div class="qrole">Nobel Chemistry 2024 · <span class="lat">CEO</span>, Google DeepMind · <span class="lat">TIME</span> 2025</div>
+            </div>
           </div>
-          <div class="qauthor">Demis Hassabis</div>
-          <div class="qrole">Nobel Chemistry 2024 · <span class="lat">CEO</span>, Google DeepMind · ראיון ב-TIME 2025</div>
+          <div class="qtext">
+            <span class="lat qen">"I believe AI is going to be the most beneficial technology ever created — but only if we apply it in the right way."</span>
+            <br/><br/>
+            <span class="accent">AlphaFold</span> — <em>ה-AI של <span class="lat">Google DeepMind</span> שחזה מבנה תלת-ממדי של חלבונים, פרס נובל לכימיה 2024</em> —
+            <span class="accent">לא ביטל חוקרים. פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</span>
+          </div>
+          <div class="q-takeaway">
+            <strong>לכם זה אומר:</strong> בכל תחום שתיכנסו אליו — <span class="lat">AI</span> יהיה <span class="accent">הכלי שמכפיל את מה שאתם יכולים לעשות.</span>
+          </div>
           <div class="qcompany">
-            <span class="qco-logo" style="background:#4285F4"><img src="https://cdn.simpleicons.org/googledeepmind/ffffff" alt="Google DeepMind" /></span>
+            <span class="qco-logo" style="background:#4285F4"><img src="https://cdn.simpleicons.org/googlegemini/ffffff" alt="Google DeepMind" /></span>
             <span class="qco-name">Google DeepMind</span>
-            <span class="qco-desc">המעבדה שיצרה את AlphaFold ו-Gemini</span>
+            <span class="qco-desc">יוצרי AlphaFold ו-Gemini · נובל לכימיה 2024</span>
           </div>
           <div class="qsource">
-            <a href="https://time.com/7280740/demis-hassabis-interview/" target="_blank">time.com/demis-hassabis</a>
+            <a href="https://x.com/NobelPrize/status/1845163525418664131" target="_blank">Nobel Prize Chemistry 2024</a>
           </div>
         </div>
+
         <div class="quote-card">
-          <img class="quote-photo" src="data:image/jpeg;base64,${MATIAS_B64}" alt="Yossi Matias" />
-          <div class="qmark">"</div>
-          <div class="qtext">
-            <em>"We're going to need many more researchers in all disciplines."</em><br/>
-            עם <span class="lat">AlphaFold</span>, <em>יש לנו יותר חוקרי חלבונים, לא פחות.</em> הם עכשיו עובדים על שאלות גדולות יותר.
+          <div class="quote-header">
+            <img class="quote-photo" src="data:image/jpeg;base64,${MATIAS_B64}" alt="Yossi Matias" />
+            <div class="quote-person">
+              <div class="qauthor">Yossi Matias · יוסי מטיאס</div>
+              <div class="qrole"><span class="lat">VP</span> Engineering &amp; Research, Google · בוגר ת"א</div>
+            </div>
           </div>
-          <div class="qauthor">Yossi Matias · יוסי מטיאס</div>
-          <div class="qrole"><span class="lat">VP</span> Engineering & Research, Google · בוגר ת״א</div>
+          <div class="qtext">
+            <span class="lat qen">"AI is an amplifier of human ingenuity — it really empowers the scientists, the healthcare workers, the teachers, the business people."</span>
+            <br/><br/>
+            <span class="accent">AI הוא מגבר של גאוניות אנושית.</span>
+            <em>"התרחיש היחיד שבו נצטרך פחות חוקרים הוא אם כבר ענינו על כל השאלות הגדולות — ואני לא חושב שמישהו מאמין בכך."</em>
+          </div>
+          <div class="q-takeaway">
+            <strong>לכם זה אומר:</strong> לא מהנדס שיוחלף ב-<span class="lat">AI</span> —
+            אלא <span class="accent">מהנדס שרותם AI וישאל שאלות שלא יכול היה לשאול קודם.</span>
+          </div>
           <div class="qcompany">
             <span class="qco-logo" style="background:#EA4335"><img src="https://cdn.simpleicons.org/google/ffffff" alt="Google" /></span>
             <span class="qco-name">Google Israel</span>
-            <span class="qco-desc">מרכז המחקר הגדול של גוגל מחוץ לארה״ב · ת״א</span>
+            <span class="qco-desc">מרכז המחקר הגדול של גוגל מחוץ לארה"ב · ת"א</span>
           </div>
           <div class="qsource">
             <a href="https://www.bigtechnology.com/p/google-research-head-yossi-matias" target="_blank">bigtechnology.com/yossi-matias</a>
           </div>
         </div>
+
       </div>
     </div>
   `;
 }
-

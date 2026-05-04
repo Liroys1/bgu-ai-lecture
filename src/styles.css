@@ -1304,16 +1304,48 @@ display: inline-block;
 
 /* ========== QUOTE CARDS WITH REAL PHOTOS ========== */
 .quote-photo {
-width: clamp(56px, 6vw, 72px);
-height: clamp(56px, 6vw, 72px);
+width: clamp(52px, 5.5vw, 64px);
+height: clamp(52px, 5.5vw, 64px);
 border-radius: 50%;
 object-fit: cover;
 object-position: center top;
 border: 2px solid rgba(255,107,53,0.4);
 box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-margin-bottom: 8px;
+margin-bottom: 0;
 flex-shrink: 0;
 }
+.quote-header {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 6px;
+}
+.quote-person {
+display: flex;
+flex-direction: column;
+gap: 3px;
+}
+.quote-header .qauthor { margin-top: 0 !important; }
+.qen {
+display: block;
+color: #FFB627;
+font-style: italic;
+font-size: 0.9em;
+line-height: 1.45;
+direction: ltr;
+unicode-bidi: isolate;
+margin-bottom: 2px;
+}
+.q-takeaway {
+background: rgba(255,183,39,0.07);
+border-right: 2px solid #FFB627;
+padding: 7px 10px 7px 8px;
+border-radius: 0 6px 6px 0;
+font-size: clamp(0.78rem, 0.95vw, 0.9rem) !important;
+line-height: 1.5;
+color: #D5D5E2;
+}
+.q-takeaway strong { color: #FFB627; }
 .quote-card { padding-top: clamp(14px, 1.8vw, 20px) !important; display: flex !important; flex-direction: column !important; }
 .quote-card .qmark { display: none !important; }
 
