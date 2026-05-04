@@ -25,8 +25,6 @@ export function slide10() {
             </div>
           </div>
           <div class="qtext">
-            <span class="lat qen">"Generally speaking, the ability for one person to get much more done in 2030 than they could in 2020 will be a striking change, and one many people will figure out how to benefit from."</span>
-            <br/>
             "היכולת של <span class="accent">אדם אחד להשיג ב-2030 הרבה יותר</span> ממה שיכול היה ב-2020 תהיה שינוי מרשים — ורבים ידעו להפיק ממנו תועלת."
             <em>אותו אדם, אותן שעות — output של צוות שלם. לא כי הוא חכם יותר, אלא כי ה-AI מגדיל את מה שאפשר לעשות לבד.</em>
           </div>
@@ -49,8 +47,6 @@ export function slide10() {
             </div>
           </div>
           <div class="qtext">
-            <span class="lat qen">"I think about it as AI as an amplifier of human ingenuity."</span>
-            <br/>
             "אני חושב על זה כ-<span class="accent">AI שהוא מגבר של גאוניות אנושית</span> — שמעצים מדענים, עובדי בריאות, מורים, אנשי עסקים."
             <em>"התרחיש היחיד שנצטרך פחות חוקרים הוא אם ענינו על כל השאלות הגדולות — ואני לא חושב שמישהו מאמין בכך."</em>
             מגבר — לא תחליף. <span class="accent">כמו מיקרוסקופ שהגדיל את יכולת המדענים לראות, לא ביטל אותם.</span>
@@ -74,8 +70,6 @@ export function slide10() {
             </div>
           </div>
           <div class="qtext">
-            <span class="lat qen">"I believe AI is going to be the most beneficial technology ever created — but only if we apply it in the right way and build it in the right way."</span>
-            <br/>
             "אני מאמין ש-AI יהיה <span class="accent">הטכנולוגיה המועילה ביותר שנוצרה אי פעם</span> — אבל רק אם נבנה ונשתמש בה בדרך הנכונה."
             <em><span class="accent">AlphaFold</span> — ה-AI שפתר תוך שנים שאלה שהיתה פתוחה 50 שנה: מה המבנה התלת-ממדי של חלבון. פרס נובל לכימיה 2024. לא ביטל חוקרים — <strong>פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</strong></em>
           </div>
