@@ -750,6 +750,8 @@ display: flex; flex-direction: column;
 .col-card.right-col .col-card-head h3 { color: #FFB627; }
 .col-card .badge { font-family: ‘Inter’, monospace; font-size: 0.62rem; padding: 3px 7px; background: rgba(255,255,255,0.06); border-radius: 100px; color: #A0A0AE; text-transform: uppercase; letter-spacing: 0.08em; direction: ltr; }
 .col-card.right-col .badge { background: rgba(255,107,53,0.15); color: #FFB627; }
+.col-card .badge.badge-alt { background: rgba(0,217,192,0.12); color: #00D9C0; }
+.col-card .badge-group { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
 .col-card ul { display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 12px); }
 .col-card li { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 .col-card li:last-child { border: none; }

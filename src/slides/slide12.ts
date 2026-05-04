@@ -50,7 +50,10 @@ export function slide12() {
         <div class="col-card right-col">
           <div class="col-card-head">
             <h3>אתם עושים</h3>
-            <span class="badge">judgment</span>
+            <div class="badge-group">
+              <span class="badge">judgment</span>
+              <span class="badge badge-alt">orchestration</span>
+            </div>
           </div>
           <ul>${youList}</ul>
         </div>
