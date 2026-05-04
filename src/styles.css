@@ -806,7 +806,7 @@ align-items: stretch;
 .three-slide h2 .accent { color: #FF6B35; }
 .three-slide p { font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: #A0A0AE; line-height: 1.7; margin-top: 18px; }
 /* ---- position-slide (slide13 — layer stack) ---- */
-.position-slide { gap: clamp(8px, 1.4vh, 14px); }
+.position-slide { gap: clamp(5px, 0.9vh, 10px); }
 .position-slide h2 { font-size: clamp(1.8rem, 4.2vw, 3.2rem); color: #FFFFFF; }
 .position-slide h2 .accent { color: #FF6B35; }
 .ps-top { flex-shrink: 0; }
@@ -925,14 +925,14 @@ animation: dotRise 2.5s ease-in-out infinite;
 .ps-closing {
 flex-shrink: 0;
 text-align: center;
-padding: clamp(10px, 1.6vh, 18px) clamp(16px, 2.4vw, 28px);
+padding: clamp(7px, 1vh, 12px) clamp(14px, 2vw, 24px);
 background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,182,39,0.04));
 border: 1px solid rgba(255,107,53,0.25);
-border-radius: 14px;
-font-size: clamp(1.2rem, 2vw, 1.8rem);
+border-radius: 12px;
+font-size: clamp(1rem, 1.5vw, 1.35rem);
 color: #E8E8EE;
 font-weight: 600;
-line-height: 1.4;
+line-height: 1.35;
 }
 .ps-closing em { color: #FFB627; font-style: italic; }
 .ps-closing strong { color: #E8E8EE; font-weight: 700; }
