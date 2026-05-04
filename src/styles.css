@@ -2188,8 +2188,8 @@ direction: rtl;
 
 /* ========== FINAL TEXT SIZE OVERRIDES (MUST WIN) ========== */
 .frame h2 { font-size: clamp(2.2rem, 3.5vw, 3.4rem) !important; line-height: 1.12 !important; }
-/* Two-class specificity beats .frame h2 above — for content-dense slides */
-.frame.schreiber-slide h2 { font-size: clamp(1.3rem, 1.8vw, 1.85rem) !important; line-height: 1.2 !important; }
+/* Two-class specificity beats .frame h2 above — full-width single-line quote */
+.frame.schreiber-slide h2 { font-size: clamp(1.6rem, 2.8vw, 2.8rem) !important; line-height: 1.15 !important; white-space: nowrap !important; }
 .frame h1 { font-size: clamp(2.5rem, 4.5vw, 4rem) !important; line-height: 1 !important; }
 .frame .lead { font-size: clamp(1.1rem, 1.35vw, 1.3rem) !important; line-height: 1.6 !important; }
 .frame p:not(.lead) { font-size: clamp(1rem, 1.2vw, 1.15rem) !important; line-height: 1.6 !important; }

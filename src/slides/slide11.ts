@@ -7,7 +7,7 @@ export function slide11() {
     <div class="frame schreiber-slide">
       <div class="anim-up">
         <span class="label"><span class="ldot"></span>09 · הציטוט שגרם לי לקבל את ההחלטה</span>
-        <h2 style="margin-top:14px"><em>"החייזרים נחתו —</em><br/>והם מוכנים לעבוד <em>בחינם."</em></h2>
+        <h2 style="margin-top:10px;white-space:nowrap"><em>"החייזרים נחתו —</em> והם מוכנים לעבוד <em>בחינם."</em></h2>
       </div>
       <div class="grid anim-fade" style="animation-delay:0.3s">
         <div class="schreiber-quote">
