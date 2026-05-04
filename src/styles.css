@@ -2005,9 +2005,9 @@ margin-bottom: 4px;
 list-style: none;
 padding: 0;
 margin: 0;
-display: flex;
-flex-direction: column;
-gap: 4px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3px 6px;
 }
 .era-skills li {
 font-size: clamp(0.7rem, 0.82vw, 0.78rem);
@@ -3703,10 +3703,14 @@ em {
   font-size: clamp(0.58rem, 0.68vw, 0.65rem);
   background: rgba(255,255,255,0.07);
   color: #C0C0CC;
-  padding: 2px 6px;
+  padding: 2px 5px;
   border-radius: 4px;
   white-space: nowrap;
   line-height: 1.5;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 }
 .era-card.current .es-tag {
   background: rgba(255,107,53,0.12);
