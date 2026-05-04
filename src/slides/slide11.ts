@@ -31,27 +31,17 @@ export function slide11() {
             <a href="https://www.calcalistech.com/ctechnews/article/inu71yqd6" target="_blank">CTech · ישראל 2.0</a>
           </div>
         </div>
-        <div class="video-container">
-          <iframe class="schreiber-iframe" src="https://www.youtube.com/embed/5gqtckj0Ohc?rel=0" title="Daniel Schreiber - The Aliens Have Landed" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <!-- old fallback link removed -->
-        <div style="display:none">
-          <a href="https://www.youtube.com/watch?v=5gqtckj0Ohc" target="_blank" rel="noopener" class="video-wrap" style="display:block; text-decoration:none; cursor:pointer; position:relative;">
-            <img src="https://img.youtube.com/vi/5gqtckj0Ohc/maxresdefault.jpg" alt="Daniel Schreiber - The Aliens Have Landed" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.src='https://img.youtube.com/vi/5gqtckj0Ohc/hqdefault.jpg'" />
-            <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.5)); display:flex; align-items:center; justify-content:center;">
-              <div class="play-btn-pulse" style="width:72px; height:72px; border-radius:50%; background:rgba(255,107,53,0.95); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(255,107,53,0.5);">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-right:-3px"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+        <a href="https://www.youtube.com/watch?v=5gqtckj0Ohc" target="_blank" rel="noopener" class="video-thumb-link">
+          <img src="https://img.youtube.com/vi/5gqtckj0Ohc/maxresdefault.jpg"
+               alt="Daniel Schreiber - החייזרים נחתו"
+               onerror="this.src='https://img.youtube.com/vi/5gqtckj0Ohc/hqdefault.jpg'" />
+          <div class="play-overlay">
+            <div class="play-btn-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style="margin-right:-3px"><path d="M8 5v14l11-7z"/></svg>
             </div>
-            <div style="position:absolute; bottom:12px; right:12px; left:12px; color:white; font-size:0.85rem; font-weight:600; text-shadow:0 2px 8px rgba(0,0,0,0.8); line-height:1.3;">
-              "החייזרים נחתו" · ההרצאה המלאה ב-<span class="lat">YouTube</span>
-            </div>
-          </a>
-          <div class="video-caption">
-            <a href="https://www.youtube.com/watch?v=5gqtckj0Ohc" target="_blank" rel="noopener">youtube.com/watch?v=5gqtckj0Ohc</a> · 
-            דניאל שרייבר · ינואר 2025 · 14 דקות
+            <div class="play-label-text">"החייזרים נחתו" · הרצאת דניאל שרייבר · ינואר 2025 · לחצו לצפייה</div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   `;
