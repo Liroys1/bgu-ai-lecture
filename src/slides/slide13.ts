@@ -1,24 +1,51 @@
 import { topbar } from './topbar';
 
-/* SLIDE 13: 3D system view */
+/* SLIDE 13: YOUR POSITION - YOU above AI, not competing with it */
 export function slide13() {
+  const examples = [
+    {
+      num: '01',
+      ai: 'AI: "צמצם מלאי ב-20% — חסכון מוכח"',
+      you: 'אתם: הספק העיקרי עומד לשבות בשבוע הבא. דווקא עכשיו צריך מאגר.'
+    },
+    {
+      num: '02',
+      ai: 'AI: "הסר שלב 4 מהתהליך — מקצר 22% זמן"',
+      you: 'אתם: שלב 4 הוא ביקורת בטיחות חוקית. לא נוגעים בו.'
+    },
+    {
+      num: '03',
+      ai: 'AI: "העבר עובד A לקו B — אופטימלי מבחינת עומס"',
+      you: 'אתם: A היחידי שיודע לתחזק את המכונה הישנה. אם הוא עוזב — אנחנו קורסים.'
+    }
+  ];
+
+  const exHTML = examples.map(e => `
+    <div class="sys-ex-new">
+      <div class="sxn-num">${e.num}</div>
+      <div class="sxn-body">
+        <div class="sxn-ai"><span class="sxn-label-ai">AI</span>${e.ai.replace('AI: ', '')}</div>
+        <div class="sxn-sep">← אבל</div>
+        <div class="sxn-you"><span class="sxn-label-you">YOU</span>${e.you.replace('אתם: ', '')}</div>
+      </div>
+    </div>
+  `).join('');
+
   return `
-    ${topbar(14, 'SYSTEMS VIEW')}
-    <div class="frame three-slide">
-      <div class="three-top">
-        <div class="three-intro">
-          <span class="label anim-fade"><span class="ldot"></span>11 · המבט מלמעלה</span>
-          <h2 class="anim-up">
-            התפקיד שלכם:<br/>
-            לראות את <em>המערכת השלמה.</em>
-          </h2>
-          <p class="anim-up" style="animation-delay:0.2s">
-            <span class="lat">AI</span> רואה צמתים. אתם רואים את <strong>הקשרים ביניהם</strong>.
-            איפה הזרימה נתקעת, איפה יש כפילות, איפה לא נצרך. <em>זה מה שלימדו אתכם בפקולטה</em> — ואין לזה תחליף.
+    ${topbar(14, 'YOUR POSITION')}
+    <div class="frame position-slide">
+      <div class="position-top anim-up">
+        <div class="position-text">
+          <span class="label"><span class="ldot"></span>11 · המיקום שלכם בעולם החדש</span>
+          <h2 style="margin-top:10px">ה-<span class="lat">AI</span> מבצע. <span class="accent">אתם מחליטים.</span></h2>
+          <p class="lead" style="margin-top:8px">
+            ה-<span class="lat">AI</span> צודק טכנית — תמיד. אבל הנתונים לא מספרים הכל.
+            <strong>ההקשר, המגבלות, הערכים — זה אתם.</strong>
+            ואף מודל לא ישתפר בזה.
           </p>
         </div>
         <div class="three-host" id="threeHost">
-          <div class="three-tag">SYSTEM VIEW · IE 2026</div>
+          <div class="three-tag">YOU · HUMANS · AI AGENTS</div>
           <div class="three-foot">live · interactive</div>
           <div class="three-legend">
             <div class="item"><span class="swatch" style="background:#FF6B35"></span><span>YOU</span></div>
@@ -27,27 +54,12 @@ export function slide13() {
           </div>
         </div>
       </div>
-      <div class="systems-examples anim-fade" style="animation-delay:0.35s">
-        <div class="sys-ex">
-          <div class="sys-ex-num">01</div>
-          <div class="sys-ex-t">שינוי בקופה → גלים בכל הארגון</div>
-          <div class="sys-ex-d">משנים מסך תשלום → עומס בשירות לקוחות, שינוי במחסן, עיכוב במשלוח. <strong>אתם רואים את כל ההשפעות.</strong></div>
-        </div>
-        <div class="sys-ex">
-          <div class="sys-ex-num">02</div>
-          <div class="sys-ex-t"><span class="lat">Bottleneck</span> בייצור = פקק בכל ה-<span class="lat">supply chain</span></div>
-          <div class="sys-ex-d">תחנה אחת איטית עוצרת את כל הקו. <strong>אתם מזהים את החוליה החלשה</strong> לפני שהיא הופכת למשבר.</div>
-        </div>
-        <div class="sys-ex">
-          <div class="sys-ex-num">03</div>
-          <div class="sys-ex-t">דאטה רעה בקלט = החלטות רעות בכל הארגון</div>
-          <div class="sys-ex-d"><span class="lat">Garbage in, garbage out</span>. <strong>אתם בודקים את המקור</strong> — לא רק את הפלט של ה-<span class="lat">AI</span>.</div>
-        </div>
+      <div class="sys-examples-new anim-fade" style="animation-delay:0.3s">
+        ${exHTML}
       </div>
-      <div class="systems-closing anim-up" style="animation-delay:0.55s">
-        <span class="lat">AI</span> יכול לעבד דאטה. <em>רק אתם</em> רואים את <strong>הקשרים בין הצמתים.</strong>
+      <div class="position-closing anim-up" style="animation-delay:0.55s">
+        <span class="lat">AI</span> רואה <em>דאטה.</em> <strong>אתם רואים <span class="accent">משמעות.</span></strong>
       </div>
     </div>
   `;
 }
-
