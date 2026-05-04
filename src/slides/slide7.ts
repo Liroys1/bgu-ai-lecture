@@ -7,10 +7,10 @@ export function slide7() {
     <div class="frame stats-hero-slide">
       <div class="anim-up">
         <span class="label"><span class="ldot"></span>05 · עוד 4 מספרים</span>
-        <h2 style="margin-top:8px">השוק <span class="accent">התחלק לשניים.</span> בחצי החדש — אתם מבוקשים.</h2>
+        <h2 style="margin-top:8px">השוק <span class="accent">התחלק לשניים.</span> בחצי החדש — <span class="accent">אתם מבוקשים.</span></h2>
         <p class="lead" style="margin-top:6px">
           צמיחה נטו של 78M משרות — אבל לא אותן משרות ולא אותם אנשים.
-          <strong>בתפקידי AI ודאטה יש מחסור אדיר. ההזדמנות שלכם.</strong>
+          בתפקידי AI ודאטה יש מחסור אדיר. <strong style="color:#00D9C0">ההזדמנות שלכם.</strong>
         </p>
       </div>
       <div class="stats-hero-grid anim-fade" style="animation-delay:0.3s">
