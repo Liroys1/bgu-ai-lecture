@@ -383,7 +383,7 @@ border-radius: 14px;
 padding: clamp(18px, 2.2vw, 26px);
 display: flex; flex-direction: column; gap: 10px;
 }
-.why-card .num { font-family: ‘Inter’, monospace; font-size: 1.9rem; font-weight: 900; color: #FF6B35; line-height: 1; direction: ltr; }
+.why-card .num { font-family: ‘Inter’, monospace; font-size: 1.9rem; font-weight: 900; color: #FF6B35; line-height: 1; direction: ltr; text-align: right; display: block; }
 .why-card .t { font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: #FFFFFF; font-weight: 700; line-height: 1.2; }
 .why-card .d { font-size: clamp(0.78rem, 1.1vw, 0.88rem); color: #A0A0AE; line-height: 1.6; }
 
@@ -1892,7 +1892,7 @@ left: 5%;
 right: 5%;
 top: 30px;
 height: 2px;
-background: linear-gradient(90deg, rgba(107,169,255,0.3), rgba(176,132,255,0.3), rgba(255,182,39,0.3), rgba(255,107,53,0.6));
+background: linear-gradient(270deg, rgba(107,169,255,0.3), rgba(176,132,255,0.3), rgba(255,182,39,0.3), rgba(255,107,53,0.6));
 z-index: 0;
 pointer-events: none;
 }
@@ -2678,4 +2678,1032 @@ border-radius: 4px;
   .stat-card .stat-num,
   .era-year,
   .phase-card .phase-num { font-size: 2rem !important; }
+}
+
+/* ============================================================
+   PREMIUM POLISH LAYER — additive only, no layout impact
+   ============================================================ */
+
+/* === Smoother slide transition with subtle scale === */
+.slide {
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transform: scale(0.985);
+}
+.slide.active {
+  transform: scale(1);
+}
+
+/* === Animated subtle background gradient on stage === */
+@keyframes ambientShift {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 0 0;
+  }
+  50% {
+    background-position: 100% 30%, 0% 70%, 0 0;
+  }
+}
+#stage {
+  background-size: 180% 180%, 180% 180%, 100% 100% !important;
+  animation: ambientShift 28s ease-in-out infinite;
+}
+
+/* === Card hover micro-interactions (desktop only) === */
+@media (hover: hover) and (pointer: fine) {
+  .stop, .why-card, .stat-card, .job-card, .quote-card,
+  .act-card, .skill-card, .lesson-card, .phase-card, .q-card,
+  .proj-card, .era-card, .sys-ex {
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      background 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .why-card:hover,
+  .stat-card:hover,
+  .job-card:hover,
+  .quote-card:hover,
+  .act-card:hover,
+  .lesson-card:hover,
+  .phase-card:hover,
+  .q-card:hover,
+  .proj-card:hover,
+  .sys-ex:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 107, 53, 0.25);
+    border-color: rgba(255, 107, 53, 0.35);
+  }
+  .skill-card { cursor: pointer; }
+  .skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 217, 192, 0.15), 0 0 0 1px rgba(0, 217, 192, 0.3);
+    border-color: rgba(0, 217, 192, 0.4);
+  }
+  .stop:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+  .era-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 182, 39, 0.35);
+  }
+}
+
+/* === Glow on accent text and big numbers === */
+.accent,
+.accent-grad {
+  text-shadow: 0 0 24px rgba(255, 107, 53, 0.25);
+}
+.why-card .num,
+.stat-card .stat-num,
+.as-num {
+  text-shadow: 0 0 30px rgba(255, 107, 53, 0.35);
+}
+em {
+  text-shadow: 0 0 20px rgba(255, 182, 39, 0.2);
+}
+
+/* === Polished navigation === */
+.nav {
+  transition: background 0.3s, box-shadow 0.3s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.nav button {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s,
+    color 0.25s,
+    box-shadow 0.25s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav button:not(:disabled):hover {
+    transform: scale(1.08);
+    background: rgba(255, 107, 53, 0.15);
+    color: #FF6B35;
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.2);
+  }
+}
+.nav button:not(:disabled):active {
+  transform: scale(0.94);
+}
+.nav .dot {
+  transition:
+    background 0.3s,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s;
+}
+.nav .dot.active {
+  box-shadow: 0 0 12px rgba(255, 107, 53, 0.6);
+  transform: scale(1.3);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav .dot:hover { transform: scale(1.4); }
+}
+
+/* === Stagger animation: more lively easing === */
+@keyframes staggerInPolish {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    filter: blur(4px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+.stagger-anim {
+  animation: staggerInPolish 0.65s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+/* === Live badge breathing pulse === */
+@keyframes livePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.6); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
+}
+.live-badge,
+.proj-card.live::before {
+  animation: livePulse 2s ease-out infinite;
+}
+
+/* === Label entrance with sliding underline === */
+.label {
+  position: relative;
+  overflow: hidden;
+}
+.slide.active .label::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.15), transparent);
+  animation: labelShimmer 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  pointer-events: none;
+}
+@keyframes labelShimmer {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+/* === Photo wrap: subtle floating === */
+@keyframes photoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.s1 .photo-wrap,
+.thanks-hero .photo-wrap-sm {
+  animation: photoFloat 6s ease-in-out infinite;
+}
+
+/* === Hour bar smoother transition === */
+.hour-bar .fill {
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(90deg, #FF6B35, #FFB627, #FF6B35);
+  background-size: 200% 100%;
+  animation: hourBarShimmer 4s linear infinite;
+}
+@keyframes hourBarShimmer {
+  from { background-position: 0% 0; }
+  to { background-position: 200% 0; }
+}
+
+/* === Reduced motion respect === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #stage { animation: none !important; }
+}
+
+/* ============================================================
+   ENHANCED FEATURES: nav counter, dot states, particles,
+   per-act tinting, grid overview
+   ============================================================ */
+
+/* === Nav center: counter + dots === */
+.nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.slide-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  font-family: 'Inter', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #A0A0AE;
+  letter-spacing: 0.04em;
+  direction: ltr;
+}
+.slide-counter .counter-current { color: #FF6B35; font-weight: 800; font-size: 0.85rem; }
+.slide-counter .counter-sep { color: #4A4A55; }
+.slide-counter .counter-total { color: #6B6B7B; }
+
+/* === Dot states === */
+.nav .dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  max-width: 360px;
+  justify-content: center;
+}
+.nav .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(255,255,255,0.18);
+  transition:
+    background 0.3s,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s;
+}
+.nav .dot.past { background: rgba(255,107,53,0.55); }
+.nav .dot.future { background: rgba(255,255,255,0.12); }
+.nav .dot.active {
+  background: #FF6B35;
+  box-shadow: 0 0 12px rgba(255,107,53,0.7);
+  transform: scale(1.5);
+}
+
+/* === Grid overview toggle button === */
+.nav-grid-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: #A0A0AE;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, color 0.25s, transform 0.25s, border-color 0.25s;
+}
+.nav-grid-toggle:hover {
+  background: rgba(255,107,53,0.12);
+  color: #FF6B35;
+  border-color: rgba(255,107,53,0.4);
+  transform: scale(1.06);
+}
+
+/* === Slide overview / grid overlay === */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 4vh, 40px) clamp(20px, 4vw, 60px);
+  animation: gridFadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes gridFadeIn {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to { opacity: 1; backdrop-filter: blur(20px); }
+}
+.grid-overlay-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(16px, 3vh, 28px);
+  direction: rtl;
+}
+.grid-overlay-title {
+  font-family: 'Heebo', sans-serif;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 800;
+  color: #FFFFFF;
+}
+.grid-overlay-hint {
+  font-size: 0.85rem;
+  color: #6B6B7B;
+  margin-top: 4px;
+}
+.grid-overlay-hint kbd {
+  display: inline-block;
+  padding: 1px 7px;
+  margin: 0 3px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-family: 'Inter', monospace;
+  font-size: 0.75rem;
+  color: #E8E8EE;
+}
+.grid-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: #E8E8EE;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+}
+.grid-close:hover {
+  background: rgba(255,107,53,0.15);
+  border-color: rgba(255,107,53,0.4);
+  color: #FF6B35;
+}
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(10px, 1.5vw, 18px);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 6px;
+}
+@media (max-width: 1100px) { .thumb-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 800px)  { .thumb-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 500px)  { .thumb-grid { grid-template-columns: repeat(2, 1fr); } }
+.thumb {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: clamp(10px, 1.5vw, 16px);
+  gap: 6px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: 'Heebo', sans-serif;
+  overflow: hidden;
+}
+.thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
+}
+.thumb.act-i::before    { background: radial-gradient(ellipse at top right, rgba(107,169,255,0.18), transparent 60%); }
+.thumb.act-ii::before   { background: radial-gradient(ellipse at top left, rgba(255,107,53,0.18), transparent 60%); }
+.thumb.act-iii::before  { background: radial-gradient(ellipse at bottom right, rgba(0,217,192,0.18), transparent 60%); }
+.thumb.act-intro::before { background: radial-gradient(ellipse at center, rgba(255,182,39,0.15), transparent 60%); }
+.thumb.act-outro::before { background: radial-gradient(ellipse at center, rgba(255,107,53,0.2), transparent 55%); }
+.thumb > * { position: relative; z-index: 1; }
+.thumb-num {
+  font-family: 'Inter', monospace;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.thumb-label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 700;
+  color: #E8E8EE;
+  letter-spacing: 0.04em;
+  word-break: break-word;
+}
+.thumb-act {
+  font-family: 'Inter', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #6B6B7B;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.thumb.act-i .thumb-act    { color: #6BA9FF; }
+.thumb.act-ii .thumb-act   { color: #FF8845; }
+.thumb.act-iii .thumb-act  { color: #00D9C0; }
+.thumb.act-intro .thumb-act { color: #FFB627; }
+.thumb.act-outro .thumb-act { color: #FF6B35; }
+.thumb:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255,107,53,0.4);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,107,53,0.2);
+}
+.thumb.current {
+  border-color: rgba(255,107,53,0.6);
+  box-shadow: 0 0 0 2px #FF6B35, 0 12px 32px rgba(255,107,53,0.25);
+}
+.thumb.current::after {
+  content: 'NOW';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: 'Inter', monospace;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #FF6B35;
+  background: rgba(255,107,53,0.15);
+  border: 1px solid rgba(255,107,53,0.4);
+  padding: 2px 6px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* === Per-act background tinting (subtle, additive) === */
+.slide.act-i {
+  background:
+    radial-gradient(ellipse at top right, rgba(107,169,255,0.06), transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(176,132,255,0.04), transparent 55%) !important;
+}
+.slide.act-ii {
+  background:
+    radial-gradient(ellipse at top left, rgba(255,107,53,0.07), transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(255,182,39,0.04), transparent 55%) !important;
+}
+.slide.act-iii {
+  background:
+    radial-gradient(ellipse at top right, rgba(0,217,192,0.06), transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(176,132,255,0.04), transparent 55%) !important;
+}
+.slide.act-outro {
+  background:
+    radial-gradient(ellipse at center, rgba(255,107,53,0.08), transparent 60%) !important;
+}
+
+/* === Ambient particles (slide 1 + slide 20) === */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+.particle {
+  position: absolute;
+  bottom: -20px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  filter: blur(0.5px);
+  animation: particleRise linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes particleRise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 0.9; }
+  50%  { transform: translateY(-50vh) translateX(20px); opacity: 0.7; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-105vh) translateX(-10px); opacity: 0; }
+}
+
+/* === Counter-animation: ensure stable text alignment === */
+.stat-num, .why-card .num, .as-num {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+}
+
+/* === Mobile tweaks for new chrome === */
+@media (max-width: 700px) {
+  .nav-center { gap: 4px; }
+  .slide-counter { font-size: 0.65rem; }
+  .slide-counter .counter-current { font-size: 0.78rem; }
+  .nav .dots { max-width: 220px; gap: 4px; }
+  .nav .dot { width: 6px; height: 6px; }
+  .nav-grid-toggle { width: 32px; height: 32px; }
+  .nav-grid-toggle svg { width: 14px; height: 14px; }
+  .grid-overlay { padding: 16px 14px 80px; }
+  .grid-overlay-title { font-size: 1.2rem; }
+  .grid-overlay-hint { font-size: 0.72rem; }
+  .grid-close { width: 36px; height: 36px; }
+  .thumb { aspect-ratio: 4 / 3; }
+  .thumb-num { font-size: 1.4rem; }
+  .thumb-label { font-size: 0.7rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   AUDIT IMPROVEMENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── SLIDE 7: Stats Big Number Hero ── */
+.stats-hero-slide {
+  display: flex;
+  flex-direction: column;
+}
+.stats-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.4vw, 18px);
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+.stat-hero-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: clamp(14px, 1.8vw, 24px) clamp(12px, 1.4vw, 18px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.stat-hero-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,107,53,0.04), transparent);
+  pointer-events: none;
+}
+.stat-hero-item.accent-item {
+  border-color: rgba(255,107,53,0.35);
+  background: rgba(255,107,53,0.06);
+}
+.stat-hero-item.accent-item::before {
+  background: linear-gradient(135deg, rgba(255,107,53,0.10), transparent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .stat-hero-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,107,53,0.35);
+  }
+}
+.stat-hero-num {
+  font-size: clamp(2.6rem, 4.2vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.stat-hero-num .stat-num {
+  color: #fff;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.stat-hero-unit {
+  font-size: 0.42em;
+  font-weight: 700;
+  color: #FF6B35;
+}
+.stat-hero-label {
+  font-size: clamp(0.76rem, 0.92vw, 0.88rem);
+  font-weight: 600;
+  color: #FFB627;
+  line-height: 1.3;
+}
+.stat-hero-desc {
+  font-size: clamp(0.7rem, 0.82vw, 0.8rem);
+  color: #A0A0AE;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ── SLIDE 9: Career Ladder ── */
+.senior-ladder-slide {
+  display: flex;
+  flex-direction: column;
+}
+.career-ladder {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.ladder-card {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.ladder-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 52px;
+  flex-shrink: 0;
+  padding-top: 6px;
+}
+.ladder-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFB627, #FF6B35);
+  color: #0A0A0F;
+  font-size: 0.7rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+  letter-spacing: 0.05em;
+}
+.ladder-connector {
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(255,182,39,0.45), rgba(255,182,39,0.08));
+  margin: 3px 0;
+}
+.ladder-content {
+  flex: 1;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: clamp(8px, 1.1vw, 13px) clamp(12px, 1.4vw, 18px);
+  margin: 2px 0 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: border-color 0.2s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .ladder-content:hover {
+    border-color: rgba(255,182,39,0.3);
+    background: rgba(255,182,39,0.04);
+  }
+}
+.ladder-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ladder-salary {
+  margin-right: auto;
+  font-size: clamp(0.82rem, 0.95vw, 0.92rem);
+  font-weight: 700;
+  color: #FFB627;
+  white-space: nowrap;
+}
+.ls-month {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: #6B6B7B;
+}
+.ladder-meta {
+  font-size: clamp(0.68rem, 0.8vw, 0.78rem);
+  color: #A0A0AE;
+  line-height: 1.4;
+}
+.job-role-inline {
+  font-size: inherit;
+}
+.ladder-card .job-title {
+  font-size: clamp(0.82rem, 0.98vw, 0.92rem);
+  font-weight: 600;
+  color: #E8E8F0;
+}
+.ladder-card .job-req {
+  font-size: clamp(0.66rem, 0.76vw, 0.74rem);
+  color: #7B7B8B;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 4px;
+  margin-top: 2px;
+}
+
+/* ── SLIDE 17: Journal Layout ── */
+.journal-entries {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.1vw, 14px);
+  flex: 1;
+  min-height: 0;
+}
+.journal-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(12px, 1.6vw, 22px);
+  padding: clamp(10px, 1.2vw, 16px) clamp(14px, 1.8vw, 22px);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-right: 3px solid rgba(255,107,53,0.28);
+  background: rgba(255,255,255,0.02);
+  transition: border-color 0.2s, background 0.2s;
+}
+.journal-entry.highlight {
+  border-right-color: #FFB627;
+  background: rgba(255,182,39,0.05);
+  border-color: rgba(255,182,39,0.2);
+}
+@media (hover: hover) and (pointer: fine) {
+  .journal-entry:hover {
+    border-right-color: #FF6B35;
+    background: rgba(255,107,53,0.04);
+  }
+  .journal-entry.highlight:hover {
+    border-right-color: #FFD94D;
+  }
+}
+.je-num {
+  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  font-weight: 900;
+  color: rgba(255,107,53,0.2);
+  line-height: 1;
+  flex-shrink: 0;
+  width: clamp(38px, 5vw, 56px);
+  text-align: center;
+  padding-top: 2px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.journal-entry.highlight .je-num {
+  color: rgba(255,182,39,0.38);
+}
+.je-body {
+  flex: 1;
+  min-width: 0;
+}
+.je-title {
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  font-weight: 600;
+  color: #E8E8F0;
+  line-height: 1.45;
+  margin-bottom: 5px;
+}
+.journal-entry.highlight .je-title {
+  color: #FFD94D;
+}
+.je-desc {
+  font-size: clamp(0.72rem, 0.88vw, 0.84rem);
+  color: #A0A0AE;
+  line-height: 1.5;
+}
+
+/* ── SLIDE 4: Rank pills bigger ── */
+.why-rankings {
+  display: flex;
+  gap: clamp(8px, 1.2vw, 16px);
+  margin-bottom: clamp(12px, 1.6vw, 20px);
+}
+.rank-pill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(14px, 1.8vw, 22px) clamp(10px, 1.2vw, 14px);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  gap: 5px;
+  transition: border-color 0.2s;
+}
+.rank-pill.highlight {
+  border-color: rgba(255,107,53,0.4);
+  background: rgba(255,107,53,0.07);
+}
+.rank-pill .rank-num {
+  font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
+  font-weight: 900 !important;
+  color: #FF6B35 !important;
+  line-height: 1 !important;
+  display: block !important;
+  letter-spacing: -0.02em;
+}
+.rank-pill.highlight .rank-num {
+  color: #FFB627 !important;
+}
+.rank-pill .rank-text {
+  font-size: clamp(0.7rem, 0.84vw, 0.8rem);
+  color: #A0A0AE;
+  line-height: 1.4;
+}
+
+/* ── SLIDE 5: Pulse on current era ── */
+@keyframes era-pulse {
+  0%, 100% { border-color: rgba(255,107,53,0.55); box-shadow: 0 0 0 0 rgba(255,107,53,0.2); }
+  50% { border-color: rgba(255,107,53,1); box-shadow: 0 0 0 6px rgba(255,107,53,0); }
+}
+.era-card.current {
+  animation: era-pulse 2.5s ease-in-out infinite !important;
+}
+
+/* ── SLIDE 10: Pull quote larger ── */
+.quote-card .qtext em {
+  font-size: clamp(0.9rem, 1.1vw, 1.02rem);
+  display: block;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ── SLIDE 12: Colored columns ── */
+.col-card.left-col {
+  background: rgba(0,217,192,0.04) !important;
+  border-color: rgba(0,217,192,0.22) !important;
+}
+.col-card.left-col .col-card-head h3 { color: #00D9C0; }
+.col-card.right-col {
+  background: rgba(255,107,53,0.04) !important;
+  border-color: rgba(255,107,53,0.22) !important;
+}
+.col-card.right-col .col-card-head h3 { color: #FF6B35; }
+
+/* ── SLIDE 14: Bigger project images ── */
+.proj-image-wrap {
+  height: clamp(130px, 20vh, 190px) !important;
+  flex-shrink: 0;
+}
+
+/* ── SLIDE 15: Skill category colors ── */
+.skill-card[data-cat="core"] { border-top: 2px solid rgba(255,107,53,0.7); }
+.skill-card[data-cat="ai"]   { border-top: 2px solid rgba(0,217,192,0.7); }
+.skill-card[data-cat="tech"] { border-top: 2px solid rgba(77,159,255,0.7); }
+.skill-card[data-cat="soft"] { border-top: 2px solid rgba(176,107,255,0.7); }
+.skill-card[data-cat="meta"] { border-top: 2px solid rgba(255,182,39,0.7); }
+.skill-card[data-cat="core"] .skill-cat { color: #FF6B35; }
+.skill-card[data-cat="ai"]   .skill-cat { color: #00D9C0; }
+.skill-card[data-cat="tech"] .skill-cat { color: #4D9FFF; }
+.skill-card[data-cat="soft"] .skill-cat { color: #B06BFF; }
+.skill-card[data-cat="meta"] .skill-cat { color: #FFB627; }
+
+/* ── SLIDE 18: Bigger Q numbers ── */
+.q-card .q-num {
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem) !important;
+  font-weight: 900 !important;
+  color: rgba(255,107,53,0.28) !important;
+  line-height: 1 !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  letter-spacing: -0.02em;
+}
+.q-card .q-title {
+  font-size: clamp(0.8rem, 0.96vw, 0.9rem) !important;
+  font-weight: 600 !important;
+  color: #E8E8F0 !important;
+}
+
+/* ── SLIDE 3: Timeline connecting dots ── */
+.timeline {
+  position: relative;
+}
+.timeline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,107,53,0.25), transparent);
+  pointer-events: none;
+}
+.stop {
+  position: relative;
+}
+.stop.current::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FF6B35;
+  box-shadow: 0 0 10px rgba(255,107,53,0.8);
+  z-index: 2;
+}
+
+/* ── Mobile overrides for new layouts ── */
+@media (max-width: 700px) {
+  .stats-hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .stat-hero-num {
+    font-size: 2.2rem !important;
+  }
+  .career-ladder { gap: 0 !important; }
+  .ladder-circle { width: 28px !important; height: 28px !important; font-size: 0.62rem !important; }
+  .ladder-node { width: 38px !important; }
+  .ladder-content { padding: 8px 10px !important; margin-right: 8px !important; }
+  .journal-entries { gap: 6px !important; }
+  .je-num { font-size: 1.8rem !important; width: 32px !important; }
+  .rank-pill { flex: none; }
+  .why-rankings { flex-wrap: wrap !important; }
+  .rank-pill .rank-num { font-size: 1.6rem !important; }
+}
+
+/* ── WHY-CARD number: right-align fix (direction:ltr causes left-drift) ── */
+.why-card .num {
+  text-align: right !important;
+  unicode-bidi: isolate;
+}
+
+/* ── RANK-PILL text: increase to match why-card body size ── */
+.rank-pill .rank-text {
+  font-size: clamp(0.82rem, 0.98vw, 0.92rem) !important;
+  line-height: 1.45 !important;
+}
+
+/* ── SLIDE 3: Journey — compact header to prevent overflow ── */
+.frame.journey {
+  overflow: hidden;
+}
+.frame.journey h2 {
+  font-size: clamp(1.2rem, 1.8vw, 1.9rem) !important;
+  line-height: 1.15 !important;
+  margin-top: 6px !important;
+}
+.frame.journey .lead {
+  font-size: clamp(0.72rem, 0.88vw, 0.86rem) !important;
+  line-height: 1.5 !important;
+  margin-top: 6px !important;
+}
+.frame.journey .anim-up {
+  flex-shrink: 0;
+}
+.frame.journey > .timeline {
+  margin-top: 0 !important;
+  gap: clamp(5px, 0.8vw, 10px) !important;
+}
+.frame.journey .stop {
+  padding: clamp(8px, 1.1vw, 13px) !important;
+  gap: 3px !important;
+}
+
+@media (max-width: 900px) {
+  .why-card .num { font-size: clamp(1.8rem, 5vw, 2.4rem) !important; }
+  .frame.journey h2 { font-size: clamp(1.1rem, 3.5vw, 1.6rem) !important; }
+  .frame.journey .lead { font-size: clamp(0.68rem, 1.6vw, 0.82rem) !important; }
+}
+
+/* ── SLIDE 5: Era skills — chip layout ── */
+.era-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 5px;
+  margin-top: 2px;
+}
+.es-tag {
+  font-size: clamp(0.58rem, 0.68vw, 0.65rem);
+  background: rgba(255,255,255,0.07);
+  color: #C0C0CC;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.era-card.current .es-tag {
+  background: rgba(255,107,53,0.12);
+  color: #E8D0B0;
+}
+.era-industry-note {
+  font-size: 0.7em;
+  color: #6B6B7B;
+  font-weight: 400;
+}
+
+/* ── SLIDE 5: Flow chain in lead paragraph ── */
+.flow-chain {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  direction: ltr;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: 0.92em;
+  font-family: 'Inter', monospace;
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin: 0 4px;
+}
+.flow-chain .fa {
+  color: #FF6B35;
+  font-weight: 700;
+}
+
+/* ── SLIDE 5: Frame overflow + source line compact ── */
+.frame.vs-slide {
+  overflow: hidden;
+}
+.evolution-source {
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-height: 22px;
 }

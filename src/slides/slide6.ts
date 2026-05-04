@@ -3,7 +3,7 @@ import { topbar } from './topbar';
 /* SLIDE 6: THE 39% CHART */
 export function slide6() {
   return `
-    ${topbar(6, 'DATA · 1/3')}
+    ${topbar(6, 'DATA · 1/2')}
     <div class="frame chart-slide">
       <div class="grid">
         <div class="left">
@@ -18,21 +18,21 @@ export function slide6() {
           </p>
           <p class="anim-up" style="animation-delay:0.3s; margin-top:10px; font-size:clamp(0.85rem, 1.05vw, 0.95rem); color:#A0A0AE; line-height:1.5">
             הנתון ירד מ-57% ב-2020 ל-44% ב-2023 ל-39% ב-2025. 
-            <strong style="color:#FFB627">לא כי השינוי נעצר — אלא כי כבר התחלנו להסתגל.</strong>
+            <strong style="color:#FFB627">לא כי השינוי נעצר — אלא כי הנתון מודד רק את מי שעדיין בעבודה.</strong>
           </p>
           <div class="anim-up chart-insights" style="animation-delay:0.4s;">
-            <div class="ci-title">איזה מיומנויות בעצם משתנות?</div>
+            <div class="ci-headline">למה הנתון יורד? לא כי השינוי קטן יותר.</div>
             <div class="ci-row">
               <div class="ci-tag tag-grow">↑ עולות</div>
-              <div class="ci-text"><span class="lat">AI · big data · cybersecurity · creative thinking · analytical thinking · resilience</span></div>
+              <div class="ci-text"><span class="lat">AI literacy</span>, ניתוח דאטה, חשיבה ביקורתית, יצירתיות, הסתגלות</div>
             </div>
             <div class="ci-row">
-              <div class="ci-tag tag-fall">↓ דועכות</div>
-              <div class="ci-text">manual dexterity · endurance · precision · קריאה/כתיבה בסיסית · עבודה ידנית טכנית</div>
+              <div class="ci-tag tag-fall">↓ נעלמות</div>
+              <div class="ci-text"><strong>92 מיליון משרות נסגרות עד 2030</strong> (WEF). אלה לא "מיומנויות שמשתנות" — אלה תפקידים שנמחקים לגמרי.</div>
             </div>
             <div class="ci-row">
               <div class="ci-tag tag-watch">⚠ הפואנטה</div>
-              <div class="ci-text"><strong>"התחלנו להסתגל"</strong> = 50% מהעובדים בעולם <em>כבר עברו הכשרה מחדש</em>. מי שעוד לא — נופל מאחור.</div>
+              <div class="ci-text">הסקר שואל מעסיקים על תפקידים <strong>שעדיין קיימים</strong>. מי שמשרתו בוטלה — לא נספר. הירידה ל-39% זה לא סימן לרגיעה, זה סימן ש<em>השוק כבר התחלק לשני מחנות</em>: מי שלמד AI נשאר, מי שלא — בחוץ.</div>
             </div>
           </div>
         </div>
