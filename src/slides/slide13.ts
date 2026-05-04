@@ -72,17 +72,17 @@ export function slide13() {
 
   const humanNodes = humans.map((h, i) =>
     `<g class="net-node human-node" style="animation-delay:${i*0.1}s">
-      <circle cx="${h.x}" cy="${h.y}" r="20" class="node-ring-h"/>
-      <circle cx="${h.x}" cy="${h.y}" r="14" fill="#FFB627" opacity="0.95"/>
-      <text x="${h.x}" y="${h.y+5}" class="node-icon">👤</text>
+      <circle cx="${h.x}" cy="${h.y}" r="24" class="node-ring-h"/>
+      <circle cx="${h.x}" cy="${h.y}" r="17" fill="#FFB627" opacity="0.95"/>
+      <text x="${h.x}" y="${h.y+6}" class="node-icon">👤</text>
     </g>`
   ).join('');
 
   const aiNodes = ais.map((a, i) =>
     `<g class="net-node ai-node" style="animation-delay:${i*0.08}s">
-      <circle cx="${a.x}" cy="${a.y}" r="16" class="node-ring-ai"/>
-      <circle cx="${a.x}" cy="${a.y}" r="11" fill="#00D9C0" opacity="0.9"/>
-      <text x="${a.x}" y="${a.y+5}" class="node-icon ai-icon">🤖</text>
+      <circle cx="${a.x}" cy="${a.y}" r="22" class="node-ring-ai"/>
+      <circle cx="${a.x}" cy="${a.y}" r="16" fill="#00D9C0" opacity="0.9"/>
+      <text x="${a.x}" y="${a.y+6}" class="node-icon ai-icon">🤖</text>
     </g>`
   ).join('');
 

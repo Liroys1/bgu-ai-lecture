@@ -4120,9 +4120,9 @@ em {
 }
 .node-ring-h  { fill: none; stroke: rgba(255,182,39,0.35); stroke-width: 1.5; }
 .node-ring-ai { fill: none; stroke: rgba(0,217,192,0.3);   stroke-width: 1.5; }
-.node-icon    { text-anchor: middle; dominant-baseline: middle; font-size: 12px; }
-.ai-icon      { font-size: 10px; }
-.you-icon     { text-anchor: middle; dominant-baseline: middle; font-size: 16px; }
+.node-icon    { text-anchor: middle; dominant-baseline: middle; font-size: 16px; }
+.ai-icon      { font-size: 15px; }
+.you-icon     { text-anchor: middle; dominant-baseline: middle; font-size: 18px; }
 
 /* SVG tier labels */
 .tier-label {
