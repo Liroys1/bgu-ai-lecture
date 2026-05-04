@@ -1,25 +1,40 @@
 import { topbar } from './topbar';
 
-/* SLIDE 13: YOUR POSITION — orchestrating humans + AI agents */
+/* SLIDE 13: YOUR POSITION — new role in AI era */
 export function slide13() {
 
-  /* ── SVG network: YOU top → HUMANS middle → AI bottom ── */
-  const YOU = { x: 450, y: 52 };
+  const transitions: [string, string][] = [
+    ['עושים משימות', 'בונים מערכות שמבצעות'],
+    ['מחפשים מידע', 'שואלים שאלות שמייצרות תובנות'],
+    ['מפיקים תוצרים', 'מאמתים שהתוצרים נכונים ואמינים'],
+    ['עובדים בתוך תהליך', 'מעצבים את התהליך'],
+    ['יודעים לבצע', 'יודעים לכוון, לבקר ולהוביל'],
+  ];
+
+  const trRows = transitions.map(([before, now]) => `
+    <div class="tr-row">
+      <div class="tr-before">${before}</div>
+      <div class="tr-arrow">←</div>
+      <div class="tr-now">${now}</div>
+    </div>
+  `).join('');
+
+  /* ── SVG network ── */
+  const YOU = { x: 435, y: 62 };
 
   const humans = [
-    { x: 120, y: 195 }, { x: 240, y: 195 }, { x: 360, y: 195 },
-    { x: 540, y: 195 }, { x: 660, y: 195 }, { x: 780, y: 195 }
+    { x: 100, y: 210 }, { x: 218, y: 210 }, { x: 342, y: 210 },
+    { x: 528, y: 210 }, { x: 652, y: 210 }, { x: 770, y: 210 },
   ];
 
   const ais = [
-    { x: 60,  y: 340 }, { x: 150, y: 340 }, { x: 240, y: 340 },
-    { x: 330, y: 340 }, { x: 420, y: 340 }, { x: 510, y: 340 },
-    { x: 600, y: 340 }, { x: 690, y: 340 }, { x: 780, y: 340 }, { x: 860, y: 340 }
+    { x: 45,  y: 352 }, { x: 135, y: 352 }, { x: 228, y: 352 },
+    { x: 322, y: 352 }, { x: 415, y: 352 }, { x: 508, y: 352 },
+    { x: 600, y: 352 }, { x: 694, y: 352 }, { x: 786, y: 352 },
   ];
 
-  // map each human to 2 nearest AI nodes
   const humanAiMap: [number, number][] = [
-    [0,0],[0,1],[1,1],[1,2],[2,2],[2,3],[3,4],[3,5],[4,6],[4,7],[5,8],[5,9]
+    [0,0],[0,1],[1,1],[1,2],[2,2],[2,3],[3,4],[3,5],[4,5],[4,6],[5,7],[5,8]
   ];
 
   const youLines = humans.map((h, i) =>
@@ -31,7 +46,7 @@ export function slide13() {
   ).join('');
 
   const youParticles = humans.map((h, i) => {
-    const delay = (i * 0.35).toFixed(2);
+    const delay = (i * 0.38).toFixed(2);
     return `
       <circle r="3.5" fill="#FF6B35" opacity="0.9">
         <animateMotion dur="1.6s" repeatCount="indefinite" begin="${delay}s">
@@ -77,59 +92,82 @@ export function slide13() {
 
       <div class="ps-top anim-up">
         <span class="label"><span class="ldot"></span>11 · התפקיד החדש בעידן ה-AI</span>
-        <h2 style="margin-top:6px">התפקיד החדש: לנהל <span class="accent">אנשים וסוכנים.</span></h2>
-        <p class="ps-sub">לא רק לבצע עבודה — אלא <strong>לתזמר אנשים, סוכנים ומערכות.</strong></p>
+        <h2 style="margin-top:6px">לא רק לבצע — <span class="accent">לנהל את המערכת שמבצעת.</span></h2>
       </div>
 
-      <div class="ps-network-wrap anim-fade" style="animation-delay:0.3s">
-        <svg class="ps-net-svg" viewBox="0 0 900 395" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="glow-you" x="-80%" y="-80%" width="260%" height="260%">
-              <feGaussianBlur stdDeviation="8" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="glow-h" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="4" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="glow-ai" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
+      <div class="ps-main-body anim-fade" style="animation-delay:0.25s">
 
-          <!-- connection lines -->
-          ${youLines}
-          ${humanAiLines}
+        <!-- SVG Network (left) -->
+        <div class="ps-network-side">
+          <svg class="ps-net-svg-enr" viewBox="0 0 840 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="glow-you3" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="8" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
 
-          <!-- animated particles -->
-          ${youParticles}
-          ${aiParticles}
+            <!-- Zone background bands -->
+            <rect x="0" y="0"   width="840" height="110" fill="rgba(255,107,53,0.04)" rx="8"/>
+            <rect x="0" y="180" width="840" height="64"  fill="rgba(255,182,39,0.04)" rx="8"/>
+            <rect x="0" y="325" width="840" height="75"  fill="rgba(0,217,192,0.04)"  rx="8"/>
 
-          <!-- human nodes -->
-          ${humanNodes}
+            <!-- Zone role labels (left side of each band) -->
+            <text x="12" y="20"  class="zone-role-label" fill="rgba(255,107,53,0.55)">מגדיר · מכוון · בודק</text>
+            <text x="12" y="190" class="zone-role-label" fill="rgba(255,182,39,0.5)">שיקול דעת · יצירתיות · ניסיון</text>
+            <text x="12" y="338" class="zone-role-label" fill="rgba(0,217,192,0.5)">מהירות · סקיילינג · עיבוד נתונים</text>
 
-          <!-- AI nodes -->
-          ${aiNodes}
+            ${youLines}
+            ${humanAiLines}
+            ${youParticles}
+            ${aiParticles}
+            ${humanNodes}
+            ${aiNodes}
 
-          <!-- YOU node -->
-          <g filter="url(#glow-you)">
-            <circle cx="${YOU.x}" cy="${YOU.y}" r="42" fill="rgba(255,107,53,0.12)"/>
-            <circle cx="${YOU.x}" cy="${YOU.y}" r="30" fill="rgba(255,107,53,0.22)"/>
-            <circle cx="${YOU.x}" cy="${YOU.y}" r="20" fill="#FF6B35"/>
-            <text x="${YOU.x}" y="${YOU.y+7}" class="you-icon">👤</text>
-          </g>
+            <!-- YOU node -->
+            <g filter="url(#glow-you3)">
+              <circle cx="${YOU.x}" cy="${YOU.y}" r="42" fill="rgba(255,107,53,0.12)"/>
+              <circle cx="${YOU.x}" cy="${YOU.y}" r="30" fill="rgba(255,107,53,0.22)"/>
+              <circle cx="${YOU.x}" cy="${YOU.y}" r="20" fill="#FF6B35"/>
+              <text x="${YOU.x}" y="${YOU.y+7}" class="you-icon">👤</text>
+            </g>
 
-          <!-- tier labels -->
-          <text x="${YOU.x}" y="15" class="tier-label you-label">אנחנו</text>
-          <text x="890" y="200" class="tier-label h-label" text-anchor="end">← אנשים</text>
-          <text x="890" y="348" class="tier-label ai-label" text-anchor="end">← סוכני AI</text>
-        </svg>
+            <!-- Tier labels (right side) -->
+            <text x="${YOU.x}" y="15" class="tier-label you-label">אנחנו</text>
+            <text x="830" y="215" class="tier-label h-label"  text-anchor="end">אנשים ←</text>
+            <text x="830" y="362" class="tier-label ai-label" text-anchor="end">סוכני AI ←</text>
+          </svg>
+        </div>
+
+        <!-- Before / Now + Role intro (right) -->
+        <div class="ps-transitions-side">
+
+          <div class="ps-role-intro">
+            <div class="ps-role-title">התפקיד החדש שלנו</div>
+            <div class="ps-role-list">
+              <div class="ps-role-item"><span class="ri-dot ri-orange"></span>מגדיר את הבעיה הנכונה ואת הכיוון</div>
+              <div class="ps-role-item"><span class="ri-dot ri-orange"></span>מתזמר אנשים וסוכני AI לאורך תהליך</div>
+              <div class="ps-role-item"><span class="ri-dot ri-teal"></span>בודק איכות — כי ה-AI לא תמיד צודק</div>
+              <div class="ps-role-item"><span class="ri-dot ri-teal"></span>שומר על הקשר אנושי, רגישות ואמון</div>
+            </div>
+          </div>
+
+          <div class="ps-tr-divider">המעבר</div>
+
+          <div class="ps-tr-heading">
+            <span class="ps-tr-lbl ps-before-lbl">לפני</span>
+            <span></span>
+            <span class="ps-tr-lbl ps-now-lbl">עכשיו</span>
+          </div>
+
+          ${trRows}
+
+        </div>
       </div>
 
-      <div class="ps-closing anim-up" style="animation-delay:0.6s">
-        אנחנו לא רק עושים את העבודה.
-        <strong>אנחנו <span class="accent">מנהלים</span> את המערכת שעושה אותה.</strong>
+      <div class="ps-closing anim-up" style="animation-delay:0.8s">
+        אנחנו לא נעלמים.
+        <strong>אנחנו <span class="accent">עולים שכבה.</span></strong>
       </div>
 
     </div>
