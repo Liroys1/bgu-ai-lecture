@@ -1047,7 +1047,11 @@ overflow: hidden;
 text-overflow: ellipsis;
 direction: ltr;
 text-align: center;
+text-decoration: none;
+cursor: pointer;
+transition: color 0.15s;
 }
+.browser-url:hover { color: #E8E8EE; }
 .article-clip {
 background: white;
 color: #111;

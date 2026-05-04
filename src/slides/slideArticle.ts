@@ -13,7 +13,7 @@ export function slideArticle() {
         <div class="browser-mock">
           <div class="browser-bar">
             <div class="browser-dots"><span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span></div>
-            <div class="browser-url">calcalist.co.il/calcalistech/article/bjphxyxc11g</div>
+            <a class="browser-url" href="https://www.calcalist.co.il/calcalistech/article/bjphxyxc11g" target="_blank" rel="noopener">calcalist.co.il/calcalistech/article/bjphxyxc11g</a>
           </div>
           <div class="article-clip">
             <div class="ctech-brand">
