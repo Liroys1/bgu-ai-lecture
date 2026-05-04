@@ -4055,3 +4055,65 @@ em {
   object-fit: contain !important;
   border-radius: 2px;
 }
+
+/* ── SLIDE 13: SVG animated network ── */
+.ps-network-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ps-net-svg {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  max-height: clamp(200px, 42vh, 360px);
+  overflow: visible;
+}
+.net-line {
+  fill: none;
+  stroke-width: 1;
+}
+.you-line {
+  stroke: rgba(255,107,53,0.22);
+}
+.ai-line {
+  stroke: rgba(0,217,192,0.15);
+}
+.net-node { animation: nodePop 0.5s ease both; }
+@keyframes nodePop {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.node-ring-h {
+  fill: none;
+  stroke: rgba(255,182,39,0.35);
+  stroke-width: 1.5;
+}
+.node-ring-ai {
+  fill: none;
+  stroke: rgba(0,217,192,0.3);
+  stroke-width: 1.5;
+}
+.node-icon {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-size: 12px;
+}
+.ai-icon { font-size: 10px; }
+.you-icon {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-size: 16px;
+}
+.tier-label {
+  font-family: 'Inter', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.you-label { fill: #FF6B35; text-anchor: middle; }
+.h-label   { fill: rgba(255,182,39,0.7); }
+.ai-label  { fill: rgba(0,217,192,0.7); }
