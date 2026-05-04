@@ -3,7 +3,7 @@ import { topbar } from './topbar';
 /* SLIDE 7: STATS — Big Number Hero layout */
 export function slide7() {
   return `
-    ${topbar(7, 'DATA · 2/3')}
+    ${topbar(7, 'DATA · 2/2')}
     <div class="frame stats-hero-slide">
       <div class="anim-up">
         <span class="label"><span class="ldot"></span>05 · עוד 4 מספרים</span>

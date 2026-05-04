@@ -54,7 +54,7 @@ export function slide2() {
       <div class="agenda-footer">
         <span class="af-item"><strong>20</strong> שקפים</span>
         <span class="af-sep">·</span>
-        <span class="af-item"><strong>2026</strong> מקורות עדכניים</span>
+        <span class="af-item"><strong>15+</strong> מקורות מאומתים</span>
         <span class="af-sep">·</span>
         <span class="af-item">בנויה ב-<strong>Claude</strong></span>
         <span class="af-sep">·</span>

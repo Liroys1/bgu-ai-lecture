@@ -3,7 +3,7 @@ import { topbar } from './topbar';
 /* SLIDE 6: THE 39% CHART */
 export function slide6() {
   return `
-    ${topbar(6, 'DATA · 1/3')}
+    ${topbar(6, 'DATA · 1/2')}
     <div class="frame chart-slide">
       <div class="grid">
         <div class="left">
