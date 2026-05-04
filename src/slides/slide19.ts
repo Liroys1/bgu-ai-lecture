@@ -36,8 +36,10 @@ export function slide19() {
           </a>
         </div>
         <div class="thanks-cta anim-up" style="animation-delay:0.7s">
-          <strong>ועוד דבר אחד</strong> — תזכרו: <em>הכלים השתנו, המקצוע לא.</em>
-          המקצוע שלכם הוא לראות את <span class="accent">המערכת השלמה</span>. זה לא ייעלם.
+          <strong>ועוד דבר אחד:</strong> אף דור לא התחיל את הקריירה עם כלים כאלה.
+          לראשונה, מי שמתחיל עכשיו יכול להשיג יותר ממי שהתחיל לפניו עשר שנים —
+          לא בגלל כישרון. <em>בגלל תזמון.</em>
+          <span class="accent">ההזדמנות כאן. מה שתעשו איתה תלוי רק בכם.</span>
         </div>
       </div>
     </div>

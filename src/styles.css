@@ -1952,18 +1952,20 @@ border: none;
 /* ========== Thanks closing line ========== */
 .thanks-cta {
 margin-top: clamp(8px, 1.4vh, 14px);
-padding: clamp(12px, 1.6vw, 18px) clamp(14px, 1.8vw, 22px);
+padding: clamp(14px, 1.8vw, 22px) clamp(16px, 2vw, 26px);
 border-radius: 14px;
 background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,182,39,0.04));
 border-right: 3px solid #FFB627;
-font-size: clamp(0.88rem, 1.1vw, 1rem);
-line-height: 1.5;
+font-size: clamp(0.96rem, 1.25vw, 1.12rem);
+line-height: 1.65;
 color: #C5C5D2;
 text-align: right;
 direction: rtl;
+text-wrap: balance;
 }
 .thanks-cta strong { color: #FFB627; }
 .thanks-cta em { color: #FFFFFF; font-style: normal; font-weight: 700; }
+.thanks-cta .accent { color: #FF6B35; font-weight: 700; display: block; margin-top: 8px; font-size: 1.05em; }
 
 /* ========== Article-side stat grid (Calcalist) ========== */
 .article-stat-grid {
