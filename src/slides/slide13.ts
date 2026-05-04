@@ -112,11 +112,6 @@ export function slide13() {
             <rect x="0" y="180" width="840" height="64"  fill="rgba(255,182,39,0.04)" rx="8"/>
             <rect x="0" y="325" width="840" height="75"  fill="rgba(0,217,192,0.04)"  rx="8"/>
 
-            <!-- Zone role labels (left side of each band) -->
-            <text x="12" y="20"  class="zone-role-label" fill="rgba(255,107,53,0.55)">מגדיר · מכוון · בודק</text>
-            <text x="12" y="190" class="zone-role-label" fill="rgba(255,182,39,0.5)">שיקול דעת · יצירתיות · ניסיון</text>
-            <text x="12" y="338" class="zone-role-label" fill="rgba(0,217,192,0.5)">מהירות · סקיילינג · עיבוד נתונים</text>
-
             ${youLines}
             ${humanAiLines}
             ${youParticles}
@@ -132,10 +127,10 @@ export function slide13() {
               <text x="${YOU.x}" y="${YOU.y+7}" class="you-icon">👤</text>
             </g>
 
-            <!-- Tier labels (right side) -->
-            <text x="${YOU.x}" y="15" class="tier-label you-label">אנחנו</text>
-            <text x="830" y="215" class="tier-label h-label"  text-anchor="end">אנשים ←</text>
-            <text x="830" y="362" class="tier-label ai-label" text-anchor="end">סוכני AI ←</text>
+            <!-- Tier labels — clear, readable, no overlap -->
+            <text x="${YOU.x}" y="14" class="tier-label-lg you-label">אנחנו</text>
+            <text x="10" y="218" class="tier-label-lg h-label" text-anchor="start">אנשים</text>
+            <text x="10" y="365" class="tier-label-lg ai-label" text-anchor="start">סוכני AI</text>
           </svg>
         </div>
 

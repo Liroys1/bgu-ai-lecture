@@ -4132,9 +4132,17 @@ em {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+/* Larger, clearer tier labels used in enriched slide13 */
+.tier-label-lg {
+  font-family: 'Inter', monospace;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 .you-label { fill: #FF6B35; text-anchor: middle; }
-.h-label   { fill: rgba(255,182,39,0.7); }
-.ai-label  { fill: rgba(0,217,192,0.7); }
+.h-label   { fill: rgba(255,182,39,0.85); }
+.ai-label  { fill: rgba(0,217,192,0.85); }
 
 /* Transitions side (right column) */
 .ps-transitions-side {
@@ -4152,26 +4160,26 @@ em {
   padding: clamp(8px, 1.2vh, 14px) clamp(10px, 1.3vw, 16px);
 }
 .ps-role-title {
-  font-size: clamp(0.65rem, 0.78vw, 0.72rem);
+  font-size: clamp(0.72rem, 0.9vw, 0.82rem);
   font-weight: 700;
-  color: #6B6B7B;
+  color: #8888A0;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-family: 'Inter', monospace;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 .ps-role-list {
   display: flex;
   flex-direction: column;
-  gap: clamp(4px, 0.6vh, 6px);
+  gap: clamp(5px, 0.75vh, 8px);
 }
 .ps-role-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: clamp(0.76rem, 0.96vw, 0.88rem);
-  color: #C8C8D8;
-  line-height: 1.35;
+  gap: 9px;
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  color: #D4D4E4;
+  line-height: 1.4;
 }
 .ri-dot {
   width: 6px;
@@ -4184,7 +4192,7 @@ em {
 
 /* "המעבר" section divider */
 .ps-tr-divider {
-  font-size: clamp(0.62rem, 0.76vw, 0.7rem);
+  font-size: clamp(0.7rem, 0.88vw, 0.8rem);
   font-weight: 700;
   color: #4A4A5A;
   text-transform: uppercase;
@@ -4209,46 +4217,46 @@ em {
 /* Column headers */
 .ps-tr-heading {
   display: grid;
-  grid-template-columns: 1fr 22px 1fr;
+  grid-template-columns: 1fr 24px 1fr;
   gap: 6px;
   padding: 0 10px;
 }
 .ps-tr-lbl {
-  font-size: clamp(0.6rem, 0.72vw, 0.67rem);
+  font-size: clamp(0.68rem, 0.82vw, 0.76rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-family: 'Inter', monospace;
 }
-.ps-before-lbl { color: #3E3E4E; }
+.ps-before-lbl { color: #505060; }
 .ps-now-lbl    { color: #00D9C0; text-align: left; direction: ltr; }
 
 /* Before / Now rows */
 .tr-row {
   display: grid;
-  grid-template-columns: 1fr 22px 1fr;
+  grid-template-columns: 1fr 24px 1fr;
   gap: 6px;
   align-items: center;
-  padding: clamp(5px, 0.7vh, 7px) clamp(8px, 1vw, 12px);
-  background: rgba(255,255,255,0.02);
+  padding: clamp(5px, 0.75vh, 8px) clamp(8px, 1vw, 12px);
+  background: rgba(255,255,255,0.025);
   border-radius: 7px;
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.05);
 }
 .tr-before {
-  font-size: clamp(0.7rem, 0.88vw, 0.8rem);
-  color: #484858;
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  color: #545468;
   text-align: right;
 }
 .tr-arrow {
   color: #FF6B35;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   text-align: center;
   font-weight: 700;
   direction: ltr;
 }
 .tr-now {
-  font-size: clamp(0.7rem, 0.88vw, 0.8rem);
-  color: #D0D0E0;
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  color: #D8D8E8;
   font-weight: 600;
   text-align: right;
 }
