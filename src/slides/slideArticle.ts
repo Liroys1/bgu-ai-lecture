@@ -10,34 +10,40 @@ export function slideArticle() {
         <h2 style="margin-top:14px">"<em>הג'וניורים חוזרים?</em>"<br/>זה לא ספוילר — זה <span class="accent">החדשות.</span></h2>
       </div>
       <div class="grid anim-fade" style="animation-delay:0.3s">
-        <div class="article-clip">
-          <div class="ctech-brand">
-            <span class="ctech-logo">כלכליסט</span>
-            <span class="ctech-section">Tech@Work</span>
-            <span class="ctech-date">01.05.26 · 07:30</span>
+        <div class="browser-mock">
+          <div class="browser-bar">
+            <div class="browser-dots"><span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span></div>
+            <div class="browser-url">calcalist.co.il/calcalistech/article/bjphxyxc11g</div>
           </div>
-          <div class="head1">הג'וניורים חוזרים? לצד פיטורי הענק, בהייטק <em>בונים על צעירי דור ה-AI</em></div>
-          <div class="head2">
-            מ-<span class="lat">IBM</span>, דרך סיילספורס ועד לסטארט-אפים ישראלים, בחלק מחברות ההייטק עוברים לגייס
-            <strong>לפי כישורים, לא לפי ותק וניסיון</strong>, וכך, סטודנטים ואקדמאים טריים עם גישה ל-<span class="lat">AI</span>
-            מצליחים לעקוף את המסלול המסורתי — היישר לתפקידי המפתח.
-          </div>
-          <div class="article-highlights">
-            <div class="ah-row">
-              <span class="ah-icon">▸</span>
-              <span><strong>גיוס לפי כישורים</strong> — לא לפי ותק. מי ששולט ב-<span class="lat">AI</span> מקבל את התפקיד.</span>
+          <div class="article-clip">
+            <div class="ctech-brand">
+              <span class="ctech-logo">כלכליסט</span>
+              <span class="ctech-section">Tech@Work</span>
+              <span class="ctech-date">01.05.26 · 07:30</span>
             </div>
-            <div class="ah-row">
-              <span class="ah-icon">▸</span>
-              <span>בוגרים טריים <strong>עוקפים את המסלול הקלאסי</strong> — היישר לתפקידי המפתח.</span>
+            <div class="head1">הג'וניורים חוזרים? לצד פיטורי הענק, בהייטק <em>בונים על צעירי דור ה-AI</em></div>
+            <div class="head2">
+              מ-<span class="lat">IBM</span>, דרך סיילספורס ועד לסטארט-אפים ישראלים, בחלק מחברות ההייטק עוברים לגייס
+              <strong>לפי כישורים, לא לפי ותק וניסיון</strong>, וכך, סטודנטים ואקדמאים טריים עם גישה ל-<span class="lat">AI</span>
+              מצליחים לעקוף את המסלול המסורתי — היישר לתפקידי המפתח.
             </div>
-            <div class="ah-row">
-              <span class="ah-icon">▸</span>
-              <span>החברות מחפשות <strong>גישה לכלים החדשים</strong>, לא 5 שנות ניסיון.</span>
+            <div class="article-highlights">
+              <div class="ah-row">
+                <span class="ah-icon">▸</span>
+                <span><strong>גיוס לפי כישורים</strong> — לא לפי ותק. מי ששולט ב-<span class="lat">AI</span> מקבל את התפקיד.</span>
+              </div>
+              <div class="ah-row">
+                <span class="ah-icon">▸</span>
+                <span>בוגרים טריים <strong>עוקפים את המסלול הקלאסי</strong> — היישר לתפקידי המפתח.</span>
+              </div>
+              <div class="ah-row">
+                <span class="ah-icon">▸</span>
+                <span>החברות מחפשות <strong>גישה לכלים החדשים</strong>, לא 5 שנות ניסיון.</span>
+              </div>
             </div>
-          </div>
-          <div class="author">
-            <strong>מעין מנלה</strong> · כתבת קריירה · כלכליסט
+            <div class="author">
+              <strong>מעין מנלה</strong> · כתבת קריירה · כלכליסט
+            </div>
           </div>
         </div>
         <div class="article-side">
@@ -64,8 +70,8 @@ export function slideArticle() {
             </div>
           </div>
           <div class="article-takeaway">
-            <strong>הקליק</strong> — הסיפור הזה הוא <strong>בדיוק עליכם</strong>. 
-            בוגרים טריים, ללא תפיסות קדומות, עם גישה ל-<span class="lat">AI</span> — <em>עוקפים</em> את המסלול הקלאסי, היישר לתפקידי המפתח. 
+            <strong>הקליק</strong> — הסיפור הזה הוא <strong>בדיוק עליכם</strong>.
+            בוגרים טריים, ללא תפיסות קדומות, עם גישה ל-<span class="lat">AI</span> — <strong>עוקפים</strong> את המסלול הקלאסי, היישר לתפקידי המפתח.
             <strong>אתם בעמדה הכי חזקה שיש.</strong>
           </div>
           <div class="article-link">
@@ -77,4 +83,3 @@ export function slideArticle() {
     </div>
   `;
 }
-
