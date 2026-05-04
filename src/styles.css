@@ -805,97 +805,127 @@ align-items: stretch;
 .three-slide h2 em { color: #00D9C0; font-style: italic; }
 .three-slide h2 .accent { color: #FF6B35; }
 .three-slide p { font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: #A0A0AE; line-height: 1.7; margin-top: 18px; }
-/* ---- NEW: position-slide (redesigned slide13) ---- */
-.position-slide { gap: clamp(10px, 1.6vh, 18px); }
-.position-slide .position-top {
-display: grid;
-grid-template-columns: 1fr 1.1fr;
-gap: clamp(16px, 2.4vw, 32px);
-align-items: stretch;
-flex-shrink: 0;
-}
-@media (max-width: 900px) { .position-slide .position-top { grid-template-columns: 1fr; } }
+/* ---- position-slide (slide13 — layer stack) ---- */
+.position-slide { gap: clamp(8px, 1.4vh, 14px); }
 .position-slide h2 { font-size: clamp(1.8rem, 4.2vw, 3.2rem); color: #FFFFFF; }
 .position-slide h2 .accent { color: #FF6B35; }
-.position-slide .lead { font-size: clamp(0.88rem, 1.3vw, 1rem); color: #A0A0AE; line-height: 1.65; }
-.position-slide .lead strong { color: #E8E8EE; }
-.sys-examples-new {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: clamp(8px, 1.2vw, 14px);
-flex-shrink: 0;
-}
-@media (max-width: 900px) { .sys-examples-new { grid-template-columns: 1fr; } }
-.sys-ex-new {
-background: rgba(255,255,255,0.03);
-border: 1px solid rgba(255,255,255,0.08);
-border-radius: 12px;
-padding: clamp(10px, 1.4vw, 16px);
-display: flex;
-gap: 10px;
-align-items: flex-start;
-}
-.sxn-num {
-font-family: 'Inter', monospace;
-font-size: clamp(0.7rem, 0.85vw, 0.8rem);
-font-weight: 800;
-color: #4A4A5A;
-flex-shrink: 0;
-margin-top: 3px;
-}
-.sxn-body { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
-.sxn-ai {
-background: rgba(160,160,174,0.08);
-border: 1px solid rgba(160,160,174,0.15);
-border-radius: 8px;
-padding: 7px 10px;
-font-size: clamp(0.78rem, 1vw, 0.9rem);
+.ps-top { flex-shrink: 0; }
+.ps-sub {
+font-size: clamp(0.88rem, 1.25vw, 1rem);
 color: #A0A0AE;
-line-height: 1.45;
+line-height: 1.65;
+margin-top: 6px;
+max-width: 680px;
 }
-.sxn-label-ai {
+.ps-sub strong { color: #E8E8EE; }
+.ps-body {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: clamp(14px, 2vw, 28px);
+flex: 1;
+min-height: 0;
+align-items: stretch;
+}
+@media (max-width: 900px) { .ps-body { grid-template-columns: 1fr; } }
+/* layer stack */
+.ps-stack-wrap {
+display: flex;
+flex-direction: column;
+gap: 0;
+justify-content: center;
+}
+.ps-layer {
+border-radius: 14px;
+padding: clamp(14px, 1.8vw, 22px);
+display: flex;
+align-items: center;
+gap: clamp(12px, 1.5vw, 20px);
+}
+.ps-layer-you {
+background: linear-gradient(135deg, rgba(255,107,53,0.14), rgba(255,182,39,0.06));
+border: 1.5px solid rgba(255,107,53,0.45);
+box-shadow: 0 0 32px rgba(255,107,53,0.12);
+}
+.ps-layer-ai {
+background: linear-gradient(135deg, rgba(0,217,192,0.08), rgba(0,217,192,0.02));
+border: 1.5px solid rgba(0,217,192,0.3);
+box-shadow: 0 0 24px rgba(0,217,192,0.08);
+}
+.ps-layer-left { flex-shrink: 0; }
+.ps-layer-id {
 font-family: 'Inter', monospace;
-font-size: 0.68em;
-font-weight: 700;
+font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+font-weight: 900;
+color: #FF6B35;
+letter-spacing: 0.05em;
+line-height: 1;
+}
+.ps-layer-id.ai { color: #00D9C0; }
+.ps-layer-name {
+font-size: clamp(0.7rem, 0.9vw, 0.82rem);
 color: #6B6B7B;
-background: rgba(160,160,174,0.12);
-border-radius: 4px;
-padding: 1px 5px;
-margin-left: 6px;
-letter-spacing: 0.05em;
-}
-.sxn-sep {
+margin-top: 3px;
 font-family: 'Inter', monospace;
-font-size: clamp(0.72rem, 0.88vw, 0.8rem);
+text-transform: uppercase;
+letter-spacing: 0.08em;
+}
+.ps-layer-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+}
+.ps-layer-tags span {
+font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+padding: 4px 10px;
+border-radius: 20px;
+background: rgba(255,107,53,0.12);
+border: 1px solid rgba(255,107,53,0.25);
 color: #FFB627;
-font-weight: 700;
-padding: 0 4px;
-direction: rtl;
+font-weight: 600;
 }
-.sxn-you {
-background: rgba(0,217,192,0.07);
-border: 1px solid rgba(0,217,192,0.25);
-border-radius: 8px;
-padding: 7px 10px;
-font-size: clamp(0.78rem, 1vw, 0.9rem);
-color: #E8E8EE;
-line-height: 1.45;
-font-weight: 500;
-}
-.sxn-label-you {
-font-family: 'Inter', monospace;
-font-size: 0.68em;
-font-weight: 700;
+.ps-layer-tags.ai-tags span {
+background: rgba(0,217,192,0.1);
+border-color: rgba(0,217,192,0.2);
 color: #00D9C0;
-background: rgba(0,217,192,0.12);
-border-radius: 4px;
-padding: 1px 5px;
-margin-left: 6px;
-letter-spacing: 0.05em;
 }
-.position-closing {
+/* animated connector between layers */
+.ps-connector {
+position: relative;
+height: clamp(32px, 5vh, 52px);
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+.ps-connector-text {
+font-family: 'Inter', monospace;
+font-size: clamp(0.65rem, 0.85vw, 0.75rem);
+color: #4A4A5A;
+letter-spacing: 0.06em;
+position: relative;
+z-index: 1;
+direction: ltr;
+}
+.ps-dot {
+position: absolute;
+width: 7px; height: 7px;
+border-radius: 50%;
+background: #00D9C0;
+box-shadow: 0 0 6px rgba(0,217,192,0.8);
+bottom: 0;
+animation: dotRise 2.5s ease-in-out infinite;
+}
+@keyframes dotRise {
+0%   { transform: translateY(0); opacity: 0; }
+10%  { opacity: 1; }
+90%  { opacity: 1; }
+100% { transform: translateY(-52px); opacity: 0; }
+}
+/* closing bar */
+.ps-closing {
+flex-shrink: 0;
 text-align: center;
-padding: clamp(12px, 1.8vh, 20px) clamp(16px, 2.4vw, 28px);
+padding: clamp(10px, 1.6vh, 18px) clamp(16px, 2.4vw, 28px);
 background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,182,39,0.04));
 border: 1px solid rgba(255,107,53,0.25);
 border-radius: 14px;
@@ -903,11 +933,10 @@ font-size: clamp(1.2rem, 2vw, 1.8rem);
 color: #E8E8EE;
 font-weight: 600;
 line-height: 1.4;
-flex-shrink: 0;
 }
-.position-closing em { color: #FFB627; font-style: italic; }
-.position-closing strong { color: #FF6B35; font-weight: 800; }
-.position-closing .accent { color: #00D9C0; }
+.ps-closing em { color: #FFB627; font-style: italic; }
+.ps-closing strong { color: #E8E8EE; font-weight: 700; }
+.ps-closing .accent { color: #FF6B35; font-weight: 800; }
 .systems-examples {
 display: grid;
 grid-template-columns: repeat(3, 1fr);

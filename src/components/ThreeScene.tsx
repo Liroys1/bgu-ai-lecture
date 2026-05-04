@@ -12,62 +12,82 @@ export function useThreeScene(active: boolean) {
     const h = host.clientHeight;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(55, w / h, 0.1, 1000);
-    camera.position.z = 18;
+    const camera = new THREE.PerspectiveCamera(52, w / h, 0.1, 1000);
+    camera.position.set(0, 3, 20);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(w, h);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     host.appendChild(renderer.domElement);
 
-    const nodes: any[] = [];
-    const links: any[] = [];
-
-    const youGeo = new THREE.SphereGeometry(0.5, 24, 24);
+    // ── YOU — top, large, orange, pulsing aura ──
+    const youGeo = new THREE.SphereGeometry(0.7, 32, 32);
     const youMat = new THREE.MeshBasicMaterial({ color: 0xFF6B35 });
     const youNode = new THREE.Mesh(youGeo, youMat);
+    youNode.position.set(0, 5.5, 0);
     scene.add(youNode);
-    nodes.push({ mesh: youNode, type: 'you', pos: new THREE.Vector3(0, 0, 0) });
 
-    const auraGeo = new THREE.SphereGeometry(0.8, 24, 24);
-    const auraMat = new THREE.MeshBasicMaterial({ color: 0xFF6B35, transparent: true, opacity: 0.15 });
+    const auraGeo = new THREE.SphereGeometry(1.1, 24, 24);
+    const auraMat = new THREE.MeshBasicMaterial({ color: 0xFF6B35, transparent: true, opacity: 0.12 });
     const aura = new THREE.Mesh(auraGeo, auraMat);
+    aura.position.set(0, 5.5, 0);
     scene.add(aura);
 
-    for (let i = 0; i < 5; i++) {
-      const angle = (i / 5) * Math.PI * 2;
-      const x = Math.cos(angle) * 5;
-      const y = Math.sin(angle) * 5;
-      const z = (Math.random() - 0.5) * 3;
-      const geo = new THREE.SphereGeometry(0.3, 16, 16);
+    // ── HUMANS — middle ring in XZ plane ──
+    const humans: any[] = [];
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2;
+      const geo = new THREE.SphereGeometry(0.28, 16, 16);
       const mat = new THREE.MeshBasicMaterial({ color: 0xFFB627 });
       const m = new THREE.Mesh(geo, mat);
-      m.position.set(x, y, z);
+      const baseX = Math.cos(angle) * 4.5;
+      const baseZ = Math.sin(angle) * 4.5;
+      m.position.set(baseX, 0, baseZ);
       scene.add(m);
-      nodes.push({ mesh: m, type: 'human', pos: m.position.clone() });
+      humans.push({ mesh: m, angle, radius: 4.5 });
+
+      // line from human to YOU
+      const pts = [m.position.clone(), youNode.position.clone()];
+      const lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
+      const lineMat = new THREE.LineBasicMaterial({ color: 0xFFB627, transparent: true, opacity: 0.2 });
+      scene.add(new THREE.Line(lineGeo, lineMat));
     }
 
-    for (let i = 0; i < 8; i++) {
-      const angle = (i / 8) * Math.PI * 2 + 0.4;
-      const x = Math.cos(angle) * 9;
-      const y = Math.sin(angle) * 9;
-      const z = (Math.random() - 0.5) * 5;
-      const geo = new THREE.OctahedronGeometry(0.25, 0);
+    // ── AI AGENTS — bottom ring in XZ plane ──
+    const aiNodes: any[] = [];
+    for (let i = 0; i < 10; i++) {
+      const angle = (i / 10) * Math.PI * 2 + 0.3;
+      const geo = new THREE.OctahedronGeometry(0.22, 0);
       const mat = new THREE.MeshBasicMaterial({ color: 0x00D9C0 });
       const m = new THREE.Mesh(geo, mat);
-      m.position.set(x, y, z);
+      const baseX = Math.cos(angle) * 7;
+      const baseZ = Math.sin(angle) * 7;
+      m.position.set(baseX, -5.5, baseZ);
       scene.add(m);
-      nodes.push({ mesh: m, type: 'ai', pos: m.position.clone() });
+      aiNodes.push({ mesh: m, angle, radius: 7 });
+
+      // faint line from AI to YOU
+      const pts = [m.position.clone(), youNode.position.clone()];
+      const lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
+      const lineMat = new THREE.LineBasicMaterial({ color: 0x00D9C0, transparent: true, opacity: 0.1 });
+      scene.add(new THREE.Line(lineGeo, lineMat));
     }
 
-    for (let i = 1; i < nodes.length; i++) {
-      const points = [nodes[0].pos.clone(), nodes[i].pos.clone()];
-      const geo = new THREE.BufferGeometry().setFromPoints(points);
-      const color = nodes[i].type === 'human' ? 0xFFB627 : 0x00D9C0;
-      const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.3 });
-      const line = new THREE.Line(geo, mat);
-      scene.add(line);
-      links.push(line);
+    // ── PARTICLE STREAM — flowing upward from AI to YOU ──
+    const particles: any[] = [];
+    for (let i = 0; i < 30; i++) {
+      const pGeo = new THREE.SphereGeometry(0.07, 6, 6);
+      const color = i < 18 ? 0x00D9C0 : 0xFFB627;
+      const pMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0 });
+      const p = new THREE.Mesh(pGeo, pMat);
+      const angle = Math.random() * Math.PI * 2;
+      const radius = Math.random() * 2.5;
+      const startY = -7 + Math.random() * 14;
+      p.userData = { angle, radius, y: startY, speed: 0.018 + Math.random() * 0.022 };
+      p.position.set(Math.cos(angle) * radius, startY, Math.sin(angle) * radius);
+      scene.add(p);
+      particles.push(p);
     }
 
     let t = 0;
@@ -75,19 +95,48 @@ export function useThreeScene(active: boolean) {
     function animate() {
       frame = requestAnimationFrame(animate);
       t += 0.005;
-      scene.rotation.y = Math.sin(t * 0.4) * 0.4;
-      scene.rotation.x = Math.cos(t * 0.3) * 0.15;
-      aura.scale.setScalar(1 + Math.sin(t * 2) * 0.15);
-      nodes.forEach((n, i) => {
-        if (i > 0) {
-          n.mesh.position.x = n.pos.x + Math.sin(t + i) * 0.3;
-          n.mesh.position.y = n.pos.y + Math.cos(t + i * 1.3) * 0.3;
-          if (n.type === 'ai') {
-            n.mesh.rotation.x = t * 2;
-            n.mesh.rotation.y = t * 1.5;
-          }
-        }
+
+      // gentle Y-axis rotation only
+      scene.rotation.y += 0.003;
+
+      // YOU aura pulse
+      aura.scale.setScalar(1 + Math.sin(t * 2.5) * 0.12);
+
+      // humans orbit gently
+      humans.forEach((h, i) => {
+        const a = h.angle + t * 0.12;
+        h.mesh.position.x = Math.cos(a) * h.radius;
+        h.mesh.position.z = Math.sin(a) * h.radius;
+        h.mesh.position.y = Math.sin(t * 0.8 + i) * 0.4;
       });
+
+      // AI rotate
+      aiNodes.forEach((n, i) => {
+        const a = n.angle + t * 0.08;
+        n.mesh.position.x = Math.cos(a) * n.radius;
+        n.mesh.position.z = Math.sin(a) * n.radius;
+        n.mesh.position.y = -5.5 + Math.sin(t + i * 0.5) * 0.3;
+        n.mesh.rotation.x = t * 1.5;
+        n.mesh.rotation.y = t * 2;
+      });
+
+      // particles flow upward
+      particles.forEach(p => {
+        p.userData.y += p.userData.speed;
+        if (p.userData.y > 7) {
+          p.userData.y = -7 + Math.random() * 2;
+          p.userData.angle = Math.random() * Math.PI * 2;
+          p.userData.radius = Math.random() * 2.5;
+        }
+        const y = p.userData.y;
+        const progress = (y + 7) / 14;
+        const opacity = progress < 0.08 ? progress / 0.08 : progress > 0.92 ? (1 - progress) / 0.08 : 0.75;
+        p.material.opacity = opacity;
+        p.position.x = Math.cos(p.userData.angle + t * 0.05) * p.userData.radius;
+        p.position.y = y;
+        p.position.z = Math.sin(p.userData.angle + t * 0.05) * p.userData.radius;
+      });
+
       renderer.render(scene, camera);
     }
     animate();
