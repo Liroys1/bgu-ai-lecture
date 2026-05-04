@@ -6,38 +6,38 @@ export function slide9() {
     {
       tag: 'AI PM',
       title: 'AI Product Manager / Tech Lead',
-      co: 'monday.com', loc: 'תל אביב',
-      coDesc: 'פלטפורמת work-management (SaaS) · 175K+ לקוחות',
+      co: 'monday.com',
+      coDesc: 'SaaS פלטפורמת work-management · 175K+ לקוחות גלובליים',
       logoSlug: 'mondaydotcom',
       salary: '₪45–65K',
-      desc: 'מובילים פיתוח AI agents, אוטונומיים וגנרטיביים, תוך עבודה עם הנהלה ומשתמשי enterprise. <strong>דרוש:</strong> 5+ שנות ניסיון במוצר/AI.'
+      desc: 'PM על שכבת ה-AI של monday — agents שמנהלים projects, dashboards שמתעדכנים אוטומטית, automations שחוסכות שעות ללקוח. עובדים ישירות עם CTO ומשתמשי enterprise ב-50+ מדינות. <strong>דרוש:</strong> 5+ שנות ניסיון במוצר, אנגלית מצוינת.'
     },
     {
       tag: 'AI LEAD',
       title: 'Enterprise AI CoE Manager',
-      co: 'Payoneer', loc: 'פתח תקווה',
+      co: 'Payoneer',
       coDesc: 'תשלומים גלובליים B2B · ~2,500 עובדים',
       logoSlug: 'payoneer',
       salary: '₪50–70K',
-      desc: 'מובילים את ה-Center of Excellence ל-AI ברמת הארגון, חוצה מחלקות ומוצרים. <strong>דרוש:</strong> ניהול תוכניות חוצות-ארגון, רקע בהטמעת AI.'
+      desc: 'מגדירים ומובילים את כל אסטרטגיית ה-AI של הארגון — אילו תהליכים עוברים ל-agents, איך ML משפר fraud detection ותשלומים. השפעה על 2,500+ עובדים. <strong>דרוש:</strong> ניסיון ניהולי חוצה-ארגון, ידע ב-AI/ML.'
     },
     {
       tag: 'SENIOR',
       title: 'Lead AI Transformation',
-      co: 'Plus500', loc: 'רעננה',
+      co: 'Plus500',
       coDesc: 'מסחר אונליין · חברה ציבורית בלונדון',
       logoSlug: 'plus500',
       salary: '₪55–75K',
-      desc: 'מובילים את חזית ה-ML וההטמעה בפינטק — מודלים בפרודקשן, ניהול צוות דאטה. <strong>דרוש:</strong> רקע ב-ML production, ניהול טכני.'
+      desc: 'מובילים צוות ML בחברה פיננסית ציבורית — מודלים שמניעים החלטות מסחר בזמן אמת, ל-millions of trades ביום. אחריות מלאה: research, production ותוצאות עסקיות. <strong>דרוש:</strong> ML production + ניהול טכני.'
     },
     {
       tag: 'STAFF',
       title: 'Staff AI Researcher / ML Engineer',
-      co: 'NVIDIA Israel', loc: 'יקנעם',
-      coDesc: 'יצרנית שבבי AI · ~3,500 עובדים בישראל',
+      co: 'NVIDIA Israel',
+      coDesc: 'יצרנית שבבי ה-AI של העולם · ~3,500 עובדים בישראל',
       logoSlug: 'nvidia',
       salary: '₪65–85K+',
-      desc: 'מחקר ופיתוח ML ברמה הגבוהה ביותר — ארכיטקטורות שבבים, networking AI. <strong>דרוש:</strong> PhD או ניסיון מחקרי מוכח.'
+      desc: 'מחקר AI בחזית הטכנולוגיה — ארכיטקטורות inference לשבבי GB200 הבאים, distributed training ו-networking. אחד התפקידים הנחשקים בתעשייה. <strong>דרוש:</strong> PhD ב-ML/CS או פרסומים מוכחים.'
     }
   ];
   const cells = jobs.map(j => `
@@ -56,8 +56,6 @@ export function slide9() {
       </div>
       <div class="job-title">${j.title}</div>
       <div class="job-loc-salary">
-        <span class="job-loc">📍 ${j.loc}</span>
-        <span class="job-sep">·</span>
         <span class="job-salary">${j.salary} <span class="salary-unit">לחודש</span></span>
       </div>
       <div class="job-desc">${j.desc}</div>

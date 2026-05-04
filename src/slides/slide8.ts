@@ -56,8 +56,6 @@ export function slide8() {
       </div>
       <div class="job-title">${j.title}</div>
       <div class="job-loc-salary">
-        <span class="job-loc">📍 ${j.loc}</span>
-        <span class="job-sep">·</span>
         <span class="job-salary">${j.salary} <span class="salary-unit">לחודש</span></span>
       </div>
       <div class="job-desc">${j.desc}</div>
