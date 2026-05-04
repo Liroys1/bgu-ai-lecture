@@ -21,7 +21,7 @@ export function slide10() {
             <img class="quote-photo" src="data:image/jpeg;base64,${ALTMAN_B64}" alt="Sam Altman" />
             <div class="quote-person">
               <div class="qauthor">Sam Altman</div>
-              <div class="qrole"><span class="lat">CEO</span>, OpenAI · Reflections Blog, ינואר 2025</div>
+              <div class="qrole"><span class="lat">CEO</span>, OpenAI</div>
             </div>
           </div>
           <div class="qtext">
@@ -36,32 +36,7 @@ export function slide10() {
             <span class="qco-desc">יוצרי ChatGPT · 800M משתמשים שבועיים</span>
           </div>
           <div class="qsource">
-            <a href="https://blog.samaltman.com/reflections" target="_blank">blog.samaltman.com/reflections</a> · ינואר 2025
-          </div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-header">
-            <img class="quote-photo" src="data:image/jpeg;base64,${HASSABIS_B64}" alt="Demis Hassabis" />
-            <div class="quote-person">
-              <div class="qauthor">Demis Hassabis</div>
-              <div class="qrole">Nobel Chemistry 2024 · <span class="lat">CEO</span>, Google DeepMind · <span class="lat">TIME</span> 2025</div>
-            </div>
-          </div>
-          <div class="qtext">
-            <span class="lat qen">"I believe AI is going to be the most beneficial technology ever created — but only if we apply it in the right way."</span>
-            <br/>
-            <span class="accent">AlphaFold</span> — ה-AI שחזה מבנה תלת-ממדי של חלבונים (<span class="accent">נובל לכימיה 2024</span>) —
-            לא ביטל חוקרים. <em>פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</em>
-            בכל תחום שתיכנסו אליו — AI יהיה <span class="accent">הכלי שמכפיל את מה שתוכלו לעשות.</span>
-          </div>
-          <div class="qcompany">
-            <span class="qco-logo" style="background:#4285F4"><img src="https://cdn.simpleicons.org/googlegemini/ffffff" alt="Google DeepMind" /></span>
-            <span class="qco-name">Google DeepMind</span>
-            <span class="qco-desc">יוצרי AlphaFold ו-Gemini · נובל לכימיה 2024</span>
-          </div>
-          <div class="qsource">
-            <a href="https://x.com/NobelPrize/status/1845163525418664131" target="_blank">Nobel Prize Chemistry 2024</a>
+            <a href="https://blog.samaltman.com/the-gentle-singularity" target="_blank">blog.samaltman.com · The Gentle Singularity</a> · מאי 2024
           </div>
         </div>
 
@@ -86,7 +61,32 @@ export function slide10() {
             <span class="qco-desc">מרכז המחקר הגדול של גוגל מחוץ לארה"ב · ת"א</span>
           </div>
           <div class="qsource">
-            <a href="https://www.bigtechnology.com/p/google-research-head-yossi-matias" target="_blank">bigtechnology.com/yossi-matias</a>
+            <a href="https://www.bigtechnology.com/p/google-research-head-yossi-matias" target="_blank">bigtechnology.com · Google Research Head</a> · 2024
+          </div>
+        </div>
+
+        <div class="quote-card">
+          <div class="quote-header">
+            <img class="quote-photo" src="data:image/jpeg;base64,${HASSABIS_B64}" alt="Demis Hassabis" />
+            <div class="quote-person">
+              <div class="qauthor">Demis Hassabis</div>
+              <div class="qrole">נובל לכימיה 2024 · <span class="lat">CEO</span>, Google DeepMind</div>
+            </div>
+          </div>
+          <div class="qtext">
+            <span class="lat qen">"I believe AI is going to be the most beneficial technology ever created — but only if we apply it in the right way."</span>
+            <br/>
+            <span class="accent">AlphaFold</span> — ה-AI שחזה מבנה תלת-ממדי של חלבונים (<span class="accent">נובל לכימיה 2024</span>) —
+            לא ביטל חוקרים. <em>פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</em>
+            בכל תחום שתיכנסו אליו — AI יהיה <span class="accent">הכלי שמכפיל את מה שתוכלו לעשות.</span>
+          </div>
+          <div class="qcompany">
+            <span class="qco-logo" style="background:#4285F4"><img src="https://cdn.simpleicons.org/googlegemini/ffffff" alt="Google DeepMind" /></span>
+            <span class="qco-name">Google DeepMind</span>
+            <span class="qco-desc">יוצרי AlphaFold ו-Gemini · נובל לכימיה 2024</span>
+          </div>
+          <div class="qsource">
+            <a href="https://www.nobelprize.org/prizes/chemistry/2024/hassabis/interview/" target="_blank">nobelprize.org · ראיון לפרס נובל</a> · אוקטובר 2024
           </div>
         </div>
 
