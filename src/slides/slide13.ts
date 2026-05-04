@@ -1,8 +1,8 @@
 import { topbar } from './topbar';
 
-/* SLIDE 13: YOUR POSITION — YOU above AI, the decision layer */
+/* SLIDE 13: YOUR POSITION — decision layer above AI, clear interface */
 export function slide13() {
-  const dots = [0, 0.5, 1.0, 1.5, 2.0].map((delay, i) =>
+  const dots = [0, 0.6, 1.2, 1.8, 2.4].map((delay, i) =>
     `<span class="ps-dot" style="left:${10 + i * 18}%;animation-delay:${delay}s"></span>`
   ).join('');
 
@@ -12,10 +12,10 @@ export function slide13() {
 
       <div class="ps-top anim-up">
         <span class="label"><span class="ldot"></span>11 · המיקום שלכם בעולם החדש</span>
-        <h2 style="margin-top:8px">ה-<span class="lat">AI</span> מבצע. <span class="accent">אתם מחליטים.</span></h2>
+        <h2 style="margin-top:8px">ה-<span class="lat">AI</span> מבצע. <span class="accent">אתם שופטים.</span></h2>
         <p class="ps-sub">
-          ה-<span class="lat">AI</span> צודק טכנית — תמיד. אבל הנתונים לא מספרים הכל.
-          <strong>ההקשר, הערכים, המגבלות — זה אתם. ואף מודל לא ישתפר בזה.</strong>
+          ה-<span class="lat">AI</span> מציע — אתם בודקים. הוא <strong>לא תמיד צודק</strong>, ולעיתים פספס.
+          <strong>שיפוט, הקשר, ערכים — זה אתם.</strong>
         </p>
       </div>
 
@@ -28,7 +28,7 @@ export function slide13() {
               <div class="ps-layer-name">שכבת ההחלטה</div>
             </div>
             <div class="ps-layer-tags">
-              <span>שיפוט עסקי</span>
+              <span>שיפוט</span>
               <span>הקשר</span>
               <span>ערכים</span>
               <span>אסטרטגיה</span>
@@ -38,7 +38,7 @@ export function slide13() {
 
           <div class="ps-connector">
             ${dots}
-            <div class="ps-connector-text">↑ &nbsp;נתונים · תובנות · המלצות</div>
+            <div class="ps-connector-text">↑ &nbsp;ניתוח · המלצות · תוצאות</div>
           </div>
 
           <div class="ps-layer ps-layer-ai">
@@ -56,12 +56,35 @@ export function slide13() {
           </div>
         </div>
 
-        <div class="three-host" id="threeHost">
-          <div class="three-tag">YOU · HUMANS · AI AGENTS</div>
-          <div class="three-legend">
-            <div class="item"><span class="swatch" style="background:#FF6B35"></span><span>YOU — top</span></div>
-            <div class="item"><span class="swatch" style="background:#FFB627"></span><span>HUMANS</span></div>
-            <div class="item"><span class="swatch" style="background:#00D9C0"></span><span>AI AGENTS</span></div>
+        <div class="ps-interface">
+          <div class="psi-title">הממשק ביניכם</div>
+
+          <div class="psi-row you-to-ai">
+            <div class="psi-dir-label">YOU → AI</div>
+            <div class="psi-items">
+              <div class="psi-item"><span class="psi-icon">🎯</span>מטרות והגדרות</div>
+              <div class="psi-item"><span class="psi-icon">📋</span>הקשר עסקי</div>
+              <div class="psi-item"><span class="psi-icon">⚖️</span>מגבלות וערכים</div>
+            </div>
+          </div>
+
+          <div class="psi-divider">
+            <div class="psi-flow-arrow down">↓</div>
+            <div class="psi-flow-arrow up">↑</div>
+          </div>
+
+          <div class="psi-row ai-to-you">
+            <div class="psi-dir-label">AI → YOU</div>
+            <div class="psi-items">
+              <div class="psi-item"><span class="psi-icon">📊</span>ניתוח ודאטה</div>
+              <div class="psi-item"><span class="psi-icon">💡</span>המלצות</div>
+              <div class="psi-item"><span class="psi-icon">⚡</span>ביצוע משימות</div>
+            </div>
+          </div>
+
+          <div class="psi-judgment">
+            <span class="psi-j-label">JUDGMENT</span>
+            אתם מחליטים מה לקבל, מה לדחות, ומה הלאה
           </div>
         </div>
 

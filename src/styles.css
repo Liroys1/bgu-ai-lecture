@@ -937,6 +937,89 @@ line-height: 1.4;
 .ps-closing em { color: #FFB627; font-style: italic; }
 .ps-closing strong { color: #E8E8EE; font-weight: 700; }
 .ps-closing .accent { color: #FF6B35; font-weight: 800; }
+/* interface diagram */
+.ps-interface {
+background: rgba(255,255,255,0.025);
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: 16px;
+padding: clamp(14px, 1.8vw, 22px);
+display: flex;
+flex-direction: column;
+gap: clamp(8px, 1.2vh, 14px);
+justify-content: space-between;
+}
+.psi-title {
+font-family: 'Inter', monospace;
+font-size: clamp(0.65rem, 0.82vw, 0.74rem);
+color: #6B6B7B;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+text-align: center;
+}
+.psi-row {
+border-radius: 12px;
+padding: clamp(10px, 1.3vw, 16px);
+}
+.you-to-ai {
+background: rgba(255,107,53,0.08);
+border: 1px solid rgba(255,107,53,0.2);
+}
+.ai-to-you {
+background: rgba(0,217,192,0.06);
+border: 1px solid rgba(0,217,192,0.18);
+}
+.psi-dir-label {
+font-family: 'Inter', monospace;
+font-size: clamp(0.62rem, 0.78vw, 0.72rem);
+font-weight: 800;
+color: #FF6B35;
+letter-spacing: 0.08em;
+margin-bottom: 8px;
+direction: ltr;
+}
+.ai-to-you .psi-dir-label { color: #00D9C0; }
+.psi-items { display: flex; flex-direction: column; gap: 5px; }
+.psi-item {
+font-size: clamp(0.78rem, 1vw, 0.9rem);
+color: #C5C5D2;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.psi-icon { font-size: 0.9em; flex-shrink: 0; }
+.psi-divider {
+display: flex;
+justify-content: center;
+gap: 20px;
+}
+.psi-flow-arrow {
+font-size: clamp(1rem, 1.4vw, 1.3rem);
+font-weight: 700;
+}
+.psi-flow-arrow.down { color: #FF6B35; }
+.psi-flow-arrow.up   { color: #00D9C0; }
+.psi-judgment {
+background: rgba(255,182,39,0.08);
+border: 1px solid rgba(255,182,39,0.2);
+border-radius: 10px;
+padding: 10px 14px;
+font-size: clamp(0.76rem, 0.95vw, 0.88rem);
+color: #C5C5D2;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.psi-j-label {
+font-family: 'Inter', monospace;
+font-size: 0.65em;
+font-weight: 800;
+color: #FFB627;
+background: rgba(255,182,39,0.12);
+border-radius: 4px;
+padding: 2px 7px;
+letter-spacing: 0.08em;
+flex-shrink: 0;
+}
 .systems-examples {
 display: grid;
 grid-template-columns: repeat(3, 1fr);
