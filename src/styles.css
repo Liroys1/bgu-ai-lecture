@@ -3770,3 +3770,10 @@ em {
 .era-year {
   margin-top: 10px !important;
 }
+
+/* ── SLIDES 8+9: Jobs overflow fixes ── */
+.jobs-slide .lead { font-size: clamp(0.88rem, 1.05vw, 0.98rem) !important; line-height: 1.5 !important; margin-top: 4px !important; }
+.jobs-grid { gap: clamp(6px, 0.8vw, 10px) !important; }
+.jobs-foot { margin-top: 4px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.job-card .job-co-desc { font-size: clamp(0.6rem, 0.72vw, 0.68rem) !important; }
+.job-card .job-loc-salary { margin: 3px 0 4px !important; }

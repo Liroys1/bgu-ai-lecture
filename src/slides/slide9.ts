@@ -64,10 +64,9 @@ export function slide9() {
     <div class="frame jobs-slide">
       <div class="anim-up">
         <span class="label"><span class="ldot"></span>07 · ולאן זה הולך · בכיר</span>
-        <h2 style="margin-top:14px">לאן זה מוביל. <em>בעוד 5–8 שנים.</em></h2>
-        <p class="lead">
-          אלה לא חלומות — אלה משרות פתוחות עכשיו. רק שלא לכם. עוד. <strong>אבל זה הכיוון</strong>.
-          מי שילמד נכון את העשור הקרוב, יוכל להגיש מועמדות לתפקידים האלה.
+        <h2 style="margin-top:8px">לאן זה מוביל. <span class="accent">בעוד 5–8 שנים.</span></h2>
+        <p class="lead" style="margin-top:4px">
+          אלה משרות פתוחות עכשיו — רק שלא לכם. עוד. <strong>אבל זה הכיוון.</strong> מי שילמד נכון, יוכל להגיש מועמדות לתפקידים האלה.
         </p>
       </div>
       <div class="jobs-grid anim-fade" style="animation-delay:0.3s">${cells}</div>

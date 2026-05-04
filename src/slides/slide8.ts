@@ -64,10 +64,9 @@ export function slide8() {
     <div class="frame jobs-slide">
       <div class="anim-up">
         <span class="label"><span class="ldot"></span>06 · משרות פתוחות עכשיו · ג'וניור</span>
-        <h2 style="margin-top:14px">איפה מתחילים. <em>היום.</em></h2>
-        <p class="lead">
-          ארבע משרות אמיתיות מחברות אמיתיות, לבוגרים שכמוכם — מתוך משרות פעילות <strong>באפריל 2026</strong>.
-          שכר בסיס, לפני בונוסים ואופציות.
+        <h2 style="margin-top:8px">איפה מתחילים. <span class="accent">היום.</span></h2>
+        <p class="lead" style="margin-top:4px">
+          ארבע משרות אמיתיות, לבוגרים שכמוכם — מתוך משרות פעילות <strong>באפריל 2026</strong>. שכר בסיס, לפני בונוסים.
         </p>
       </div>
       <div class="jobs-grid anim-fade" style="animation-delay:0.3s">${cells}</div>
