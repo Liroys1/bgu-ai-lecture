@@ -3685,6 +3685,7 @@ em {
   line-height: 1.5;
   font-style: italic;
 }
+.quote-card .qtext .accent { color: #FF6B35 !important; font-style: normal; }
 
 /* ── SLIDE 12: Colored columns ── */
 .col-card.left-col {
