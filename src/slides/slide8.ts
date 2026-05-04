@@ -7,47 +7,47 @@ export function slide8() {
       tag: 'OPS',
       title: 'AI & Technology Operations Manager',
       co: 'BeamUP', loc: 'תל אביב',
-      coDesc: 'AI לתחום הנדל"ן · ~150 עובדים',
-      logo: 'B', logoColor: '#FF6B35',
-      salary: '~₪25-35K/חודש',
-      role: 'מה תעשו: ניהול תפעול AI, אינטגרציות, אוטומציה תהליכים.',
-      req: 'דורש: בוגר/ת תעשייה וניהול או הנדסה, חשיבה אנליטית.'
-    },
-    {
-      tag: 'PRODUCT',
-      title: 'Operations / Data roles (50+ open)',
-      co: 'Buildots', loc: 'תל אביב',
-      coDesc: 'AI לאתרי בנייה · ~250 עובדים',
-      logo: 'B', logoColor: '#00D9C0',
-      salary: '~₪22-32K/חודש',
-      role: 'מה תעשו: ניהול תפעול, דאטה, BI לפרויקטים.',
-      req: 'דורש: גיוס מאסיבי ב-2026, פתוחים גם ל-junior.'
+      coDesc: 'Agentic AI לשרשרת אספקה · ~50 עובדים',
+      logoSlug: '',
+      salary: '₪18–28K',
+      desc: 'תפעול אינטגרציות AI, אוטומציה של תהליכים, עבודה עם data וניהול ספקים. <strong>דרוש:</strong> בוגר/ת תעשייה וניהול עם חשיבה אנליטית, רקע ב-SQL/Excel.'
     },
     {
       tag: 'DATA',
+      title: 'Data Analyst',
+      co: 'Buildots', loc: 'תל אביב',
+      coDesc: 'AI לניטור פרויקטי בנייה (computer vision) · ~250 עובדים',
+      logoSlug: '',
+      salary: '₪20–30K',
+      desc: 'ניתוח נתוני פרויקטים, בניית דשבורדים, עבודה עם צוותי מוצר ופיתוח. <strong>דרוש:</strong> בוגר/ת תעשייה וניהול, SQL בסיסי, Python יתרון.'
+    },
+    {
+      tag: 'BI',
       title: 'Data Operations Analyst',
       co: 'Plus500', loc: 'רעננה',
       coDesc: 'מסחר אונליין · חברה ציבורית בלונדון',
-      logo: 'P', logoColor: '#1A4D8C',
-      salary: '~₪28-38K/חודש',
-      role: 'מה תעשו: BI, Python, ניתוח, דשבורדים פיננסיים.',
-      req: 'דורש: בוגר/ת תעשייה וניהול רלוונטי/ת. רקע ב-SQL.'
+      logoSlug: 'plus500',
+      salary: '₪22–32K',
+      desc: 'BI ודאטה לקבלת החלטות פיננסיות, בניית מודלים, דשבורדים מנהליים. <strong>דרוש:</strong> SQL חזק, Python, רקע אנליטי, אנגלית גבוהה.'
     },
     {
       tag: 'AI OPS',
-      title: 'AI Integration Specialist (Junior)',
+      title: 'AI Integration Specialist',
       co: 'Microsoft Israel', loc: 'הרצליה',
-      coDesc: 'ענקית טכנולוגיה · ~3,000 עובדים בישראל',
-      logo: 'M', logoColor: '#0078D4', logoSlug: 'microsoft',
-      salary: '~₪30-40K/חודש',
-      role: 'מה תעשו: שילוב Copilot/AI בתהליכי עבודה ארגוניים.',
-      req: 'דורש: 100 משרות פתוחות ב-Copilot/AI ב-2026.'
+      coDesc: 'מרכז R&D של Microsoft · ~3,000 עובדים בישראל',
+      logoSlug: 'microsoft',
+      salary: '₪25–35K',
+      desc: 'הטמעת Copilot ו-AI בתהליכי עבודה ארגוניים, עבודה עם צוותי product וצוותים גלובליים. <strong>דרוש:</strong> רקע טכני, אנגלית גבוהה, חשיבה מערכתית.'
     }
   ];
   const cells = jobs.map(j => `
     <div class="job-card senior">
       <div class="job-head">
-        <div class="job-logo" style="background:${j.logoColor}">${j.logoSlug ? `<img src="https://cdn.simpleicons.org/${j.logoSlug}/ffffff" alt="${j.co}" />` : j.logo}</div>
+        <div class="job-logo">
+          ${j.logoSlug
+            ? `<img src="https://cdn.simpleicons.org/${j.logoSlug}/FFFFFF" alt="${j.co}" />`
+            : `<div class="job-logo-fallback">${j.co.charAt(0)}</div>`}
+        </div>
         <div class="job-co-block">
           <div class="job-co">${j.co}</div>
           <div class="job-co-desc">${j.coDesc}</div>
@@ -55,9 +55,12 @@ export function slide8() {
         <span class="job-tag">${j.tag}</span>
       </div>
       <div class="job-title">${j.title}</div>
-      <div class="job-loc-salary"><span class="job-loc">📍 ${j.loc}</span> · <span class="job-salary">${j.salary}</span></div>
-      <div class="job-role">${j.role}</div>
-      <div class="job-req">${j.req}</div>
+      <div class="job-loc-salary">
+        <span class="job-loc">📍 ${j.loc}</span>
+        <span class="job-sep">·</span>
+        <span class="job-salary">${j.salary} <span class="salary-unit">לחודש</span></span>
+      </div>
+      <div class="job-desc">${j.desc}</div>
     </div>
   `).join('');
   return `
@@ -67,18 +70,18 @@ export function slide8() {
         <span class="label"><span class="ldot"></span>06 · משרות פתוחות עכשיו · ג'וניור</span>
         <h2 style="margin-top:14px">איפה מתחילים. <em>היום.</em></h2>
         <p class="lead">
-          ארבע משרות אמיתיות, שפורסמו <strong>בחודש האחרון</strong>, בחברות אמיתיות, לבוגרים שכמוכם. 
-          זה לא תיאוריה — זה הדף של היום. שכר בסיס, לפני בונוסים ואופציות.
+          ארבע משרות אמיתיות מחברות אמיתיות, לבוגרים שכמוכם — מתוך משרות פעילות <strong>באפריל 2026</strong>.
+          שכר בסיס, לפני בונוסים ואופציות.
         </p>
       </div>
       <div class="jobs-grid anim-fade" style="animation-delay:0.3s">${cells}</div>
       <div class="jobs-foot">
-        <span class="source-tag">SOURCES</span>
-        <a href="https://startup.jobs/locations/israel" target="_blank">startup.jobs/israel</a> ·
-        <a href="https://www.calcalistech.com/ctechnews/article/cdzdrd6pl" target="_blank">calcalistech.com</a> ·
-        <a href="https://www.nucamp.co/blog/coding-bootcamp-israel-isr-top-10-best-paid-tech-job-in-israel-in-2025" target="_blank">salary data: Nucamp/Ravio 2026</a>
+        <span class="source-tag">SOURCES · VERIFIED 04/2026</span>
+        <a href="https://startup.jobs/locations/israel" target="_blank">startup.jobs</a> ·
+        <a href="https://builtin.com/jobs/mena/israel" target="_blank">builtin.com</a> ·
+        <a href="https://www.levels.fyi/t/business-analyst/locations/israel" target="_blank">Levels.fyi</a> ·
+        <span style="color:#909AA8;">שכר: Nucamp/Ravio 2026, Levels.fyi entry-level TLV</span>
       </div>
     </div>
   `;
 }
-
