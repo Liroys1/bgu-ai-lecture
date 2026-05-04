@@ -1218,9 +1218,11 @@ gap: clamp(6px, 1vh, 12px) !important;
 .frame > .phases,
 .frame > .lessons-grid,
 .frame > .qs-grid,
-.frame > .roadmap-flow {
+.frame > .roadmap-flow,
+.frame > .timeline-evolution {
 flex: 1 !important;
 min-height: 0 !important;
+overflow: hidden !important;
 }
 .stop, .why-card, .stat-card, .job-card, .quote-card,
 .act-card, .skill-card, .lesson-card, .phase-card, .q-card {
@@ -3744,9 +3746,27 @@ em {
   overflow: hidden;
 }
 .evolution-source {
-  flex-shrink: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-height: 22px;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  max-height: 20px !important;
+  margin-top: 4px !important;
+}
+/* ── SLIDE 5: Era industry label — readable size ── */
+.era-industry {
+  font-size: clamp(0.7rem, 0.88vw, 0.8rem) !important;
+  margin-bottom: -4px !important;
+}
+.era-industry-note {
+  font-size: 0.9em !important;
+  color: #8090A8 !important;
+}
+/* ── SLIDE 5: Era card compact — prevent overflow ── */
+.era-card {
+  gap: 4px !important;
+  overflow: hidden !important;
+}
+.era-year {
+  margin-top: 10px !important;
 }
