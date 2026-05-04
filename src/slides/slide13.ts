@@ -127,10 +127,10 @@ export function slide13() {
               <text x="${YOU.x}" y="${YOU.y+7}" class="you-icon">👤</text>
             </g>
 
-            <!-- Tier labels — clear, readable, no overlap -->
+            <!-- Tier labels — positioned at RIGHT edge of SVG, away from transitions column -->
             <text x="${YOU.x}" y="14" class="tier-label-lg you-label">אנחנו</text>
-            <text x="10" y="218" class="tier-label-lg h-label" text-anchor="start">אנשים</text>
-            <text x="10" y="365" class="tier-label-lg ai-label" text-anchor="start">סוכני AI</text>
+            <text x="828" y="218" class="tier-label-lg h-label"  text-anchor="end">← אנשים</text>
+            <text x="828" y="365" class="tier-label-lg ai-label" text-anchor="end">← סוכני AI</text>
           </svg>
         </div>
 
