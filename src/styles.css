@@ -383,7 +383,7 @@ border-radius: 14px;
 padding: clamp(18px, 2.2vw, 26px);
 display: flex; flex-direction: column; gap: 10px;
 }
-.why-card .num { font-family: ‘Inter’, monospace; font-size: 1.9rem; font-weight: 900; color: #FF6B35; line-height: 1; direction: ltr; }
+.why-card .num { font-family: ‘Inter’, monospace; font-size: 1.9rem; font-weight: 900; color: #FF6B35; line-height: 1; direction: ltr; text-align: right; display: block; }
 .why-card .t { font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: #FFFFFF; font-weight: 700; line-height: 1.2; }
 .why-card .d { font-size: clamp(0.78rem, 1.1vw, 0.88rem); color: #A0A0AE; line-height: 1.6; }
 
@@ -1808,7 +1808,7 @@ left: 5%;
 right: 5%;
 top: 30px;
 height: 2px;
-background: linear-gradient(90deg, rgba(107,169,255,0.3), rgba(176,132,255,0.3), rgba(255,182,39,0.3), rgba(255,107,53,0.6));
+background: linear-gradient(270deg, rgba(107,169,255,0.3), rgba(176,132,255,0.3), rgba(255,182,39,0.3), rgba(255,107,53,0.6));
 z-index: 0;
 pointer-events: none;
 }
@@ -3493,4 +3493,109 @@ em {
   .rank-pill { flex: none; }
   .why-rankings { flex-wrap: wrap !important; }
   .rank-pill .rank-num { font-size: 1.6rem !important; }
+}
+
+/* ── WHY-CARD number: right-align fix (direction:ltr causes left-drift) ── */
+.why-card .num {
+  text-align: right !important;
+  unicode-bidi: isolate;
+}
+
+/* ── RANK-PILL text: increase to match why-card body size ── */
+.rank-pill .rank-text {
+  font-size: clamp(0.82rem, 0.98vw, 0.92rem) !important;
+  line-height: 1.45 !important;
+}
+
+/* ── SLIDE 3: Journey — compact header to prevent overflow ── */
+.frame.journey {
+  overflow: hidden;
+}
+.frame.journey h2 {
+  font-size: clamp(1.2rem, 1.8vw, 1.9rem) !important;
+  line-height: 1.15 !important;
+  margin-top: 6px !important;
+}
+.frame.journey .lead {
+  font-size: clamp(0.72rem, 0.88vw, 0.86rem) !important;
+  line-height: 1.5 !important;
+  margin-top: 6px !important;
+}
+.frame.journey .anim-up {
+  flex-shrink: 0;
+}
+.frame.journey > .timeline {
+  margin-top: 0 !important;
+  gap: clamp(5px, 0.8vw, 10px) !important;
+}
+.frame.journey .stop {
+  padding: clamp(8px, 1.1vw, 13px) !important;
+  gap: 3px !important;
+}
+
+@media (max-width: 900px) {
+  .why-card .num { font-size: clamp(1.8rem, 5vw, 2.4rem) !important; }
+  .frame.journey h2 { font-size: clamp(1.1rem, 3.5vw, 1.6rem) !important; }
+  .frame.journey .lead { font-size: clamp(0.68rem, 1.6vw, 0.82rem) !important; }
+}
+
+/* ── SLIDE 5: Era skills — chip layout ── */
+.era-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 5px;
+  margin-top: 2px;
+}
+.es-tag {
+  font-size: clamp(0.58rem, 0.68vw, 0.65rem);
+  background: rgba(255,255,255,0.07);
+  color: #C0C0CC;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.era-card.current .es-tag {
+  background: rgba(255,107,53,0.12);
+  color: #E8D0B0;
+}
+.era-industry-note {
+  font-size: 0.7em;
+  color: #6B6B7B;
+  font-weight: 400;
+}
+
+/* ── SLIDE 5: Flow chain in lead paragraph ── */
+.flow-chain {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  direction: ltr;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: 0.92em;
+  font-family: 'Inter', monospace;
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin: 0 4px;
+}
+.flow-chain .fa {
+  color: #FF6B35;
+  font-weight: 700;
+}
+
+/* ── SLIDE 5: Frame overflow + source line compact ── */
+.frame.vs-slide {
+  overflow: hidden;
+}
+.evolution-source {
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-height: 22px;
 }
