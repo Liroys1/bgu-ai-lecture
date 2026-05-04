@@ -25,8 +25,8 @@ export function slide10() {
             </div>
           </div>
           <div class="qtext">
-            "היכולת של <span class="accent">אדם אחד להשיג ב-2030 הרבה יותר</span> ממה שיכול היה ב-2020 תהיה שינוי מרשים — ורבים ידעו להפיק ממנו תועלת."
-            <em>אותו אדם, אותן שעות — output של צוות שלם. לא כי הוא חכם יותר, אלא כי ה-AI מגדיל את מה שאפשר לעשות לבד.</em>
+            "היכולת של <span class="accent">אדם אחד להשיג ב-2030 הרבה יותר</span> ממה שיכול היה ב-2020 תהיה <strong>שינוי מרשים</strong> — ורבים ידעו להפיק ממנו תועלת."
+            <em>אותו אדם, אותן שעות — <strong>output של צוות שלם.</strong> לא כי הוא חכם יותר, אלא כי ה-AI מגדיל את מה שאפשר לעשות לבד.</em>
           </div>
           <div class="qcompany">
             <span class="qco-logo" style="background:#fff"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=128" alt="OpenAI" /></span>
@@ -48,8 +48,7 @@ export function slide10() {
           </div>
           <div class="qtext">
             "אני חושב על זה כ-<span class="accent">AI שהוא מגבר של גאוניות אנושית</span> — שמעצים מדענים, עובדי בריאות, מורים, אנשי עסקים."
-            <em>"התרחיש היחיד שנצטרך פחות חוקרים הוא אם ענינו על כל השאלות הגדולות — ואני לא חושב שמישהו מאמין בכך."</em>
-            מגבר — לא תחליף. <span class="accent">כמו מיקרוסקופ שהגדיל את יכולת המדענים לראות, לא ביטל אותם.</span>
+            <em><strong>מגבר — לא תחליף.</strong> כמו מיקרוסקופ שהגדיל את יכולת המדענים לראות — <strong>לא ביטל אותם.</strong></em>
           </div>
           <div class="qcompany">
             <span class="qco-logo" style="background:#fff"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=128" alt="Google" /></span>
@@ -70,8 +69,8 @@ export function slide10() {
             </div>
           </div>
           <div class="qtext">
-            "אני מאמין ש-AI יהיה <span class="accent">הטכנולוגיה המועילה ביותר שנוצרה אי פעם</span> — אבל רק אם נבנה ונשתמש בה בדרך הנכונה."
-            <em><span class="accent">AlphaFold</span> — ה-AI שפתר תוך שנים שאלה שהיתה פתוחה 50 שנה: מה המבנה התלת-ממדי של חלבון. פרס נובל לכימיה 2024. לא ביטל חוקרים — <strong>פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</strong></em>
+            "אני מאמין ש-AI יהיה <span class="accent">הטכנולוגיה המועילה ביותר שנוצרה אי פעם</span> — אבל רק אם <strong>נבנה ונשתמש בה בדרך הנכונה.</strong>"
+            <em><span class="accent">AlphaFold</span> — פתר שאלה שהיתה פתוחה <strong>50 שנה.</strong> פרס נובל לכימיה 2024. לא ביטל חוקרים — <strong>פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</strong></em>
           </div>
           <div class="qcompany">
             <span class="qco-logo" style="background:#fff"><img src="https://www.google.com/s2/favicons?domain=deepmind.google&sz=128" alt="Google DeepMind" /></span>
