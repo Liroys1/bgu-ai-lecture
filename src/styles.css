@@ -3713,20 +3713,26 @@ em {
 .skill-card[data-cat="soft"] .skill-cat { color: #B06BFF; }
 .skill-card[data-cat="meta"] .skill-cat { color: #FFB627; }
 
-/* ── SLIDE 18: Bigger Q numbers ── */
+/* ── SLIDE 18: Q card text ── */
 .q-card .q-num {
-  font-size: clamp(1.5rem, 2.4vw, 2.2rem) !important;
-  font-weight: 900 !important;
-  color: rgba(255,107,53,0.28) !important;
+  font-size: clamp(0.65rem, 0.8vw, 0.75rem) !important;
+  font-weight: 800 !important;
+  color: #FF6B35 !important;
   line-height: 1 !important;
   display: block !important;
   margin-bottom: 6px !important;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.06em;
 }
 .q-card .q-title {
-  font-size: clamp(0.8rem, 0.96vw, 0.9rem) !important;
-  font-weight: 600 !important;
-  color: #E8E8F0 !important;
+  font-size: clamp(1rem, 1.4vw, 1.25rem) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  line-height: 1.35 !important;
+}
+.q-card .q-hint {
+  font-size: clamp(0.78rem, 1vw, 0.9rem) !important;
+  color: #B0B0BE !important;
+  line-height: 1.55 !important;
 }
 
 /* ── SLIDE 3: Timeline connecting dots ── */
