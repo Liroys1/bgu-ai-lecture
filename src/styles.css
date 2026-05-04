@@ -3777,3 +3777,11 @@ em {
 .jobs-foot { margin-top: 4px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .job-card .job-co-desc { font-size: clamp(0.6rem, 0.72vw, 0.68rem) !important; }
 .job-card .job-loc-salary { margin: 3px 0 4px !important; }
+
+/* ── Quote company logos — favicon-based (white bg for colorful icons) ── */
+.qco-logo[style*="background:#fff"] img {
+  width: 80% !important;
+  height: 80% !important;
+  object-fit: contain !important;
+  border-radius: 2px;
+}

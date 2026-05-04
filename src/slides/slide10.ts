@@ -1,7 +1,7 @@
 import { ALTMAN_B64,HASSABIS_B64,MATIAS_B64 } from '../assets/images';
 import { topbar } from './topbar';
 
-/* SLIDE 10: 3 QUOTES from global AI leaders */
+/* SLIDE 10: 3 QUOTES from global AI leaders — verified June 2025 */
 export function slide10() {
   return `
     ${topbar(10, 'VOICES')}
@@ -25,18 +25,18 @@ export function slide10() {
             </div>
           </div>
           <div class="qtext">
-            <span class="lat qen">"The ability for one person to get much more done in 2030 than they could in 2020 will be a striking change — and one many people will figure out how to benefit from."</span>
+            <span class="lat qen">"Generally speaking, the ability for one person to get much more done in 2030 than they could in 2020 will be a striking change, and one many people will figure out how to benefit from."</span>
             <br/>
-            היכולת של <span class="accent">אדם אחד לעשות הרבה יותר ב-2030</span> מאשר ב-2020 תהיה שינוי מרשים.
-            <em>מי שרותם AI נכון — עובד <span class="accent">ב-10x</span> יחסית למי שלא.</em>
+            "היכולת של <span class="accent">אדם אחד להשיג ב-2030 הרבה יותר</span> ממה שיכול היה ב-2020 תהיה שינוי מרשים — ורבים ידעו להפיק ממנו תועלת."
+            <em>אותו אדם, אותן שעות — output של צוות שלם. לא כי הוא חכם יותר, אלא כי ה-AI מגדיל את מה שאפשר לעשות לבד.</em>
           </div>
           <div class="qcompany">
-            <span class="qco-logo" style="background:#10A37F"><img src="https://cdn.simpleicons.org/openai/ffffff" alt="OpenAI" /></span>
+            <span class="qco-logo" style="background:#fff"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=128" alt="OpenAI" /></span>
             <span class="qco-name">OpenAI</span>
             <span class="qco-desc">יוצרי ChatGPT · 800M משתמשים שבועיים</span>
           </div>
           <div class="qsource">
-            <a href="https://blog.samaltman.com/the-gentle-singularity" target="_blank">blog.samaltman.com · The Gentle Singularity</a> · מאי 2024
+            <a href="https://blog.samaltman.com/the-gentle-singularity" target="_blank">blog.samaltman.com · The Gentle Singularity</a> · יוני 2025
           </div>
         </div>
 
@@ -49,19 +49,19 @@ export function slide10() {
             </div>
           </div>
           <div class="qtext">
-            <span class="lat qen">"AI is an amplifier of human ingenuity — it really empowers the scientists, the healthcare workers, the teachers, the business people."</span>
+            <span class="lat qen">"I think about it as AI as an amplifier of human ingenuity."</span>
             <br/>
-            <span class="accent">AI הוא מגבר של גאוניות אנושית.</span>
-            <em>"נצטרך פחות חוקרים רק אם ענינו על כל השאלות הגדולות — ואני לא חושב שמישהו מאמין בכך."</em>
-            לא מהנדס שיוחלף — אלא <span class="accent">מהנדס שרותם AI וישאל שאלות שלא יכול היה לשאול קודם.</span>
+            "אני חושב על זה כ-<span class="accent">AI שהוא מגבר של גאוניות אנושית</span> — שמעצים מדענים, עובדי בריאות, מורים, אנשי עסקים."
+            <em>"התרחיש היחיד שנצטרך פחות חוקרים הוא אם ענינו על כל השאלות הגדולות — ואני לא חושב שמישהו מאמין בכך."</em>
+            מגבר — לא תחליף. <span class="accent">כמו מיקרוסקופ שהגדיל את יכולת המדענים לראות, לא ביטל אותם.</span>
           </div>
           <div class="qcompany">
-            <span class="qco-logo" style="background:#EA4335"><img src="https://cdn.simpleicons.org/google/ffffff" alt="Google" /></span>
+            <span class="qco-logo" style="background:#fff"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=128" alt="Google" /></span>
             <span class="qco-name">Google Israel</span>
             <span class="qco-desc">מרכז המחקר הגדול של גוגל מחוץ לארה"ב · ת"א</span>
           </div>
           <div class="qsource">
-            <a href="https://www.bigtechnology.com/p/google-research-head-yossi-matias" target="_blank">bigtechnology.com · Google Research Head</a> · 2024
+            <a href="https://www.bigtechnology.com/p/google-research-head-yossi-matias" target="_blank">bigtechnology.com · Google Research Head</a> · אוקטובר 2025
           </div>
         </div>
 
@@ -74,19 +74,18 @@ export function slide10() {
             </div>
           </div>
           <div class="qtext">
-            <span class="lat qen">"I believe AI is going to be the most beneficial technology ever created — but only if we apply it in the right way."</span>
+            <span class="lat qen">"I believe AI is going to be the most beneficial technology ever created — but only if we apply it in the right way and build it in the right way."</span>
             <br/>
-            <span class="accent">AlphaFold</span> — ה-AI שחזה מבנה תלת-ממדי של חלבונים (<span class="accent">נובל לכימיה 2024</span>) —
-            לא ביטל חוקרים. <em>פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</em>
-            בכל תחום שתיכנסו אליו — AI יהיה <span class="accent">הכלי שמכפיל את מה שתוכלו לעשות.</span>
+            "אני מאמין ש-AI יהיה <span class="accent">הטכנולוגיה המועילה ביותר שנוצרה אי פעם</span> — אבל רק אם נבנה ונשתמש בה בדרך הנכונה."
+            <em><span class="accent">AlphaFold</span> — ה-AI שפתר תוך שנים שאלה שהיתה פתוחה 50 שנה: מה המבנה התלת-ממדי של חלבון. פרס נובל לכימיה 2024. לא ביטל חוקרים — <strong>פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</strong></em>
           </div>
           <div class="qcompany">
-            <span class="qco-logo" style="background:#4285F4"><img src="https://cdn.simpleicons.org/googlegemini/ffffff" alt="Google DeepMind" /></span>
+            <span class="qco-logo" style="background:#fff"><img src="https://www.google.com/s2/favicons?domain=deepmind.google&sz=128" alt="Google DeepMind" /></span>
             <span class="qco-name">Google DeepMind</span>
-            <span class="qco-desc">יוצרי AlphaFold ו-Gemini · נובל לכימיה 2024</span>
+            <span class="qco-desc">יוצרי AlphaFold · נובל לכימיה 2024</span>
           </div>
           <div class="qsource">
-            <a href="https://www.nobelprize.org/prizes/chemistry/2024/hassabis/interview/" target="_blank">nobelprize.org · ראיון לפרס נובל</a> · אוקטובר 2024
+            <a href="https://www.nobelprize.org/prizes/chemistry/2024/hassabis/interview/" target="_blank">nobelprize.org · ראיון זוכה נובל</a> · אוקטובר 2024
           </div>
         </div>
 
