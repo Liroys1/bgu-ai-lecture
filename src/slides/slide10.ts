@@ -26,12 +26,9 @@ export function slide10() {
           </div>
           <div class="qtext">
             <span class="lat qen">"The ability for one person to get much more done in 2030 than they could in 2020 will be a striking change — and one many people will figure out how to benefit from."</span>
-            <br/><br/>
-            היכולת של <span class="accent">אדם אחד לעשות הרבה יותר ב-2030</span> מאשר ב-2020 תהיה שינוי מרשים —
-            <em>ואנשים רבים ידעו להפיק ממנו תועלת.</em>
-          </div>
-          <div class="q-takeaway">
-            <strong>לכם זה אומר:</strong> מי שרותם <span class="lat">AI</span> נכון — עובד <span class="accent">ב-10x יחסית למי שלא.</span>
+            <br/>
+            היכולת של <span class="accent">אדם אחד לעשות הרבה יותר ב-2030</span> מאשר ב-2020 תהיה שינוי מרשים.
+            <em>מי שרותם AI נכון — עובד <span class="accent">ב-10x</span> יחסית למי שלא.</em>
           </div>
           <div class="qcompany">
             <span class="qco-logo" style="background:#10A37F"><img src="https://cdn.simpleicons.org/openai/ffffff" alt="OpenAI" /></span>
@@ -53,12 +50,10 @@ export function slide10() {
           </div>
           <div class="qtext">
             <span class="lat qen">"I believe AI is going to be the most beneficial technology ever created — but only if we apply it in the right way."</span>
-            <br/><br/>
-            <span class="accent">AlphaFold</span> — <em>ה-AI של <span class="lat">Google DeepMind</span> שחזה מבנה תלת-ממדי של חלבונים, פרס נובל לכימיה 2024</em> —
-            <span class="accent">לא ביטל חוקרים. פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</span>
-          </div>
-          <div class="q-takeaway">
-            <strong>לכם זה אומר:</strong> בכל תחום שתיכנסו אליו — <span class="lat">AI</span> יהיה <span class="accent">הכלי שמכפיל את מה שאתם יכולים לעשות.</span>
+            <br/>
+            <span class="accent">AlphaFold</span> — ה-AI שחזה מבנה תלת-ממדי של חלבונים (<span class="accent">נובל לכימיה 2024</span>) —
+            לא ביטל חוקרים. <em>פתח עידן שלם של גילויים שלא היו אפשריים בלעדיו.</em>
+            בכל תחום שתיכנסו אליו — AI יהיה <span class="accent">הכלי שמכפיל את מה שתוכלו לעשות.</span>
           </div>
           <div class="qcompany">
             <span class="qco-logo" style="background:#4285F4"><img src="https://cdn.simpleicons.org/googlegemini/ffffff" alt="Google DeepMind" /></span>
@@ -80,13 +75,10 @@ export function slide10() {
           </div>
           <div class="qtext">
             <span class="lat qen">"AI is an amplifier of human ingenuity — it really empowers the scientists, the healthcare workers, the teachers, the business people."</span>
-            <br/><br/>
+            <br/>
             <span class="accent">AI הוא מגבר של גאוניות אנושית.</span>
-            <em>"התרחיש היחיד שבו נצטרך פחות חוקרים הוא אם כבר ענינו על כל השאלות הגדולות — ואני לא חושב שמישהו מאמין בכך."</em>
-          </div>
-          <div class="q-takeaway">
-            <strong>לכם זה אומר:</strong> לא מהנדס שיוחלף ב-<span class="lat">AI</span> —
-            אלא <span class="accent">מהנדס שרותם AI וישאל שאלות שלא יכול היה לשאול קודם.</span>
+            <em>"נצטרך פחות חוקרים רק אם ענינו על כל השאלות הגדולות — ואני לא חושב שמישהו מאמין בכך."</em>
+            לא מהנדס שיוחלף — אלא <span class="accent">מהנדס שרותם AI וישאל שאלות שלא יכול היה לשאול קודם.</span>
           </div>
           <div class="qcompany">
             <span class="qco-logo" style="background:#EA4335"><img src="https://cdn.simpleicons.org/google/ffffff" alt="Google" /></span>

@@ -1330,8 +1330,8 @@ gap: 3px;
 display: block;
 color: #FFB627;
 font-style: italic;
-font-size: 0.9em;
-line-height: 1.45;
+font-size: 0.82em;
+line-height: 1.4;
 direction: ltr;
 unicode-bidi: isolate;
 margin-bottom: 2px;
@@ -2025,19 +2025,20 @@ margin-bottom: 8px;
 width: 40px;
 height: 40px;
 border-radius: 8px;
-background: rgba(255,255,255,0.08);
+background: #FFFFFF;
 display: flex;
 align-items: center;
 justify-content: center;
 flex-shrink: 0;
-padding: 6px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+padding: 4px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 overflow: hidden;
 }
 .job-card .job-logo img {
 width: 100%;
 height: 100%;
 object-fit: contain;
+border-radius: 4px;
 }
 .job-logo-fallback {
 font-family: ‘Inter’, sans-serif;
@@ -2173,8 +2174,8 @@ direction: rtl;
 .act-card .act-title { font-size: clamp(1.15rem, 1.5vw, 1.5rem) !important; }
 .act-card .act-desc { font-size: clamp(0.92rem, 1.12vw, 1.05rem) !important; line-height: 1.5 !important; }
 .act-card ul li { font-size: clamp(0.85rem, 1.02vw, 0.98rem) !important; }
-.job-card .job-title { font-size: clamp(1rem, 1.3vw, 1.2rem) !important; }
-.job-card .job-desc, .job-card .job-req { font-size: clamp(0.85rem, 1.02vw, 0.98rem) !important; line-height: 1.5 !important; }
+.job-card .job-title { font-size: clamp(0.88rem, 1.1vw, 1.05rem) !important; }
+.job-card .job-desc, .job-card .job-req { font-size: clamp(0.75rem, 0.88vw, 0.85rem) !important; line-height: 1.45 !important; }
 .skill-card .skill-name { font-size: clamp(1rem, 1.25vw, 1.18rem) !important; }
 .skill-card .skill-desc { font-size: clamp(0.85rem, 1.02vw, 0.98rem) !important; line-height: 1.5 !important; }
 .lesson-card .lesson-t { font-size: clamp(1.05rem, 1.35vw, 1.28rem) !important; }
@@ -2182,7 +2183,7 @@ direction: rtl;
 .q-card .q-title { font-size: clamp(0.98rem, 1.2vw, 1.15rem) !important; }
 .q-card .q-hint { font-size: clamp(0.85rem, 1.02vw, 0.98rem) !important; line-height: 1.5 !important; }
 .phase-card ol li { font-size: clamp(0.9rem, 1.08vw, 1.02rem) !important; line-height: 1.5 !important; }
-.quote-card .qq-text { font-size: clamp(1rem, 1.25vw, 1.18rem) !important; line-height: 1.55 !important; }
+.quote-card .qq-text { font-size: clamp(0.88rem, 1.08vw, 1rem) !important; line-height: 1.5 !important; }
 /* Timeline cards readable */
 .stop .role { font-size: clamp(1rem, 1.25vw, 1.2rem) !important; font-weight: 800 !important; line-height: 1.2 !important; }
 .stop .company { font-size: clamp(0.85rem, 1vw, 0.98rem) !important; }
@@ -2222,7 +2223,7 @@ direction: rtl;
 .phase-card .phase-title { font-size: clamp(0.95rem, 1.15vw, 1.05rem) !important; }
 .phase-card li { font-size: clamp(0.78rem, 0.92vw, 0.88rem) !important; line-height: 1.45 !important; }
 /* Quote cards on slide 10 */
-.quote-card .qtext { font-size: clamp(0.95rem, 1.18vw, 1.1rem) !important; line-height: 1.5 !important; }
+.quote-card .qtext { font-size: clamp(0.82rem, 0.98vw, 0.94rem) !important; line-height: 1.48 !important; }
 .quote-card .attr { font-size: clamp(0.78rem, 0.95vw, 0.88rem) !important; }
 
 /* Era industry badge (Industry 3.0/4.0/5.0) */

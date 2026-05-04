@@ -6,36 +6,36 @@ export function slide8() {
     {
       tag: 'OPS',
       title: 'AI & Technology Operations Manager',
-      co: 'BeamUP', loc: 'תל אביב',
+      co: 'BeamUP',
       coDesc: 'Agentic AI לשרשרת אספקה · ~50 עובדים',
-      logoSlug: '',
+      domain: 'beamup.ai',
       salary: '₪18–28K',
-      desc: 'תפעול אינטגרציות AI, אוטומציה של תהליכים, עבודה עם data וניהול ספקים. <strong>דרוש:</strong> בוגר/ת תעשייה וניהול עם חשיבה אנליטית, רקע ב-SQL/Excel.'
+      desc: 'תפעול אינטגרציות AI, אוטומציה של תהליכים, עבודה עם data וניהול ספקים. <strong>דרוש:</strong> בוגר/ת תעשייה וניהול, חשיבה אנליטית, SQL/Excel.'
     },
     {
       tag: 'DATA',
       title: 'Data Analyst',
-      co: 'Buildots', loc: 'תל אביב',
+      co: 'Buildots',
       coDesc: 'AI לניטור פרויקטי בנייה (computer vision) · ~250 עובדים',
-      logoSlug: '',
+      domain: 'buildots.com',
       salary: '₪20–30K',
       desc: 'ניתוח נתוני פרויקטים, בניית דשבורדים, עבודה עם צוותי מוצר ופיתוח. <strong>דרוש:</strong> בוגר/ת תעשייה וניהול, SQL בסיסי, Python יתרון.'
     },
     {
       tag: 'BI',
       title: 'Data Operations Analyst',
-      co: 'Plus500', loc: 'רעננה',
+      co: 'Plus500',
       coDesc: 'מסחר אונליין · חברה ציבורית בלונדון',
-      logoSlug: 'plus500',
+      domain: 'plus500.com',
       salary: '₪22–32K',
       desc: 'BI ודאטה לקבלת החלטות פיננסיות, בניית מודלים, דשבורדים מנהליים. <strong>דרוש:</strong> SQL חזק, Python, רקע אנליטי, אנגלית גבוהה.'
     },
     {
       tag: 'AI OPS',
       title: 'AI Integration Specialist',
-      co: 'Microsoft Israel', loc: 'הרצליה',
+      co: 'Microsoft Israel',
       coDesc: 'מרכז R&D של Microsoft · ~3,000 עובדים בישראל',
-      logoSlug: 'microsoft',
+      domain: 'microsoft.com',
       salary: '₪25–35K',
       desc: 'הטמעת Copilot ו-AI בתהליכי עבודה ארגוניים, עבודה עם צוותי product וצוותים גלובליים. <strong>דרוש:</strong> רקע טכני, אנגלית גבוהה, חשיבה מערכתית.'
     }
@@ -44,9 +44,7 @@ export function slide8() {
     <div class="job-card senior">
       <div class="job-head">
         <div class="job-logo">
-          ${j.logoSlug
-            ? `<img src="https://cdn.simpleicons.org/${j.logoSlug}/FFFFFF" alt="${j.co}" />`
-            : `<div class="job-logo-fallback">${j.co.charAt(0)}</div>`}
+          <img src="https://www.google.com/s2/favicons?domain=${j.domain}&sz=128" alt="${j.co}" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\\'job-logo-fallback\\'>${j.co.charAt(0)}</div>'" />
         </div>
         <div class="job-co-block">
           <div class="job-co">${j.co}</div>
