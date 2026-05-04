@@ -3481,7 +3481,8 @@ em {
 .why-rankings {
   display: flex;
   gap: clamp(8px, 1.2vw, 16px);
-  margin-bottom: clamp(12px, 1.6vw, 20px);
+  margin-bottom: clamp(8px, 1vw, 14px);
+  align-items: stretch;
 }
 .rank-pill {
   flex: 1;
@@ -3634,10 +3635,21 @@ em {
   .rank-pill .rank-num { font-size: 1.6rem !important; }
 }
 
-/* ── WHY-CARD number: right-align fix (direction:ltr causes left-drift) ── */
+/* ── WHY-CARD number: right-align fix + size cap to prevent overflow ── */
 .why-card .num {
   text-align: right !important;
   unicode-bidi: isolate;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem) !important;
+}
+.why-ie .grid {
+  gap: clamp(8px, 1.2vw, 14px) !important;
+}
+.why-card {
+  gap: 6px !important;
+}
+.why-card .d {
+  font-size: clamp(0.78rem, 0.9vw, 0.88rem) !important;
+  line-height: 1.45 !important;
 }
 
 /* ── RANK-PILL text: increase to match why-card body size ── */
