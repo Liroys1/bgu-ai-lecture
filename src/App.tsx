@@ -6,6 +6,7 @@ import { AppV2 } from './AppV2';
 import { AppV3 } from './AppV3';
 import { AppV4 } from './AppV4';
 import { AppV5 } from './AppV5';
+import { AppV6 } from './AppV6';
 
 const VERSION = new URLSearchParams(window.location.search).get('v') ?? '1';
 
@@ -106,6 +107,7 @@ function Particles() {
 }
 
 export function App() {
+  if (VERSION === '6') return <AppV6 />;
   if (VERSION === '5') return <AppV5 />;
   if (VERSION === '4') return <AppV4 />;
   if (VERSION === '3') return <AppV3 />;
