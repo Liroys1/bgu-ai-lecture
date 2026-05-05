@@ -25,7 +25,7 @@ export function v6s_local() {
             <div class="v6-art-sub">בוגרים טריים עם גישת AI עוקפים מסלול מסורתי של 5 שנות ניסיון — תוך שנה.</div>
           </div>
           <div class="v6-local-personal">
-            <strong>הסיפור הכי מסריף:</strong> בעוד 5 ימים, אני מתחיל לעבוד ב-Lemonade כ-L&D Lead Tech Dev — בדיוק החברה הזו. <strong>תפקידי: ללמד את צוות ה-Product וה-R&D לעבוד עם החייזרים.</strong> בוגרים סחירים, ללא תפיסות קדומות, עם גישה — כם בחוץ.
+            <strong>הסיפור הכי מטריף:</strong> בעוד 5 ימים, אני מתחיל לעבוד ב-Lemonade כ-L&D Lead Tech Dev — בדיוק החברה הזו. <strong>תפקידי: ללמד את צוות ה-Product וה-R&D לעבוד עם החייזרים.</strong> בוגרים סחירים, ללא תפיסות קדומות, עם גישה — כם בחוץ.
           </div>
         </div>
       </div>
