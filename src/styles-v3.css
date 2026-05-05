@@ -1,0 +1,141 @@
+/* ===== V3: Apple Keynote Style ===== */
+/* Overrides v2-* classes with Apple-inspired design */
+
+#stage.v3-stage {
+  background: #000000;
+}
+
+.v3-stage .slide {
+  display: flex;
+  flex-direction: column;
+  background: #000000;
+}
+.v3-stage .slide.act-intro { background: #000000; }
+.v3-stage .slide.act-i     { background: #050505; }
+.v3-stage .slide.act-ii    { background: #000000; }
+.v3-stage .slide.act-iii   { background: #020205; }
+.v3-stage .slide.act-outro { background: #000000; }
+
+/* Topbar: minimal, clean */
+.v3-stage .v2-topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  border-bottom: none;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.v3-stage .v2-tb-num {
+  color: rgba(255,255,255,0.3);
+  font-family: -apple-system, 'SF Mono', monospace;
+}
+.v3-stage .v2-tb-title {
+  color: rgba(255,255,255,0.18);
+  letter-spacing: 0.12em;
+}
+
+/* Frame */
+.v3-stage .v2-frame {
+  justify-content: center;
+  padding: clamp(2rem, 7vw, 6rem) clamp(3rem, 10vw, 9rem);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+}
+
+/* Typography: bigger, Apple-style */
+.v3-stage .v2-eyebrow {
+  font-size: clamp(0.6rem, 1vw, 0.75rem);
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.4);
+  font-weight: 500;
+}
+.v3-stage .v2-headline {
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #FFFFFF;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+}
+.v3-stage .v2-hl-lg { font-size: clamp(3.5rem, 9vw, 8rem); }
+.v3-stage .v2-hl-md { font-size: clamp(2.4rem, 5.5vw, 5rem); }
+.v3-stage .v2-hl-sm { font-size: clamp(1.9rem, 4vw, 3.8rem); }
+
+.v3-stage .v2-sub {
+  font-size: clamp(1.05rem, 2vw, 1.55rem);
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.v3-stage .v2-accent { color: #0A84FF; }
+.v3-stage .v2-stat-num { color: #0A84FF; }
+.v3-stage .v2-eyebrow  { color: rgba(10,132,255,0.9); }
+
+/* ACT frame: bold Roman numeral */
+.v3-stage .v2-act-frame {
+  background: none;
+  border-right: none;
+  border-right: 2px solid rgba(10,132,255,0.4);
+}
+.v3-stage .v2-act-roman {
+  color: rgba(10,132,255,0.1);
+  font-size: clamp(6rem, 16vw, 13rem);
+  font-weight: 800;
+  font-family: -apple-system, 'SF Pro Display', sans-serif;
+}
+.v3-stage .v2-act-title {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-family: -apple-system, 'SF Pro Display', sans-serif;
+  font-weight: 700;
+}
+.v3-stage .v2-act-sub {
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+}
+
+/* Stat: massive number */
+.v3-stage .v2-stat-num {
+  font-size: clamp(5.5rem, 15vw, 13rem);
+  font-weight: 800;
+  font-family: -apple-system, 'SF Pro Display', sans-serif;
+}
+.v3-stage .v2-stat-unit {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  color: rgba(255,255,255,0.4);
+}
+
+/* Quote: generous whitespace */
+.v3-stage .v2-blockquote {
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.9);
+}
+.v3-stage .v2-qauthor { color: #0A84FF; font-weight: 600; }
+.v3-stage .v2-qrole   { color: rgba(255,255,255,0.3); }
+
+/* Skills & other compound components inherit base colors */
+.v3-stage .v2-core  { background: rgba(10,132,255,0.1); color: #4DA8FF; border-color: rgba(10,132,255,0.25); }
+.v3-stage .v2-ai    { background: rgba(50,215,75,0.08); color: #4CD964; border-color: rgba(50,215,75,0.2); }
+.v3-stage .v2-tech  { background: rgba(255,205,55,0.08); color: #FFD738; border-color: rgba(255,205,55,0.2); }
+.v3-stage .v2-soft  { background: rgba(191,90,242,0.08); color: #CF8BF3; border-color: rgba(191,90,242,0.2); }
+
+.v3-stage .v2-road-num { color: rgba(10,132,255,0.35); }
+.v3-stage .v2-qauthor  { color: #0A84FF; }
+
+.v3-stage .v2-split-ai { background: rgba(10,132,255,0.06); border-color: rgba(10,132,255,0.2); }
+.v3-stage .v2-split-tag { color: #0A84FF; }
+.v3-stage .v2-split-list li::after { color: rgba(10,132,255,0.5); }
+
+.v3-stage .v2-thanks-hl { font-family: -apple-system, 'SF Pro Display', sans-serif; }
+.v3-stage .v2-intro-photo img { border-color: rgba(10,132,255,0.35); }
+.v3-stage .v2-intro-tagline { color: #0A84FF; }
+.v3-stage .v2-lemonade-tag {
+  background: rgba(10,132,255,0.08);
+  border-color: rgba(10,132,255,0.25);
+  color: #4DA8FF;
+}
+.v3-stage .v2-thanks-photo { border-color: rgba(10,132,255,0.35); }
+.v3-stage .v2-contact-sep { color: rgba(10,132,255,0.4); }
+.v3-stage .v2-built-dot.v2-orange { background: #0A84FF; }
+.v3-stage .v2-built-dot.v2-teal   { background: #5AC8FA; }

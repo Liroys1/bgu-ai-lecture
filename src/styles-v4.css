@@ -1,0 +1,209 @@
+/* ===== V4: NYT / Bloomberg Editorial Style ===== */
+/* Light, serif, newspaper aesthetic */
+
+#stage.v4-stage {
+  background: #F5F0EB;
+}
+
+.v4-stage .slide {
+  display: flex;
+  flex-direction: column;
+  background: #F5F0EB;
+  color: #1C1C1C;
+}
+.v4-stage .slide.act-intro { background: #1C1C1C; color: #F5F0EB; }
+.v4-stage .slide.act-outro { background: #1C1C1C; color: #F5F0EB; }
+.v4-stage .slide.act-i     { background: #F5F0EB; }
+.v4-stage .slide.act-ii    { background: #F0EBE8; }
+.v4-stage .slide.act-iii   { background: #EBF0F0; }
+
+/* Topbar: editorial header rule */
+.v4-stage .v2-topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 2rem;
+  border-bottom: 2px solid #1C1C1C;
+  background: transparent;
+}
+.v4-stage .v2-tb-num {
+  color: #C8102E;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+}
+.v4-stage .v2-tb-title {
+  color: rgba(28,28,28,0.45);
+  letter-spacing: 0.12em;
+}
+
+/* Reverse for light slides */
+.v4-stage .slide.act-intro .v2-topbar,
+.v4-stage .slide.act-outro .v2-topbar {
+  border-bottom-color: rgba(245,240,235,0.3);
+}
+.v4-stage .slide.act-intro .v2-tb-num,
+.v4-stage .slide.act-outro .v2-tb-num { color: #C8102E; }
+.v4-stage .slide.act-intro .v2-tb-title,
+.v4-stage .slide.act-outro .v2-tb-title { color: rgba(245,240,235,0.45); }
+
+/* Frame */
+.v4-stage .v2-frame {
+  padding: clamp(2rem, 5vw, 4rem) clamp(2.5rem, 8vw, 6.5rem);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Typography: editorial */
+.v4-stage .v2-eyebrow {
+  font-size: clamp(0.62rem, 1.1vw, 0.78rem);
+  font-family: 'Arial Narrow', 'Arial', sans-serif;
+  letter-spacing: 0.22em;
+  color: #C8102E;
+  font-weight: 700;
+}
+.v4-stage .v2-headline {
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 700;
+  font-family: Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: #1C1C1C;
+}
+.v4-stage .v2-hl-lg { font-size: clamp(2.8rem, 7vw, 6rem); }
+.v4-stage .v2-hl-md { font-size: clamp(1.8rem, 3.8vw, 3.5rem); }
+.v4-stage .v2-hl-sm { font-size: clamp(1.4rem, 2.8vw, 2.5rem); }
+
+.v4-stage .v2-sub {
+  font-size: clamp(0.92rem, 1.6vw, 1.25rem);
+  font-family: 'Arial', sans-serif;
+  color: rgba(28,28,28,0.65);
+  line-height: 1.75;
+}
+.v4-stage .v2-sub strong { color: #1C1C1C; }
+
+.v4-stage .v2-accent { color: #C8102E; }
+
+/* Light slides text */
+.v4-stage .slide.act-intro .v2-headline,
+.v4-stage .slide.act-outro .v2-headline,
+.v4-stage .slide.act-intro .v2-act-title,
+.v4-stage .slide.act-outro .v2-act-title { color: #F5F0EB; }
+
+.v4-stage .slide.act-intro .v2-sub,
+.v4-stage .slide.act-outro .v2-sub,
+.v4-stage .slide.act-intro .v2-act-sub,
+.v4-stage .slide.act-outro .v2-act-sub { color: rgba(245,240,235,0.6); }
+
+.v4-stage .slide.act-intro .v2-eyebrow,
+.v4-stage .slide.act-outro .v2-eyebrow { color: #C8102E; }
+
+/* ACT: stark editorial */
+.v4-stage .v2-act-frame {
+  background: none;
+  border-right: 3px solid #C8102E;
+}
+.v4-stage .v2-act-roman {
+  font-family: Georgia, serif;
+  font-size: clamp(5rem, 13vw, 11rem);
+  color: rgba(200,16,46,0.1);
+}
+.v4-stage .v2-act-title {
+  font-family: Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  color: #F5F0EB;
+}
+.v4-stage .v2-act-sub {
+  font-family: 'Arial', sans-serif;
+  color: rgba(245,240,235,0.55);
+}
+
+/* Stat: big editorial number */
+.v4-stage .v2-stat-num {
+  font-family: Georgia, serif;
+  font-size: clamp(5rem, 13vw, 11rem);
+  color: #C8102E;
+  letter-spacing: -0.03em;
+}
+.v4-stage .v2-stat-unit {
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  color: rgba(28,28,28,0.45);
+}
+
+/* Quote */
+.v4-stage .v2-blockquote {
+  font-family: Georgia, serif;
+  font-size: clamp(1.3rem, 2.8vw, 2.2rem);
+  color: #1C1C1C;
+  border-right: 4px solid #C8102E;
+  padding-right: 1.5rem;
+  font-style: italic;
+}
+.v4-stage .v2-qauthor { color: #C8102E; font-family: 'Arial', sans-serif; }
+.v4-stage .v2-qrole   { color: rgba(28,28,28,0.4); font-family: 'Arial', sans-serif; }
+
+/* Skills */
+.v4-stage .v2-skill-pill {
+  font-family: 'Arial Narrow', 'Arial', sans-serif;
+  font-size: clamp(0.72rem, 1.2vw, 0.88rem);
+  letter-spacing: 0.08em;
+}
+.v4-stage .v2-core  { background: rgba(200,16,46,0.07); color: #A00D27; border-color: rgba(200,16,46,0.2); }
+.v4-stage .v2-ai    { background: rgba(28,100,70,0.07);  color: #1C6446; border-color: rgba(28,100,70,0.2); }
+.v4-stage .v2-tech  { background: rgba(28,60,140,0.07);  color: #1C3C8C; border-color: rgba(28,60,140,0.2); }
+.v4-stage .v2-soft  { background: rgba(90,28,100,0.07);  color: #5A1C64; border-color: rgba(90,28,100,0.2); }
+.v4-stage .v2-meta  { background: rgba(28,28,28,0.05); color: rgba(28,28,28,0.6); border-color: rgba(28,28,28,0.12); }
+
+/* Road map */
+.v4-stage .v2-road-num {
+  font-family: Georgia, serif;
+  color: rgba(200,16,46,0.25);
+}
+.v4-stage .v2-road-text { color: rgba(28,28,28,0.7); }
+.v4-stage .v2-road-text strong { color: #1C1C1C; }
+
+/* Built list */
+.v4-stage .v2-built-item { color: rgba(28,28,28,0.7); }
+.v4-stage .v2-built-dot.v2-orange { background: #C8102E; }
+.v4-stage .v2-built-dot.v2-teal   { background: #1C6464; }
+
+/* Lemonade tag */
+.v4-stage .v2-lemonade-tag {
+  background: rgba(200,16,46,0.07);
+  border-color: rgba(200,16,46,0.2);
+  color: #A00D27;
+}
+
+/* Split frame */
+.v4-stage .v2-split-human {
+  background: rgba(28,28,28,0.03);
+  border-color: rgba(28,28,28,0.12);
+}
+.v4-stage .v2-split-ai {
+  background: rgba(200,16,46,0.04);
+  border-color: rgba(200,16,46,0.15);
+}
+.v4-stage .v2-split-label { color: #1C1C1C; }
+.v4-stage .v2-split-list li { color: rgba(28,28,28,0.65); }
+.v4-stage .v2-split-list li::after { color: rgba(200,16,46,0.5); }
+.v4-stage .v2-split-vs { color: rgba(28,28,28,0.15); }
+.v4-stage .v2-split-tag { color: #C8102E; }
+
+/* Source & era */
+.v4-stage .v2-source { color: rgba(28,28,28,0.28); }
+.v4-stage .v2-era-year { color: rgba(28,28,28,0.35); }
+.v4-stage .v2-era-now  { color: #C8102E; }
+
+/* Intro & Thanks — dark background so keep light text */
+.v4-stage .slide.act-intro .v2-intro-name,
+.v4-stage .slide.act-outro .v2-thanks-hl { color: #F5F0EB; }
+.v4-stage .slide.act-intro .v2-intro-kicker { color: rgba(245,240,235,0.35); }
+.v4-stage .slide.act-intro .v2-intro-role  { color: rgba(245,240,235,0.6); }
+.v4-stage .slide.act-intro .v2-intro-tagline { color: #C8102E; }
+.v4-stage .slide.act-outro .v2-thanks-sub  { color: rgba(245,240,235,0.55); }
+.v4-stage .slide.act-outro .v2-contact-item { color: rgba(245,240,235,0.45); }
+.v4-stage .v2-intro-photo img { border-color: rgba(200,16,46,0.35); }
+.v4-stage .v2-thanks-photo    { border-color: rgba(200,16,46,0.35); }
+.v4-stage .v2-contact-sep     { color: rgba(200,16,46,0.4); }
+
+/* Nav override for light theme */
+.v4-stage ~ .nav { background: rgba(28,28,28,0.9); }
