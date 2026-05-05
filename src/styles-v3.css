@@ -1,141 +1,572 @@
-/* ===== V3: Apple Keynote Style ===== */
-/* Overrides v2-* classes with Apple-inspired design */
+/* ===== V3: Cinematic Apple Keynote Style ===== */
+/* Pure black background · Massive text · GSAP stagger · Orange accent */
 
 #stage.v3-stage {
-  background: #000000;
+  background: #000;
 }
 
-.v3-stage .slide {
+.v3-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease-out;
+  background: #000;
   display: flex;
   flex-direction: column;
-  background: #000000;
+  overflow: hidden;
 }
-.v3-stage .slide.act-intro { background: #000000; }
-.v3-stage .slide.act-i     { background: #050505; }
-.v3-stage .slide.act-ii    { background: #000000; }
-.v3-stage .slide.act-iii   { background: #020205; }
-.v3-stage .slide.act-outro { background: #000000; }
 
-/* Topbar: minimal, clean */
-.v3-stage .v2-topbar {
+.v3-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Act-tinted backgrounds — very subtle */
+.v3-slide.act-i     { background: #030303; }
+.v3-slide.act-ii    { background: #000; }
+.v3-slide.act-iii   { background: #020204; }
+.v3-slide.act-intro { background: #000; }
+.v3-slide.act-outro { background: #000; }
+
+/* ── inner layout ── */
+.v3-slide-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  padding: 1rem 2rem;
-  border-bottom: none;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.v3-stage .v2-tb-num {
-  color: rgba(255,255,255,0.3);
-  font-family: -apple-system, 'SF Mono', monospace;
-}
-.v3-stage .v2-tb-title {
-  color: rgba(255,255,255,0.18);
-  letter-spacing: 0.12em;
-}
-
-/* Frame */
-.v3-stage .v2-frame {
   justify-content: center;
-  padding: clamp(2rem, 7vw, 6rem) clamp(3rem, 10vw, 9rem);
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Typography: bigger, Apple-style */
-.v3-stage .v2-eyebrow {
-  font-size: clamp(0.6rem, 1vw, 0.75rem);
-  letter-spacing: 0.22em;
-  color: rgba(255,255,255,0.4);
-  font-weight: 500;
+/* ── centered text block ── */
+.v3-center {
+  text-align: center;
+  direction: rtl;
+  padding: 2rem 8vw;
+  max-width: 1100px;
+  width: 100%;
 }
-.v3-stage .v2-headline {
-  font-size: clamp(3rem, 7.5vw, 6.5rem);
-  font-weight: 700;
+
+.v3-wide {
+  max-width: 1300px;
+}
+
+/* ── typography ── */
+.v3-hl {
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.08;
   letter-spacing: -0.03em;
-  line-height: 1.05;
-  color: #FFFFFF;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-}
-.v3-stage .v2-hl-lg { font-size: clamp(3.5rem, 9vw, 8rem); }
-.v3-stage .v2-hl-md { font-size: clamp(2.4rem, 5.5vw, 5rem); }
-.v3-stage .v2-hl-sm { font-size: clamp(1.9rem, 4vw, 3.8rem); }
-
-.v3-stage .v2-sub {
-  font-size: clamp(1.05rem, 2vw, 1.55rem);
-  color: rgba(255,255,255,0.5);
-  font-weight: 300;
-  line-height: 1.65;
+  font-family: -apple-system, BlinkMacSystemFont, 'Heebo', 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  margin: 0 0 0.15em;
 }
 
-.v3-stage .v2-accent { color: #0A84FF; }
-.v3-stage .v2-stat-num { color: #0A84FF; }
-.v3-stage .v2-eyebrow  { color: rgba(10,132,255,0.9); }
-
-/* ACT frame: bold Roman numeral */
-.v3-stage .v2-act-frame {
-  background: none;
-  border-right: none;
-  border-right: 2px solid rgba(10,132,255,0.4);
+.v3-hl-accent {
+  color: #FF6B35;
 }
-.v3-stage .v2-act-roman {
-  color: rgba(10,132,255,0.1);
+
+.v3-sub {
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  color: rgba(255,255,255,0.45);
+  margin-top: 1.5rem;
+  line-height: 1.5;
+  font-weight: 400;
+  direction: rtl;
+}
+
+.v3-accent-text {
+  color: #FF6B35;
+  font-size: clamp(1.2rem, 2.4vw, 2rem);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.v3-meta {
+  font-size: clamp(0.85rem, 1.5vw, 1.2rem);
+  color: rgba(255,255,255,0.25);
+  margin-top: 1.8rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── counter ── */
+.v3-counter {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.18);
+  font-family: 'Courier New', monospace;
+  direction: ltr;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ── hero slide ── */
+.v3-hero {
+  gap: 2rem;
+}
+
+.v3-hero-photo {
+  width: clamp(100px, 14vw, 170px);
+  height: clamp(100px, 14vw, 170px);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255,107,53,0.4);
+  box-shadow: 0 0 40px rgba(255,107,53,0.15);
+  flex-shrink: 0;
+}
+
+.v3-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── act slide ── */
+.v3-act-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.v3-act-roman {
+  position: absolute;
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-weight: 900;
+  color: rgba(255,107,53,0.07);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Heebo', sans-serif;
+  letter-spacing: -0.06em;
+  z-index: 0;
+}
+
+.v3-act-content {
+  position: relative;
+  z-index: 1;
+}
+
+.v3-act-label {
+  font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+  letter-spacing: 0.3em;
+  color: #FF6B35;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── bignum slide ── */
+.v3-bignum-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.15em;
+  direction: ltr;
+}
+
+.v3-num {
   font-size: clamp(6rem, 16vw, 13rem);
-  font-weight: 800;
-  font-family: -apple-system, 'SF Pro Display', sans-serif;
+  font-weight: 900;
+  color: #FF6B35;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Heebo', sans-serif;
+  text-shadow: 0 0 60px rgba(255,107,53,0.25);
 }
-.v3-stage .v2-act-title {
-  font-size: clamp(2rem, 4.5vw, 4rem);
-  font-family: -apple-system, 'SF Pro Display', sans-serif;
+
+.v3-unit {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: -0.03em;
+}
+
+.v3-num-desc {
+  font-size: clamp(1.4rem, 3vw, 2.8rem);
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+  margin-top: 1.2rem;
+  line-height: 1.3;
+  direction: rtl;
+}
+
+.v3-source {
+  font-size: clamp(0.7rem, 1.2vw, 0.95rem);
+  color: rgba(255,255,255,0.2);
+  margin-top: 2rem;
+  font-family: 'Courier New', monospace;
+  direction: ltr;
+  letter-spacing: 0.04em;
+}
+
+/* ── quote slide ── */
+.v3-quote-wrap {
+  max-width: 900px;
+}
+
+.v3-quote-mark {
+  font-size: clamp(6rem, 12vw, 10rem);
+  color: rgba(255,107,53,0.18);
+  line-height: 0.8;
+  font-family: Georgia, serif;
+  text-align: center;
+  user-select: none;
+}
+
+.v3-quote-text {
+  font-size: clamp(1.4rem, 2.8vw, 2.5rem);
+  font-style: italic;
+  color: #fff;
+  line-height: 1.55;
+  direction: rtl;
+  font-weight: 300;
+  font-family: -apple-system, BlinkMacSystemFont, 'Heebo', sans-serif;
+}
+
+.v3-quote-author {
+  margin-top: 2rem;
+  font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+  direction: ltr;
+  text-align: center;
+}
+
+.v3-author-role {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.9em;
+}
+
+/* ── jobs ── */
+.v3-jobs {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+}
+
+.v3-job {
+  display: grid;
+  grid-template-columns: 4rem 1fr auto auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 0 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  direction: rtl;
+  animation-delay: var(--delay, 0s);
+}
+
+.v3-job-tag {
+  grid-row: 1 / 3;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #FF6B35;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+  text-align: center;
+  background: rgba(255,107,53,0.1);
+  border-radius: 4px;
+  padding: 0.3rem 0.2rem;
+  align-self: center;
+}
+
+.v3-job-title {
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  color: #fff;
+  direction: ltr;
+}
+
+.v3-job-co {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  direction: ltr;
+  text-align: left;
+}
+
+.v3-job-salary {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  grid-row: 1;
+  text-align: left;
+  direction: ltr;
+}
+
+.v3-job-desc {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+  grid-column: 2 / 4;
+  direction: rtl;
+  text-align: right;
+}
+
+/* ── split slide ── */
+.v3-split-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  min-height: 60vh;
+}
+
+.v3-split-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  direction: rtl;
+}
+
+.v3-split-left {
+  background: rgba(255,255,255,0.03);
+  border-left: 1px solid rgba(255,255,255,0.06);
+}
+
+.v3-split-right {
+  background: rgba(255,107,53,0.04);
+  border-right: 1px solid rgba(255,107,53,0.1);
+}
+
+.v3-split-icon {
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin-bottom: 1rem;
+}
+
+.v3-split-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: #FF6B35;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.v3-split-label {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.v3-split-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.v3-split-list li {
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+  color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+}
+
+/* ── skills ── */
+.v3-skills-grid {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem 2rem;
+  justify-content: center;
+  direction: rtl;
+}
+
+.v3-skill-cat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.v3-skill-cat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #FF6B35;
+  font-family: 'Courier New', monospace;
   font-weight: 700;
 }
-.v3-stage .v2-act-sub {
+
+.v3-skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.v3-skill-pill {
+  font-size: clamp(0.75rem, 1.3vw, 1rem);
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 0.3rem 0.9rem;
+  white-space: nowrap;
+}
+
+/* ── roadmap steps ── */
+.v3-steps {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.v3-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 1.1rem 1.5rem;
+  direction: rtl;
+  animation-delay: var(--delay, 0s);
+}
+
+.v3-step-num {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  color: #FF6B35;
+  line-height: 1;
+  font-family: 'Courier New', monospace;
+  direction: ltr;
+  flex-shrink: 0;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.v3-step-unit {
+  font-size: 0.5em;
+  color: rgba(255,107,53,0.5);
+}
+
+.v3-step-body {
+  flex: 1;
+  text-align: right;
+}
+
+.v3-step-title {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.v3-step-desc {
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
   color: rgba(255,255,255,0.4);
-  font-weight: 300;
+  line-height: 1.5;
+  direction: ltr;
+  text-align: left;
 }
 
-/* Stat: massive number */
-.v3-stage .v2-stat-num {
-  font-size: clamp(5.5rem, 15vw, 13rem);
-  font-weight: 800;
-  font-family: -apple-system, 'SF Pro Display', sans-serif;
+/* ── lessons ── */
+.v3-lessons {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.v3-stage .v2-stat-unit {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  color: rgba(255,255,255,0.4);
+
+.v3-lesson {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  direction: rtl;
+  animation-delay: var(--delay, 0s);
 }
 
-/* Quote: generous whitespace */
-.v3-stage .v2-blockquote {
-  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
-  font-weight: 300;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,0.9);
+.v3-lesson-num {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 900;
+  color: rgba(255,107,53,0.3);
+  font-family: 'Courier New', monospace;
+  direction: ltr;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 2.5rem;
 }
-.v3-stage .v2-qauthor { color: #0A84FF; font-weight: 600; }
-.v3-stage .v2-qrole   { color: rgba(255,255,255,0.3); }
 
-/* Skills & other compound components inherit base colors */
-.v3-stage .v2-core  { background: rgba(10,132,255,0.1); color: #4DA8FF; border-color: rgba(10,132,255,0.25); }
-.v3-stage .v2-ai    { background: rgba(50,215,75,0.08); color: #4CD964; border-color: rgba(50,215,75,0.2); }
-.v3-stage .v2-tech  { background: rgba(255,205,55,0.08); color: #FFD738; border-color: rgba(255,205,55,0.2); }
-.v3-stage .v2-soft  { background: rgba(191,90,242,0.08); color: #CF8BF3; border-color: rgba(191,90,242,0.2); }
-
-.v3-stage .v2-road-num { color: rgba(10,132,255,0.35); }
-.v3-stage .v2-qauthor  { color: #0A84FF; }
-
-.v3-stage .v2-split-ai { background: rgba(10,132,255,0.06); border-color: rgba(10,132,255,0.2); }
-.v3-stage .v2-split-tag { color: #0A84FF; }
-.v3-stage .v2-split-list li::after { color: rgba(10,132,255,0.5); }
-
-.v3-stage .v2-thanks-hl { font-family: -apple-system, 'SF Pro Display', sans-serif; }
-.v3-stage .v2-intro-photo img { border-color: rgba(10,132,255,0.35); }
-.v3-stage .v2-intro-tagline { color: #0A84FF; }
-.v3-stage .v2-lemonade-tag {
-  background: rgba(10,132,255,0.08);
-  border-color: rgba(10,132,255,0.25);
-  color: #4DA8FF;
+.v3-lesson-body {
+  text-align: right;
+  flex: 1;
 }
-.v3-stage .v2-thanks-photo { border-color: rgba(10,132,255,0.35); }
-.v3-stage .v2-contact-sep { color: rgba(10,132,255,0.4); }
-.v3-stage .v2-built-dot.v2-orange { background: #0A84FF; }
-.v3-stage .v2-built-dot.v2-teal   { background: #5AC8FA; }
+
+.v3-lesson-title {
+  font-size: clamp(0.95rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.v3-lesson-desc {
+  font-size: clamp(0.75rem, 1.3vw, 0.98rem);
+  color: rgba(255,255,255,0.38);
+  line-height: 1.5;
+  direction: rtl;
+}
+
+/* ── Q&A list ── */
+.v3-qalist {
+  margin: 2rem auto 0;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: qa;
+  width: 100%;
+}
+
+.v3-qalist li {
+  counter-increment: qa;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: clamp(0.9rem, 1.7vw, 1.25rem);
+  color: rgba(255,255,255,0.65);
+  direction: rtl;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  animation-delay: var(--delay, 0s);
+}
+
+.v3-qalist li::before {
+  content: counter(qa, decimal-leading-zero);
+  font-size: 0.7em;
+  color: #FF6B35;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  flex-shrink: 0;
+  direction: ltr;
+}
