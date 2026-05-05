@@ -7,7 +7,8 @@ import { AppV3 } from './AppV3';
 import { AppV4 } from './AppV4';
 import { AppV5 } from './AppV5';
 
-const VERSION = new URLSearchParams(window.location.search).get('v') ?? '1';
+const _vParam = new URLSearchParams(window.location.search);
+const VERSION = (_vParam.get('v') ?? _vParam.get('V') ?? '1');
 
 const STAGGER_SELECTORS = [
   '.stop', '.why-card', '.stat-card', '.job-card', '.quote-card',
