@@ -7,22 +7,34 @@ import { v2s19, v2s20 } from './s06-local';
 import { v2s21, v2s22, v2s23 } from './s07-role';
 import { v2s24, v2s25, v2s26 } from './s08-action';
 import { v2s27, v2s28 } from './s09-outro';
+import {
+  v2s29, v2s30,
+  v2s31, v2s32, v2s33,
+  v2s34, v2s35,
+  v2s36, v2s37,
+} from './s10-additions';
 
 export const SLIDES_V2 = [
   v2s01, v2s02,                         // INTRO
+  v2s29,                                 // AGENDA
   v2s03, v2s04, v2s05,                  // ACT I – story
   v2s06, v2s07, v2s08, v2s09,          // Eras
+  v2s30,                                 // Old vs New IE
   v2s10, v2s11, v2s12, v2s13,          // Stats
-  v2s14, v2s15, v2s16, v2s17, v2s18,   // ACT II – voices
-  v2s19, v2s20,                         // Local
+  v2s31, v2s32, v2s33,                  // 39% · 63% · +25%
+  v2s14, v2s15, v2s16, v2s17, v2s18,  // ACT II – voices
+  v2s34, v2s35,                          // Jobs junior + senior
+  v2s19, v2s20,                          // Local
   v2s21, v2s22, v2s23,                  // ACT III – role
   v2s24, v2s25, v2s26,                  // Action
-  v2s27, v2s28,                         // Outro
+  v2s36,                                 // If I could do over
+  v2s37, v2s27, v2s28,                  // Q&A questions + open Q&A + Thanks
 ];
 
 export const SLIDE_META_V2 = [
   { label: 'INTRO',            act: 'INTRO' },
   { label: 'OPENING',          act: 'INTRO' },
+  { label: 'AGENDA',           act: 'INTRO' },
   { label: 'ACT I',            act: 'I' },
   { label: 'MY STORY',         act: 'I' },
   { label: 'WHY IE',           act: 'I' },
@@ -30,15 +42,21 @@ export const SLIDE_META_V2 = [
   { label: 'ERA 1: INDUSTRY',  act: 'I' },
   { label: 'ERA 2: DIGITAL',   act: 'I' },
   { label: 'ERA 3: AI',        act: 'I' },
+  { label: 'EVOLUTION',        act: 'I' },
   { label: 'THE SHIFT',        act: 'I' },
   { label: '800M',             act: 'I' },
   { label: '+78M JOBS',        act: 'I' },
   { label: '86%',              act: 'I' },
+  { label: '39%',              act: 'I' },
+  { label: '63%',              act: 'I' },
+  { label: '+25%',             act: 'I' },
   { label: 'ACT II',           act: 'II' },
   { label: '3 VOICES',         act: 'II' },
   { label: 'ALTMAN',           act: 'II' },
   { label: 'MATIAS',           act: 'II' },
   { label: 'HASSABIS',         act: 'II' },
+  { label: 'JOBS · JUNIOR',    act: 'II' },
+  { label: 'JOBS · SENIOR',    act: 'II' },
   { label: 'DANIEL',           act: 'II' },
   { label: 'CALCALIST',        act: 'II' },
   { label: 'ACT III',          act: 'III' },
@@ -47,6 +65,8 @@ export const SLIDE_META_V2 = [
   { label: 'I BUILT IT',       act: 'III' },
   { label: 'SKILLS',           act: 'III' },
   { label: 'ROADMAP',          act: 'III' },
-  { label: 'Q&A',              act: 'III' },
+  { label: 'DO OVER',          act: 'III' },
+  { label: 'Q&A QUESTIONS',    act: 'OUTRO' },
+  { label: 'Q&A',              act: 'OUTRO' },
   { label: 'THANKS',           act: 'OUTRO' },
 ];

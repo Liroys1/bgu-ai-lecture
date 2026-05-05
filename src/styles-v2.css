@@ -440,3 +440,206 @@
   color: rgba(255,255,255,0.45);
 }
 .v2-contact-sep { color: rgba(255,107,53,0.4); }
+
+/* --- Agenda --- */
+.v2-agenda-acts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: clamp(1.5rem, 4vh, 2.5rem);
+}
+.v2-agenda-act {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  direction: rtl;
+}
+.v2-act-pill {
+  flex-shrink: 0;
+  font-size: clamp(0.62rem, 1vw, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FF6B35;
+  background: rgba(255,107,53,0.1);
+  border: 1px solid rgba(255,107,53,0.25);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.v2-agenda-act-text {
+  font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+  color: rgba(255,255,255,0.65);
+}
+
+/* --- Evolution table --- */
+.v2-evo-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: clamp(1.25rem, 3vh, 2rem) 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.v2-evo-row {
+  display: grid;
+  grid-template-columns: 4rem 1fr 1fr;
+  gap: 1rem;
+  padding: 0.7rem 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  align-items: center;
+  direction: rtl;
+}
+.v2-evo-row:last-child { border-bottom: none; }
+.v2-evo-past { background: rgba(255,255,255,0.02); }
+.v2-evo-now {
+  background: rgba(255,107,53,0.08);
+  border-right: 3px solid #FF6B35;
+}
+.v2-evo-year {
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Courier New', monospace;
+}
+.v2-evo-now .v2-evo-year { color: #FF6B35; }
+.v2-evo-role {
+  font-size: clamp(0.82rem, 1.4vw, 1rem);
+  color: rgba(255,255,255,0.7);
+}
+.v2-evo-now .v2-evo-role { color: #FFFFFF; font-weight: 600; }
+.v2-evo-tools {
+  font-size: clamp(0.72rem, 1.1vw, 0.85rem);
+  color: rgba(255,255,255,0.35);
+  direction: ltr;
+  text-align: left;
+}
+.v2-evo-now .v2-evo-tools { color: rgba(255,107,53,0.7); }
+
+/* --- Job list --- */
+.v2-job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: clamp(1.25rem, 3vh, 2rem);
+}
+.v2-job-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  direction: rtl;
+}
+.v2-job-item-top {
+  background: rgba(255,107,53,0.05);
+  border-color: rgba(255,107,53,0.18);
+}
+.v2-job-tag {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.5);
+  direction: ltr;
+}
+.v2-job-tag-accent {
+  background: rgba(255,107,53,0.15);
+  color: #FF8C5A;
+}
+.v2-job-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.v2-job-title {
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  font-weight: 600;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.v2-job-desc {
+  font-size: clamp(0.72rem, 1.1vw, 0.82rem);
+  color: rgba(255,255,255,0.4);
+}
+.v2-job-salary {
+  flex-shrink: 0;
+  font-size: clamp(0.78rem, 1.2vw, 0.9rem);
+  font-weight: 700;
+  color: #FF6B35;
+  direction: ltr;
+  white-space: nowrap;
+}
+
+/* --- Lessons (Do Over) --- */
+.v2-lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.85rem, 2.5vh, 1.5rem);
+  margin-top: clamp(1.25rem, 3vh, 2rem);
+}
+.v2-lesson-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  direction: rtl;
+}
+.v2-lesson-num {
+  flex-shrink: 0;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 900;
+  color: rgba(255,107,53,0.3);
+  font-family: 'Courier New', monospace;
+  min-width: 2em;
+  text-align: center;
+  line-height: 1.2;
+}
+.v2-lesson-title {
+  font-size: clamp(0.95rem, 1.7vw, 1.3rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.2rem;
+}
+.v2-lesson-title em { font-style: italic; color: #FF6B35; }
+.v2-lesson-desc {
+  font-size: clamp(0.8rem, 1.3vw, 1rem);
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
+
+/* --- Q&A question list --- */
+.v2-qlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: clamp(1.25rem, 3vh, 2rem);
+}
+.v2-q-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: clamp(0.88rem, 1.5vw, 1.1rem);
+  color: rgba(255,255,255,0.7);
+  direction: rtl;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.v2-q-item:last-child { border-bottom: none; }
+.v2-q-num {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: #FF6B35;
+  min-width: 1.8em;
+}
