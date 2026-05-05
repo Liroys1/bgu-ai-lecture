@@ -1374,3 +1374,65 @@
   border-radius: 8px;
 }
 .v6-thanks-cta strong { color: #FFFFFF; }
+
+/* ===== V6 OVERFLOW / CUTOFF FIXES ===== */
+
+/* Extra bottom padding on all frames to clear the nav bar */
+.v2-stage .v2-frame {
+  padding-bottom: clamp(5rem, 9vh, 7rem);
+}
+
+/* JOBS SENIOR — compact so all 4 fit */
+.v6-jobs-senior-frame .v2-job-list { gap: 0.45rem; }
+.v6-jobs-senior-frame .v2-job-item { padding: 0.55rem 0.85rem; }
+.v6-jobs-senior-frame .v2-headline { margin-bottom: 0.5rem; }
+
+/* Q&A — scrollable list so expanded answers don't overflow */
+.v6-qa-frame { overflow: hidden; }
+.v6-qa-list {
+  overflow-y: auto;
+  max-height: calc(100% - 2rem);
+  padding-bottom: 0.5rem;
+}
+/* Tighter answers so more fits on screen */
+.v6-qa-card.v6-qa-open .v6-qa-a {
+  max-height: 6rem;
+  padding: 0.4rem 0.85rem 0.6rem;
+}
+
+/* WHY stats frame — prevent bottom cutoff */
+.v6-why-frame { overflow: hidden; }
+
+/* ===== URGENT CUTOFF FIXES ===== */
+
+/* Global: all frames must not overflow nav */
+.v2-stage .v2-frame {
+  padding-bottom: clamp(5rem, 9vh, 7rem) !important;
+  overflow: hidden;
+}
+
+/* MY AI WORK — compact so cards + sub text fit */
+.v6-work-frame { justify-content: flex-start !important; padding-top: clamp(0.5rem,1.5vh,1.2rem) !important; }
+.v6-work-frame .v2-headline { margin-bottom: 0.4rem !important; font-size: clamp(1.4rem,3vw,2.4rem) !important; }
+.v6-work-cards { margin-top: 0.5rem !important; }
+.v6-wc-img-wrap { aspect-ratio: 4/3 !important; }
+.v6-wc-body { padding: 0.4rem 0.65rem !important; gap: 0.15rem !important; }
+.v6-wc-title { font-size: clamp(0.75rem,1.15vw,0.88rem) !important; }
+.v6-wc-desc { font-size: clamp(0.6rem,0.9vw,0.72rem) !important; }
+.v6-work-frame .v2-sub { margin-top: 0.3rem !important; font-size: clamp(0.75rem,1.2vw,0.9rem) !important; }
+
+/* Q&A — compact, scrollable, no cutoff */
+.v6-qa-frame { padding-top: clamp(0.5rem,1.5vh,1.2rem) !important; justify-content: flex-start !important; }
+.v6-qa-frame .v2-headline { font-size: clamp(1.4rem,3vw,2.4rem) !important; margin-bottom: 0.3rem !important; }
+.v6-qa-list {
+  overflow-y: auto !important;
+  flex: 1;
+  gap: 0.3rem !important;
+}
+.v6-qa-q { padding: 0.45rem 0.75rem !important; }
+.v6-qa-qtext { font-size: clamp(0.75rem,1.2vw,0.88rem) !important; }
+.v6-qa-card.v6-qa-open .v6-qa-a {
+  max-height: 5rem !important;
+  padding: 0.35rem 0.75rem 0.5rem !important;
+  font-size: clamp(0.68rem,1.05vw,0.8rem) !important;
+}
