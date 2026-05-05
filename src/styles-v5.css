@@ -1,22 +1,25 @@
-/* ===== V5: Terminal / Matrix Style ===== */
-/* Dark background · Phosphor green · Monospace · Typewriter effect */
+/* ===================================================================
+   V5: Mission Brief — Black · White · Yellow · Red
+   "90 Days" — Stark urgency, military briefing aesthetic
+   =================================================================== */
 
+/* ── stage ── */
 #stage.v5-stage {
-  background: #050A07;
+  background: #000000;
 }
 
+/* ── slide shell ── */
 .v5-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease-out;
-  background: #050A07;
+  background: #000000;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
-  color: #00FF41;
-  font-family: 'Courier New', 'Courier', monospace;
   overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .v5-slide.active {
@@ -24,200 +27,861 @@
   pointer-events: auto;
 }
 
-/* Scanlines overlay */
-.v5-slide::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.05) 2px,
-    rgba(0, 0, 0, 0.05) 4px
-  );
-  pointer-events: none;
-  z-index: 10;
-}
-
+/* ── inner wrapper (non-alarm slides) ── */
 .v5-slide-inner {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* ── header ── */
 .v5-header {
-  border-bottom: 1px solid rgba(0, 255, 65, 0.2);
-  padding: 0.8rem 2rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  font-size: clamp(0.6rem, 0.85vw, 0.72rem);
-  color: rgba(0, 255, 65, 0.45);
-  direction: ltr;
+  gap: 0.75rem;
+  padding: 0.65rem clamp(1.5rem, 4vw, 3rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: clamp(0.58rem, 0.8vw, 0.7rem);
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
   flex-shrink: 0;
-  background: rgba(0, 255, 65, 0.02);
+  background: rgba(255, 255, 255, 0.015);
 }
 
-.v5-header-sys {
-  color: rgba(0, 255, 65, 0.7);
+.v5-header-mission {
+  color: #FFD60A;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
 }
 
 .v5-header-sep {
-  color: rgba(0, 255, 65, 0.2);
-}
-
-.v5-header-slide {
-  color: rgba(0, 255, 65, 0.5);
+  color: rgba(255, 255, 255, 0.15);
 }
 
 .v5-header-act {
-  color: #FF2D55;
+  color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.1em;
 }
 
 .v5-header-label {
-  color: rgba(0, 255, 65, 0.35);
-  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.28);
 }
 
-/* ── content ── */
+.v5-header-spacer {
+  flex: 1;
+}
+
+.v5-header-counter {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.62rem;
+}
+
+/* ── content area ── */
 .v5-content {
   flex: 1;
-  padding: clamp(2rem, 5vw, 4rem) clamp(2rem, 6vw, 5rem);
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(2rem, 7vw, 5rem);
+  direction: rtl;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  direction: rtl;
+  justify-content: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── animation on slide change ── */
+@keyframes v5-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.v5-content-inner {
+  animation: v5-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ================================================================
+   ALARM SLIDE
+   ================================================================ */
+
+.v5-alarm-slide {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.6rem, 2vh, 1.4rem);
+  overflow: hidden;
+}
+
+/* scanning line animation */
+@keyframes v5-scan {
+  0% { top: -4px; opacity: 0.7; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.v5-alarm-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD60A 20%, #FFD60A 80%, transparent);
+  animation: v5-scan 3.5s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* alarm lines animate in with stagger */
+@keyframes v5-alarm-appear {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.v5-alarm-line {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(4rem, 8vw, 8rem);
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: v5-alarm-appear 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  z-index: 3;
+  position: relative;
+}
+
+/* line 0: even larger */
+.v5-alarm-line-0 {
+  font-size: clamp(5rem, 10vw, 10rem);
+  animation-delay: 0s;
+}
+
+.v5-alarm-line-1 {
+  animation-delay: 0.4s;
+}
+
+.v5-alarm-line-2 {
+  animation-delay: 0.8s;
+}
+
+.v5-alarm-sub {
+  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+  color: #FFD60A;
+  text-align: center;
+  margin-top: clamp(0.5rem, 2vh, 1.5rem);
+  opacity: 0;
+  animation: v5-alarm-appear 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.3s both;
+  letter-spacing: 0.06em;
+  z-index: 3;
+  position: relative;
+}
+
+/* ================================================================
+   HERO / OUTRO
+   ================================================================ */
+
+.v5-hero-wrap {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  direction: ltr;
+}
+
+.v5-hero-photo-ring {
+  flex-shrink: 0;
+  width: clamp(100px, 14vw, 160px);
+  height: clamp(100px, 14vw, 160px);
+  border-radius: 50%;
+  border: 3px solid #FFD60A;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v5-hero-photo-ring--red {
+  border-color: #EF233C;
+}
+
+.v5-hero-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.v5-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.v5-hero-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.v5-hero-name {
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.v5-hero-role {
+  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  color: #FFD60A;
+  line-height: 1.3;
+}
+
+.v5-hero-sub {
+  font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 0.4rem;
+}
+
+.v5-red {
+  color: #EF233C !important;
+}
+
+/* ================================================================
+   BIGNUM
+   ================================================================ */
+
+.v5-bignum-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
 }
 
-.v5-prompt {
-  color: rgba(0, 255, 65, 0.4);
-  font-size: clamp(0.7rem, 1.1vw, 0.85rem);
-  margin-bottom: 1rem;
-  direction: ltr;
-  text-align: left;
+.v5-bignum-rule {
+  width: clamp(3rem, 6vw, 6rem);
+  height: 3px;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.v5-bignum-number {
+  font-weight: 900;
+  font-size: clamp(7rem, 14vw, 14rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-feature-settings: 'tnum';
+}
+
+.v5-bignum-unit {
+  font-size: 0.4em;
+  vertical-align: super;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.v5-bignum-desc {
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.35;
+  margin-top: 0.75rem;
+  max-width: 72ch;
+}
+
+.v5-bignum-context {
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  margin-top: 0.4rem;
+}
+
+.v5-bignum-source {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 0.6rem;
   letter-spacing: 0.04em;
 }
 
-.v5-output {
+/* ================================================================
+   QUOTE
+   ================================================================ */
+
+.v5-quote-card {
+  border: 1px solid rgba(255, 214, 10, 0.15);
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 75ch;
+  direction: rtl;
+}
+
+.v5-quote-intel-label {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+  color: #FFD60A;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+.v5-quote-text {
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+.v5-quote-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  direction: ltr;
+}
+
+.v5-quote-author {
+  color: #FFD60A;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+}
+
+.v5-quote-role {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
+}
+
+/* ================================================================
+   JOBLIST
+   ================================================================ */
+
+.v5-joblist-label {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+  color: #EF233C;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.v5-joblist-hl {
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 2.8rem);
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.v5-joblist-sub {
+  font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 1rem;
+}
+
+.v5-jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.v5-job {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.v5-job-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.v5-job-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #FFD60A;
+  border: 1px solid #FFD60A;
+  padding: 0.1rem 0.45rem;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
+.v5-job-title {
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  color: #ffffff;
   flex: 1;
 }
 
-/* ── pre / typewriter ── */
-.v5-pre {
-  font-family: 'Courier New', monospace;
-  font-size: clamp(0.85rem, 1.6vw, 1.3rem);
-  line-height: 1.65;
-  color: #00FF41;
-  white-space: pre-wrap;
-  word-break: break-word;
-  margin: 0;
-  direction: rtl;
-  text-align: right;
-}
-
-.v5-pre-big {
-  font-size: clamp(1.5rem, 3vw, 2.8rem);
-  line-height: 1.5;
-  color: #00FF41;
-  text-shadow: 0 0 12px rgba(0, 255, 65, 0.4);
-}
-
-/* ── big number ── */
-.v5-num-big {
-  font-size: clamp(5rem, 13vw, 11rem);
+.v5-job-salary {
   font-weight: 700;
-  color: #00FF41;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: #FFD60A;
+  flex-shrink: 0;
+}
+
+.v5-job-bot {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.v5-job-co {
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.v5-job-desc {
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ================================================================
+   SPLIT
+   ================================================================ */
+
+.v5-split-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  direction: ltr;
+  min-height: clamp(200px, 45vh, 380px);
+}
+
+.v5-split-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.v5-split-panel--yellow {
+  border-top: 2px solid #FFD60A;
+}
+
+.v5-split-panel--red {
+  border-top: 2px solid #EF233C;
+}
+
+.v5-split-divider {
+  width: 1px;
+  background: #ffffff;
+  flex-shrink: 0;
+  margin: 0 1px;
+}
+
+.v5-split-panel-label {
   font-family: 'Courier New', monospace;
+  font-size: clamp(0.6rem, 0.85vw, 0.72rem);
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.v5-split-panel--yellow .v5-split-panel-label { color: #FFD60A; }
+.v5-split-panel--red   .v5-split-panel-label { color: #EF233C; }
+
+.v5-split-icon {
+  font-size: clamp(2rem, 3.5vw, 3rem);
   line-height: 1;
-  text-shadow: 0 0 20px rgba(0, 255, 65, 0.45), 0 0 60px rgba(0, 255, 65, 0.15);
+}
+
+.v5-split-title {
+  font-weight: 800;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.v5-split-tag {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.62rem, 0.85vw, 0.72rem);
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.1em;
+}
+
+.v5-split-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.v5-split-list li {
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.v5-split-list li::before {
+  content: '›';
+  color: #FFD60A;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.v5-split-panel--red .v5-split-list li::before {
+  color: #EF233C;
+}
+
+/* ================================================================
+   SKILLS
+   ================================================================ */
+
+.v5-skills-hl {
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.8vw, 2.6rem);
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.v5-skills-hl2 {
+  font-weight: 700;
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
+  color: #FFD60A;
+  margin-bottom: 1.2rem;
+}
+
+.v5-skills-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.v5-skill-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   direction: ltr;
-  text-align: left;
+}
+
+.v5-skill-cat {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.62rem, 0.85vw, 0.72rem);
+  color: #FFD60A;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  min-width: 4.5rem;
+  flex-shrink: 0;
+}
+
+.v5-skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.v5-skill-pill {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
+  font-weight: 500;
+  padding: 0.22rem 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+/* ================================================================
+   ROADMAP
+   ================================================================ */
+
+.v5-roadmap-hl {
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.8vw, 2.6rem);
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.v5-roadmap-hl2 {
+  font-weight: 700;
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
+  color: #FFD60A;
+  margin-bottom: 1.5rem;
+}
+
+.v5-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  direction: ltr;
+}
+
+.v5-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.v5-step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: clamp(4rem, 7vw, 7rem);
+  position: relative;
+}
+
+.v5-step-phase {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.55rem, 0.75vw, 0.65rem);
+  color: #EF233C;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-bottom: 0.1rem;
+}
+
+.v5-step-days {
+  font-weight: 900;
+  font-size: clamp(4rem, 7vw, 7rem);
+  color: #FFD60A;
+  line-height: 0.9;
   letter-spacing: -0.04em;
-  animation: v5-pulse 3s ease-in-out infinite;
 }
 
-@keyframes v5-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; text-shadow: 0 0 30px rgba(0, 255, 65, 0.6), 0 0 80px rgba(0, 255, 65, 0.25); }
+.v5-step-connector {
+  width: 1px;
+  height: clamp(1.5rem, 3vh, 2.5rem);
+  background: repeating-linear-gradient(
+    to bottom,
+    #FFD60A 0,
+    #FFD60A 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  margin-top: 0.25rem;
 }
 
-.v5-line {
-  font-family: 'Courier New', monospace;
-  line-height: 1.6;
-  margin: 0.1rem 0;
+.v5-step-body {
+  padding-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.v5-step-title {
+  font-weight: 800;
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
+  color: #ffffff;
   direction: rtl;
-  text-align: right;
 }
 
-.v5-line-small {
-  font-size: clamp(0.7rem, 1.1vw, 0.85rem);
-  color: rgba(0, 255, 65, 0.5);
+.v5-step-desc {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.45;
+  direction: rtl;
+  max-width: 52ch;
+}
+
+/* ================================================================
+   LESSONS
+   ================================================================ */
+
+.v5-lessons-hl {
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.8vw, 2.6rem);
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.v5-lessons-hl2 {
+  font-weight: 700;
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
+  color: #FFD60A;
+  margin-bottom: 1.2rem;
+}
+
+.v5-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.v5-lesson {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
   direction: ltr;
-  text-align: left;
 }
 
-.v5-line-medium {
-  font-size: clamp(1rem, 2vw, 1.8rem);
-  color: rgba(0, 255, 65, 0.8);
-  margin-top: 0.8rem;
+.v5-lesson-num {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.12);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 3rem;
+  font-feature-settings: 'tnum';
 }
 
-.v5-dim {
-  color: rgba(0, 255, 65, 0.3);
-  font-size: 0.78rem;
+.v5-lesson-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.3rem;
+  direction: rtl;
 }
 
-/* ── cursor ── */
-.v5-cursor {
-  display: inline-block;
-  width: 0.65em;
-  height: 1.05em;
-  background: #00FF41;
-  animation: v5blink 1s step-end infinite;
-  margin-right: 1px;
-  vertical-align: text-bottom;
-  box-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+.v5-lesson-title {
+  font-weight: 700;
+  font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+  color: #ffffff;
+  line-height: 1.3;
 }
 
-@keyframes v5blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.v5-lesson-dash {
+  color: #FFD60A;
+  font-weight: 700;
 }
 
-/* ── status line ── */
-.v5-status {
-  margin-top: 1.5rem;
-  font-size: clamp(0.68rem, 1vw, 0.82rem);
-  color: rgba(0, 255, 65, 0.45);
-  direction: ltr;
-  text-align: left;
+.v5-lesson-desc {
+  font-size: clamp(0.75rem, 1.1vw, 0.92rem);
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* ================================================================
+   QALIST
+   ================================================================ */
+
+.v5-debrief-label {
   font-family: 'Courier New', monospace;
+  font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+  color: #EF233C;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-.v5-progress-bar {
-  color: #00FF41;
-  text-shadow: 0 0 6px rgba(0, 255, 65, 0.5);
+.v5-qa-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
 }
 
-/* ── accent: magenta for highlights ── */
-.v5-accent {
-  color: #FF2D55;
-  text-shadow: 0 0 8px rgba(255, 45, 85, 0.4);
+.v5-qa-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  direction: rtl;
+  border: 1px solid rgba(255, 214, 10, 0.08);
+  padding: 0.6rem 0.9rem;
 }
 
-/* ── act-specific tints ── */
-.v5-slide.act-i .v5-header { border-bottom-color: rgba(0,255,65,0.15); }
-.v5-slide.act-ii .v5-header-act { color: #FF2D55; }
-.v5-slide.act-iii .v5-header-act { color: rgba(0,255,65,0.9); }
-.v5-slide.act-outro .v5-header { background: rgba(255,45,85,0.03); }
+.v5-qa-counter {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+  color: #FFD60A;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0.08em;
+}
+
+.v5-qa-text {
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+/* ================================================================
+   QA
+   ================================================================ */
+
+.v5-qa-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+}
+
+.v5-qa-hl {
+  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 7rem);
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.v5-qa-hl2 {
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+  color: #FFD60A;
+}
+
+/* ================================================================
+   STATEMENT
+   ================================================================ */
+
+.v5-statement-hl {
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 5rem);
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.3rem;
+}
+
+.v5-statement-hl2 {
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3.5vw, 3.5rem);
+  color: #FFD60A;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+}
+
+.v5-statement-sub {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+/* ================================================================
+   ACT-SPECIFIC ACCENT COLOURS (header)
+   ================================================================ */
+
+.v5-slide.act-i    .v5-header-act { color: #ffffff; }
+.v5-slide.act-ii   .v5-header-act { color: #FFD60A; }
+.v5-slide.act-iii  .v5-header-act { color: #EF233C; }
+.v5-slide.act-outro .v5-header-act { color: rgba(255, 255, 255, 0.5); }
+.v5-slide.act-intro .v5-header-act { color: rgba(255, 255, 255, 0.5); }
