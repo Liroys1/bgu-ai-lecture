@@ -1,42 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { SLIDES_V2, SLIDE_META_V2 } from './slides-v2';
+import { SLIDES_V6, SLIDE_META_V6 } from './slides-v6';
 import './styles.css';
 import './styles-v6.css';
-
-const STAGGER_SELECTORS = ['.v2-stat-row .v2-stat-num'];
-const COUNTER_SELECTORS = '.v2-stat-num.stat-num';
-
-function animateCounters(root: Element) {
-  const els = root.querySelectorAll<HTMLElement>(COUNTER_SELECTORS);
-  els.forEach(el => {
-    if (el.dataset.counted === '1') return;
-    const text = el.textContent || '';
-    const match = text.match(/(-?[\d,]+(?:\.\d+)?)/);
-    if (!match) return;
-    const raw = match[1];
-    const target = parseFloat(raw.replace(/,/g, ''));
-    if (isNaN(target) || target === 0) return;
-    el.dataset.counted = '1';
-    const prefix = text.substring(0, match.index!);
-    const suffix = text.substring(match.index! + raw.length);
-    const duration = 1200;
-    const startTime = performance.now() + 300;
-    function step(now: number) {
-      if (now < startTime) { el.textContent = prefix + '0' + suffix; requestAnimationFrame(step); return; }
-      const t = Math.min(1, (now - startTime) / duration);
-      const v = target * (1 - Math.pow(1 - t, 3));
-      el.textContent = prefix + Math.round(v).toLocaleString('en-US') + suffix;
-      if (t < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  });
-}
 
 export function AppV6() {
   const [current, setCurrent] = useState(0);
   const stageRef = useRef<HTMLDivElement>(null);
   const [gridOpen, setGridOpen] = useState(false);
-  const total = SLIDES_V2.length;
+  const total = SLIDES_V6.length;
 
   const go = (i: number) => setCurrent(Math.max(0, Math.min(total - 1, i)));
 
@@ -68,19 +39,14 @@ export function AppV6() {
     return () => { stage.removeEventListener('touchstart', onStart); stage.removeEventListener('touchend', onEnd); };
   }, [current]);
 
-  useEffect(() => {
-    const activeSlide = stageRef.current?.querySelector('.slide.active');
-    if (activeSlide) animateCounters(activeSlide);
-  }, [current]);
-
   const dotClass = (i: number) => `dot${i === current ? ' active' : i < current ? ' past' : ' future'}`;
 
   return (
     <>
-      <div id="stage" ref={stageRef} data-act={SLIDE_META_V2[current]?.act} className="v2-stage">
-        {SLIDES_V2.map((sl, i) => (
+      <div id="stage" ref={stageRef} data-act={SLIDE_META_V6[current]?.act} className="v2-stage">
+        {SLIDES_V6.map((sl, i) => (
           <div key={i}
-            className={`slide s${i+1}${i === current ? ' active' : ''} act-${SLIDE_META_V2[i]?.act?.toLowerCase()}`}
+            className={`slide s${i+1}${i === current ? ' active' : ''} act-${SLIDE_META_V6[i]?.act?.toLowerCase()}`}
             id={`slide-${i}`}
             dangerouslySetInnerHTML={{ __html: sl() }}
           />
@@ -98,7 +64,7 @@ export function AppV6() {
             <span className="counter-total">{String(total).padStart(2,'0')}</span>
           </div>
           <div className="dots">
-            {SLIDES_V2.map((_, i) => (
+            {SLIDES_V6.map((_, i) => (
               <button key={i} className={dotClass(i)} onClick={() => go(i)} aria-label={`Slide ${i+1}`} />
             ))}
           </div>
@@ -128,7 +94,7 @@ export function AppV6() {
             </button>
           </div>
           <div className="thumb-grid" onClick={(e) => e.stopPropagation()}>
-            {SLIDE_META_V2.map((meta, i) => (
+            {SLIDE_META_V6.map((meta, i) => (
               <button key={i} className={`thumb act-${meta.act.toLowerCase()}${i === current ? ' current' : ''}`}
                 onClick={() => { go(i); setGridOpen(false); }}>
                 <div className="thumb-num">{String(i+1).padStart(2,'0')}</div>
