@@ -2,6 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { SLIDES } from './slides';
 import { useThreeScene } from './components/ThreeScene';
 import './styles.css';
+import { AppV2 } from './AppV2';
+import { AppV3 } from './AppV3';
+import { AppV4 } from './AppV4';
+import { AppV5 } from './AppV5';
+
+const VERSION = new URLSearchParams(window.location.search).get('v') ?? '1';
 
 const STAGGER_SELECTORS = [
   '.stop', '.why-card', '.stat-card', '.job-card', '.quote-card',
@@ -100,6 +106,11 @@ function Particles() {
 }
 
 export function App() {
+  if (VERSION === '5') return <AppV5 />;
+  if (VERSION === '4') return <AppV4 />;
+  if (VERSION === '3') return <AppV3 />;
+  if (VERSION === '2') return <AppV2 />;
+
   const [current, setCurrent] = useState(0);
   const [hourPct, setHourPct] = useState(0);
   const [lectureStart, setLectureStart] = useState<number | null>(null);
