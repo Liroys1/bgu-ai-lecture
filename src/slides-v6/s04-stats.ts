@@ -5,10 +5,10 @@ export function v6s10() {
     ${tb(10, 'THE SHIFT')}
     <div class="v2-frame v2-stat-frame">
       <div class="v2-eyebrow">ChatGPT · 2022</div>
-      <div class="v2-stat-row">
-        <span class="v2-stat-num" style="color:#FF6B35">100M</span>
-        <span class="v2-stat-unit"> ← </span>
+      <div class="v2-stat-row" style="direction:ltr;justify-content:flex-start">
         <span class="v2-stat-num">0</span>
+        <span class="v2-stat-unit"> → </span>
+        <span class="v2-stat-num" style="color:#FF6B35">100M</span>
       </div>
       <p class="v2-sub">משתמשים. ב-60 יום.<br/>אף מוצר בהיסטוריה לא צמח כך.</p>
     </div>`;

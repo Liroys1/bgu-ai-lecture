@@ -2,7 +2,7 @@ import { v2s01 } from '../slides-v2/s01-intro';
 import { v2s11, v2s12, v2s13 } from '../slides-v2/s04-stats';
 import { v2s16, v2s17, v2s18 } from '../slides-v2/s05-voices';
 
-import { v6s02 } from './s01-intro';
+import { v6s02, v6s02b } from './s01-intro';
 import { v6s03, v6s04 } from './s02-story';
 import { v6s05, v6s05b } from './s03-why';
 import { v6s10, v6s31 } from './s04-stats';
@@ -23,7 +23,8 @@ import {
 export const SLIDES_V6 = [
   v2s01,            // 01 INTRO — photo + name
   v6s02,            // 02 OPENING — 78% shock
-  v6s_agenda,       // 03 AGENDA
+  v6s02b,           // 03 TENSION — 22% האחרים
+  v6s_agenda,       // 04 AGENDA
   v6s03,            // 04 ACT I chapter
   v6s04,            // 05 MY STORY — dual track
   v6s05,            // 06 WHY תעשייה וניהול
@@ -62,7 +63,8 @@ export const SLIDES_V6 = [
 
 export const SLIDE_META_V6 = [
   { label: 'INTRO',            act: 'INTRO' },
-  { label: 'OPENING',          act: 'INTRO' },
+  { label: 'OPENING 78%',      act: 'INTRO' },
+  { label: '22% האחרים',       act: 'INTRO' },
   { label: 'AGENDA',           act: 'INTRO' },
   { label: 'ACT I',            act: 'I' },
   { label: 'MY STORY',         act: 'I' },

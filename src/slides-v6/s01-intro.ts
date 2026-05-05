@@ -12,3 +12,16 @@ export function v6s02() {
       <p class="v6-shock-coda">זה לא גורל. <em>זו בחירה.</em></p>
     </div>`;
 }
+
+/* tension slide — 22% big */
+export function v6s02b() {
+  return `
+    ${tb(3, 'OPENING')}
+    <div class="v2-frame v6-tension-frame">
+      <div class="v6-tension-q">האם אתם</div>
+      <div class="v6-tension-pct">ה-<span>22%</span></div>
+      <div class="v6-tension-q">האחרים?</div>
+      <div class="v6-tension-divider"></div>
+      <div class="v6-tension-coda">זה לא גורל. <strong>זו בחירה.</strong></div>
+    </div>`;
+}
